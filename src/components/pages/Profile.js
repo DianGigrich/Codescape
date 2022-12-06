@@ -2,7 +2,7 @@ import React,{useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
 import API from "../../utils/API"
 
-export default function Profile(props) {
+function Profile(props) {
     const navigate = useNavigate();
     useEffect(()=>{
         const storedToken = localStorage.getItem("token")
@@ -39,3 +39,5 @@ export default function Profile(props) {
     </>
   )
 }
+
+export default Profile

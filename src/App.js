@@ -6,7 +6,7 @@ import Home from "./components/pages/Home"
 import Profile from "./components/pages/Profile";
 import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
-import Footer from "./components/Footer";
+import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 
 
@@ -67,8 +67,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Header/>
       <Router>
+      <Header/>
         <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
         <Routes>
           <Route path="/" element={<Home/>}/>
@@ -87,9 +87,10 @@ function App() {
           setUserId={setUserId}
           setUserName={setUserName}
           />}/>
+          <Route path="/Puzzle/:id" element={<Puzzle/>}/>
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
-        <Footer/>
+        <StickyFooter/>
       </Router>
       {/* {isLoggedIn&&<button onClick={handleLogout}>Logout</button>}
       {isLoggedIn?(
