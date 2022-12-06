@@ -29,14 +29,16 @@ const [currentKey, setKey] = useState(false)
 
 function Puzzle () {
     return (
+<>      
+        <Start/>
         <div className='puzzle-container'>
         <p id='puzzle-timer'>Timer</p>
         {/* div is shown/hidden based on state of current image */}
         <div id='puzzle-image-1'>
             <img className='room-img' src='./assets/room.png' alt='an empty room with red walls'/>
             <img id="door" src="./assets/door.png" alt="door"/>
-            <Start/>
-            <Question/>
+            
+            
             <img id="knob" src="./assets/doorknob.png" alt="doorknob"/>
                 {/*changes source based on state*/}
             <img id="file-cabinet" src="./assets/filecabinetclosed.png" alt="file cabinet closed iwth a potted plant on top"/>
@@ -70,7 +72,9 @@ function Puzzle () {
             <img id="shredded-file" src="./assets/shreddedFile.png" alt="shredded file"/>
             <img id="tape-roll" src="./assets/tapeRoll.png" alt="tape roll"/>
         </div>
+        <Question/>
     </div>
+</>
     )
 }
 
