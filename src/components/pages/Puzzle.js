@@ -2,7 +2,7 @@ import React from 'react';
 
 import room from './../../assets/room.png'
 
-export default function Puzzle () {
+function Puzzle () {
     return (
         <div className='puzzle-container'>
             <p className='puzzle-timer'>Timer</p>
@@ -15,3 +15,5 @@ export default function Puzzle () {
         </div>
     )
 }
+
+export default Puzzle;
