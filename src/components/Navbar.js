@@ -1,5 +1,5 @@
 import React from 'react';
-// import {Link,useNavigate} from 'react-router-dom';
+import {Link,useNavigate} from 'react-router-dom';
 
 // TODO: fix navigation for server useage EXAMPLE BELOW
 
@@ -19,58 +19,52 @@ import React from 'react';
 //   }
 
 
-function Nav({ currentPage, handlePageChange }) {
+function Navbar({ currentPage, handlePageChange }) {
 
   return (
     <ul className="nav nav-tabs">
+
       <li className="nav-item">
-        <a
-          href="#Leaderboard"
+        <Link to="/Leaderboard"
           onClick={() => handlePageChange('Leaderboard')}
-          className={currentPage === 'Leaderboard' ? 'nav-link active' : 'nav-link'}
-        >
+          className={currentPage === 'Leaderboard' ? 'nav-link active' : 'nav-link'}>
           Leaderboard
-        </a>
+        </Link>
       </li>
+
       <li className="nav-item">
- 
-        <a
-          href="#Home"
+        <Link to="/Home"
           onClick={() => handlePageChange('Home')}
-          className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
-        >
+          className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>
           Home
-        </a>
+        </Link>
       </li>
+
       <li className="nav-item">
-        <a
-          href="#Profile"
+        <Link to="/Profile"
           onClick={() => handlePageChange('Profile')}
-          className={currentPage === 'Profile' ? 'nav-link active' : 'nav-link'}
-        >
+          className={currentPage === 'Profile' ? 'nav-link active' : 'nav-link'}>
           Profile
-        </a>
+        </Link>
       </li>
+
       <li className="nav-item">
-        <a
-          href="#Login"
+        <Link to="/Login"
           onClick={() => handlePageChange('Login')}
-          className={currentPage === 'Login' ? 'nav-link active' : 'nav-link'}
-        >
+          className={currentPage === 'Login' ? 'nav-link active' : 'nav-link'}>
           Login
-        </a>
+        </Link>
       </li>
+
       <li className="nav-item">
-        <a
-          href="#Logout"
+        <Link to="/Logout"
           onClick={() => handlePageChange('Logout')}
-          className={currentPage === 'Logout' ? 'nav-link active' : 'nav-link'}
-        >
+          className={currentPage === 'Logout' ? 'nav-link active' : 'nav-link'}>
           Logout
-        </a>
+        </Link>
       </li>
     </ul>
   );
 }
 
-export default Nav;
+export default Navbar;

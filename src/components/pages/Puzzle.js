@@ -35,6 +35,8 @@ function Puzzle () {
         <div id='puzzle-image-1'>
             <img className='room-img' src='./assets/room.png' alt='an empty room with red walls'/>
             <img id="door" src="./assets/door.png" alt="door"/>
+            <Start/>
+            <Question/>
             <img id="knob" src="./assets/doorknob.png" alt="doorknob"/>
                 {/*changes source based on state*/}
             <img id="file-cabinet" src="./assets/filecabinetclosed.png" alt="file cabinet closed iwth a potted plant on top"/>
