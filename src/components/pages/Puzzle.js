@@ -6,6 +6,8 @@ function Puzzle() {
     return (
 
         <div className="">
+            <Start/>
+            <Question/>
             
         </div>
 
