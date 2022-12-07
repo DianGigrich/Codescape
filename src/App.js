@@ -9,7 +9,6 @@ import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 
-
 function App() {
   const [userId, setUserId] = useState(0)
   const [userName, setUserName] = useState("")
@@ -87,7 +86,6 @@ function App() {
           setUserId={setUserId}
           setUserName={setUserName}
           />}/>
-          <Route path="/Puzzle/" element={<Puzzle/>}/>
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <StickyFooter/>
