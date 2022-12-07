@@ -1,5 +1,8 @@
 import React from 'react';
 import {Link,useNavigate} from 'react-router-dom';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
 
 // TODO: fix navigation for server useage EXAMPLE BELOW
 
@@ -9,12 +12,30 @@ export default function Navbar(props) {
       props.handleLogout()
       navigate("/login")
     }
+    const [value, setValue] = React.useState('one');
+
+    const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+      setValue(newValue);
+    };
+  
     return (
-      <div>
-          <Link to ="/">Home</Link>
-          {props.isLoggedIn?<Link to ="/Profile">Profile</Link>:null}
-          {props.isLoggedIn?<button onClick={logoutFunc}>Logout</button>:<Link to="/login">login</Link>}
-      </div>
+        <Box sx={{ width: '100%' }}>
+      <Tabs
+        value={value}
+        onChange={handleTabChange}
+        textColor="secondary"
+        indicatorColor="secondary"
+        aria-label="secondary tabs example"
+      >
+          <Link to ="/">
+            <Tab label="Home"/>
+            </Link>
+          {props.isLoggedIn?<Link to ="/Profile">
+            <Tab label="Profile"/>
+          </Link>:null}
+          {props.isLoggedIn?<Tab onClick={logoutFunc} label="Logout"></Tab>:<Link to="/login"><Tab label="Login"/></Link>}
+      </Tabs>
+      </Box>
     )
   }
 
@@ -33,7 +54,7 @@ export default function Navbar(props) {
 //       </li>
 
 //       <li className="nav-item">
-//         <Link to="/Home"
+//         <Link to="/"
 //           onClick={() => handlePageChange('Home')}
 //           className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>
 //           Home
