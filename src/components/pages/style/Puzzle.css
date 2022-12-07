@@ -1,0 +1,105 @@
+/* #puzzle-container {
+    display: block;
+} */
+
+.room-img {
+    position: relative;
+    /* left: 31%; */
+    width: 600px;
+}
+
+.window {
+    position: relative;
+    left: 46%;
+    top: 56%;
+    width: 152px;
+}
+
+#puzzle-timer-container {
+    text-align: center;
+}
+
+/* room view 1 */
+#puzzle-images {
+    display: flex;
+    justify-content: center;
+}
+#door {
+    position: relative;
+    top: -127px;
+    left: 45px;
+    width: 170px;
+}
+
+#knob {
+    position: relative;
+    /* left: 47%;
+    top: 97%;
+    width: 138px; */
+}
+
+#file-cabinet {
+    position: relative;
+    /* left: 53%;
+    top: 84%;
+    width: 132px; */
+}
+
+/* room view 2 */
+
+#table {
+    position: relative;
+    /* left: 41%;
+    top: 102%;
+    width: 134px; */
+}
+
+#tape-dispenser {
+    position: relative;
+    /* left: 44%;
+    top: 98%;
+    width: 293px; */
+}
+
+/* room view 3 */
+
+#utility-shelf {
+    position: relative;
+    /* left: 55%;
+    top: 90%;
+    width: 133px; */
+}
+
+#target-box {
+    position: relative;
+    /* left: 57%;
+    top: 85%;
+    width: 286px;  */
+}
+
+/* room view 4 */
+#shredder {
+    position: relative;
+    /* left: 47%;
+    top: 99%;
+    width: 166px; */
+}
+
+/* buttons and inventory */
+#prev-btn {
+    vertical-align: middle;
+}
+
+#next-btn {
+    vertical-align: middle;
+}
+#puzzle-inventory-container {
+    display: flex;
+    justify-content: center;
+}
+#puzzle-inventory {
+    justify-self: end;
+    display: inline-flex;
+    background-color: gray;
+}
+

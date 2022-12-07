@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
+import Puzzle from './components/pages/Puzzle';
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -65,32 +66,33 @@ function App() {
     setUserName("")
   }
   return (
-    <div className="App">
-      <Router>
-      <Header/>
-        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/login" element={<Login
-            isLoggedIn={isLoggedIn}
-            handleLoginSubmit={handleLoginSubmit}
-            handleSignupSubmit={handleSignupSubmit}
-          />}/>
-          <Route path="/profile" element={<Profile 
-          isLoggedIn={isLoggedIn} 
-          userId={userId} 
-          token={token} 
-          userName={userName}
-          setIsLoggedIn={setIsLoggedIn}
-          setToken={setToken}
-          setUserId={setUserId}
-          setUserName={setUserName}
-          />}/>
-          <Route path="*" element={<h1>404</h1>}/>
-        </Routes>
-        <StickyFooter/>
-      </Router>     
-    </div>
+    // <div className="App">
+    //   <Router>
+    //   <Header/>
+    //     <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+    //     <Routes>
+    //       <Route path="/" element={<Home/>}/>
+    //       <Route path="/login" element={<Login
+    //         isLoggedIn={isLoggedIn}
+    //         handleLoginSubmit={handleLoginSubmit}
+    //         handleSignupSubmit={handleSignupSubmit}
+    //       />}/>
+    //       <Route path="/profile" element={<Profile 
+    //       isLoggedIn={isLoggedIn} 
+    //       userId={userId} 
+    //       token={token} 
+    //       userName={userName}
+    //       setIsLoggedIn={setIsLoggedIn}
+    //       setToken={setToken}
+    //       setUserId={setUserId}
+    //       setUserName={setUserName}
+    //       />}/>
+    //       <Route path="*" element={<h1>404</h1>}/>
+    //     </Routes>
+    //     <StickyFooter/>
+    //   </Router>     
+    // </div>
+    <Puzzle />
   );
 }
 
