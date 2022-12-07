@@ -1,6 +1,6 @@
 
-import {useEffect, useState} from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import API from "./utils/API";
 import Home from "./components/pages/Home"
 import Profile from "./components/pages/Profile";
@@ -9,6 +9,7 @@ import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 import Puzzle from './components/pages/Puzzle';
+import Signup from "./components/pages/Signup"
 
 function App() {
   const [userId, setUserId] = useState(0)
@@ -16,12 +17,12 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
 
-  useEffect(()=>{
+  useEffect(() => {
     const storedToken = localStorage.getItem("token")
-    if(storedToken){
+    if (storedToken) {
       console.log(storedToken)
-      API.getUserFromToken(storedToken).then(data=>{
-        if(data.user){
+      API.getUserFromToken(storedToken).then(data => {
+        if (data.user) {
           console.log(data)
           setToken(storedToken)
           setIsLoggedIn(true)
@@ -32,33 +33,33 @@ function App() {
     } else {
       console.log('no stored token')
     }
-  },[])
+  }, [])
 
-  const handleLoginSubmit = userObj=>{
-    API.login(userObj).then(data=>{
+  const handleLoginSubmit = userObj => {
+    API.login(userObj).then(data => {
       console.log(data);
-      if(data.token){
+      if (data.token) {
         setUserId(data.user.id)
         setToken(data.token)
         setIsLoggedIn(true)
         setUserName(data.user.username)
-        localStorage.setItem("token",data.token)
+        localStorage.setItem("token", data.token)
       }
     })
   }
-  const handleSignupSubmit = userObj=>{
-    API.signup(userObj).then(data=>{
+  const handleSignupSubmit = userObj => {
+    API.signup(userObj).then(data => {
       console.log(data);
-      if(data.token){
+      if (data.token) {
         setUserId(data.user.id)
         setToken(data.token)
         setIsLoggedIn(true)
         setUserName(data.user.username)
-        localStorage.setItem("token",data.token)
+        localStorage.setItem("token", data.token)
       }
     })
   }
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     setUserId(0);
@@ -66,33 +67,33 @@ function App() {
     setUserName("")
   }
   return (
-    // <div className="App">
-    //   <Router>
-    //   <Header/>
-    //     <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
-    //     <Routes>
-    //       <Route path="/" element={<Home/>}/>
-    //       <Route path="/login" element={<Login
-    //         isLoggedIn={isLoggedIn}
-    //         handleLoginSubmit={handleLoginSubmit}
-    //         handleSignupSubmit={handleSignupSubmit}
-    //       />}/>
-    //       <Route path="/profile" element={<Profile 
-    //       isLoggedIn={isLoggedIn} 
-    //       userId={userId} 
-    //       token={token} 
-    //       userName={userName}
-    //       setIsLoggedIn={setIsLoggedIn}
-    //       setToken={setToken}
-    //       setUserId={setUserId}
-    //       setUserName={setUserName}
-    //       />}/>
-    //       <Route path="*" element={<h1>404</h1>}/>
-    //     </Routes>
-    //     <StickyFooter/>
-    //   </Router>     
-    // </div>
-    <Puzzle />
+    <div className="App">
+      <Router>
+        <Header/>
+        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login
+            isLoggedIn={isLoggedIn}
+            handleLoginSubmit={handleLoginSubmit}
+          />} />
+          <Route path="/login/Signup" element={<Signup handleSignupSubmit={handleSignupSubmit} />} />
+          <Route path="/profile" element={<Profile
+            isLoggedIn={isLoggedIn}
+            userId={userId}
+            token={token}
+            userName={userName}
+            setIsLoggedIn={setIsLoggedIn}
+            setToken={setToken}
+            setUserId={setUserId}
+            setUserName={setUserName}
+          />} />
+          <Route path="*" element={<h1>404</h1>} />
+        </Routes>
+        <StickyFooter />
+      </Router>
+      <Puzzle/>
+    </div>
   );
 }
 
