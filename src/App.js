@@ -9,7 +9,6 @@ import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 
-
 function App() {
   const [userId, setUserId] = useState(0)
   const [userName, setUserName] = useState("")
@@ -87,34 +86,10 @@ function App() {
           setUserId={setUserId}
           setUserName={setUserName}
           />}/>
-          <Route path="/Puzzle/:id" element={<Puzzle/>}/>
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <StickyFooter/>
-      </Router>
-      {/* {isLoggedIn&&<button onClick={handleLogout}>Logout</button>}
-      {isLoggedIn?(
-        <div>
-        <h1>Welcome {userName}!</h1>
-        <BucketList userId={userId} token={token}/>
-        </div>
-      ):(
-        <div>
-        <form onSubmit={handleLoginSubmit}>
-          <h3>Login</h3>
-          <input name="userName"  value={loginName} onChange={e=>setLoginName(e.target.value)}/>
-          <input type="password" name="password" value={loginPassword} onChange={e=>setLoginPassword(e.target.value)}/>
-          <button>Log in!</button>
-        </form>
-        <form onSubmit={handleSignupSubmit}>
-          <h3>Signup</h3>
-          <input name="userName"  value={signupName} onChange={e=>setSignupName(e.target.value)}/>
-          <input type="password" name="password" value={signupPassword} onChange={e=>setSignupPassword(e.target.value)}/>
-          <button>Signup!</button>
-        </form>
-        </div>
-      )} */}
-      
+      </Router>     
     </div>
   );
 }
