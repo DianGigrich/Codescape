@@ -30,10 +30,10 @@ export default function StickyFooter() {
     >
       <CssBaseline />
       <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h3" component="h3" gutterBottom>
           Codescape
         </Typography>
-        <Typography variant="h5" component="h2" gutterBottom>
+        <Typography variant="h6" component="h4" gutterBottom>
           {'Thank you for playing today.'}
         </Typography>
         <Typography variant="body1">Practice Practice Practice!</Typography>
