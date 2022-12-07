@@ -88,7 +88,7 @@ export default function Signup(props) {
                             name="password" 
                             value={signupPassword} 
                             onChange={e => setSignupPassword(e.target.value)} />
-                        <Button>Signup!</Button>
+                        <Button>Submit</Button>
                     </Box>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
