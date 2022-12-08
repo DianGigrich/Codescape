@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 // import ReactDOM from "react-dom/client"; 
-import Button from '@mui/material/button';
 
 // import all of the images
 // image 1 assets
@@ -80,9 +79,9 @@ function handleBoxState () {
 return (
         
     <div id='puzzle-images'>
-        <Button id="prev-btn" onClick={handleViewChangePrev}>
+        <button id="prev-btn" onClick={handleViewChangePrev}>
             left
-        </Button>
+        </button>
         {/* <iframe title="title" src="./html or URl"/> */}
         <div id='puzzle-image-1' style={currentView === 1 ? {display:'inline'}: {display:'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
@@ -113,9 +112,9 @@ return (
             <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
             <img id="shredder" src={shredder} alt="shredder"/>
         </div>
-        <Button id="next-btn" onClick={handleViewChangeNext}>
+        <button id="next-btn" onClick={handleViewChangeNext}>
             right
-        </Button>
+        </button>
     </div>
 )
 }
