@@ -92,7 +92,6 @@ function App() {
         </Routes>
         <StickyFooter />
       </Router>
-      <Puzzle/>
     </div>
   );
 }
