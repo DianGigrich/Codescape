@@ -4,8 +4,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -35,25 +33,20 @@ export default function Signup(props) {
         if (props.isLoggedIn) {
             navigate("/Profile")
         }
-
     }, [props.isLoggedIn])
-    const [loginName, setLoginName] = useState("")
-    const [loginPassword, setLoginPassword] = useState("")
-
 
     const signupHandle = e => {
         e.preventDefault();
         props.handleSignupSubmit({
-            username: loginName,
-            password: loginPassword
+            username: signupName,
+            password: signupPassword
         })
     }
     const [signupName, setSignupName] = useState("")
     const [signupPassword, setSignupPassword] = useState("")
 
     return (
-        // <div>hi</div>
-        < ThemeProvider theme={theme} >
+         < ThemeProvider theme={theme} >
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
@@ -88,7 +81,7 @@ export default function Signup(props) {
                             name="password" 
                             value={signupPassword} 
                             onChange={e => setSignupPassword(e.target.value)} />
-                        <Button>Submit</Button>
+                        <Button type="submit">Submit</Button>
                     </Box>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />

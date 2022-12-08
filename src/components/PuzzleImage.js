@@ -24,9 +24,15 @@ import closedBox from './../assets/closedBox.png';
 
 // image 4 assets
 import shredder from './../assets/shredder.png';
+import { createPortal } from 'react-dom';
 
 
-export default function PuzzleImage () {
+export default function PuzzleImage ({funcHeader, funcFooter, funcNav}) {
+
+funcHeader(false)
+funcFooter(false)
+funcNav(false)
+
 
 // set state of puzzle
 const [currentView, setView] = useState(1)
@@ -71,45 +77,45 @@ function handleBoxState () {
 
 }
 
-    return (
-<div id='puzzle-images'>
-            <Button id="prev-btn" onClick={handleViewChangePrev}>
-                left
-            </Button>
-            {/* <iframe title="title" src="./html or URl"/> */}
-            <div id='puzzle-image-1' style={currentView === 1 ? {display:'inline'}: {display:'none'}}>
-                <img className='room-img' src={room} alt='an empty room with red walls'/>
-                <img id="door" src={door} alt="door"/>
-                <img id="knob" src={doorknob} alt="doorknob"/>
-                    {/*changes source based on state*/}
-                <img id="file-cabinet" src={currentFileCabinet === false ? closedFileCabinet : openFileCabinet} alt="file cabinet closed iwth a potted plant on top"/>
-            </div>
-            {/* div is shown/hidden based on state of current image */}
-            <div id="puzzle-image-2" style={currentView === 2 ? {display:'inline'}: {display: 'none'}}>
-                <img className='room-img' src={room} alt='an empty room with red walls'/>
-                <img className="window" id="window-room-2" src={window} alt="window seperated into four panes"/>
-                <img id="table" src={table} alt="empty table"/>
-                    {/*changes source based on state*/}
-                <img id="tape-dispenser" src={currentTapeDispenser === false ? emptyTapeDispenser : fullTapeDispenser} alt="empty tape dispenser"/>
-            </div>
-            {/* div is shown/hidden based on state of current image */}
-            <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
-                <img className='room-img' src={room} alt='an empty room with red walls'/>
-                <img className="window" id="window-room-3" src={window} alt="window seperated into four panes"/>
-                <img id="utility-shelf" src={utilityShelf} alt="utility shelf with boxes"/>
-                    {/*currentBox === false ? closedBox : openBox*/}
-                <img id="target-box" src={closedBox} alt="closed cardboard box"/>
-            </div>
-            {/* div is shown/hidden based on state of current image */}
-            <div id="puzzle-image-4" style={currentView === 4 ? {display:'inline'}: {display: 'none'}}>
-                <img className='room-img' src={room} alt='an empty room with red walls'/>
-                <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
-                <img id="shredder" src={shredder} alt="shredder"/>
-            </div>
-            <Button id="next-btn" onClick={handleViewChangeNext}>
-                right
-            </Button>
+return (
+        
+    <div id='puzzle-images'>
+        <Button id="prev-btn" onClick={handleViewChangePrev}>
+            left
+        </Button>
+        {/* <iframe title="title" src="./html or URl"/> */}
+        <div id='puzzle-image-1' style={currentView === 1 ? {display:'inline'}: {display:'none'}}>
+            <img className='room-img' src={room} alt='an empty room with red walls'/>
+            <img id="door" src={door} alt="door"/>
+            <img id="knob" src={doorknob} alt="doorknob"/>
+                {/*changes source based on state*/}
+            <img id="file-cabinet" src={currentFileCabinet === false ? closedFileCabinet : openFileCabinet} alt="file cabinet closed iwth a potted plant on top"/>
         </div>
-
+        {/* div is shown/hidden based on state of current image */}
+        <div id="puzzle-image-2" style={currentView === 2 ? {display:'inline'}: {display: 'none'}}>
+            <img className='room-img' src={room} alt='an empty room with red walls'/>
+            <img className="window" id="window-room-2" src={window} alt="window seperated into four panes"/>
+            <img id="table" src={table} alt="empty table"/>
+                {/*changes source based on state*/}
+            <img id="tape-dispenser" src={currentTapeDispenser === false ? emptyTapeDispenser : fullTapeDispenser} alt="empty tape dispenser"/>
+        </div>
+        {/* div is shown/hidden based on state of current image */}
+        <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
+            <img className='room-img' src={room} alt='an empty room with red walls'/>
+            <img className="window" id="window-room-3" src={window} alt="window seperated into four panes"/>
+            <img id="utility-shelf" src={utilityShelf} alt="utility shelf with boxes"/>
+                {/*currentBox === false ? closedBox : openBox*/}
+            <img id="target-box" src={closedBox} alt="closed cardboard box"/>
+        </div>
+        {/* div is shown/hidden based on state of current image */}
+        <div id="puzzle-image-4" style={currentView === 4 ? {display:'inline'}: {display: 'none'}}>
+            <img className='room-img' src={room} alt='an empty room with red walls'/>
+            <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
+            <img id="shredder" src={shredder} alt="shredder"/>
+        </div>
+        <Button id="next-btn" onClick={handleViewChangeNext}>
+            right
+        </Button>
+    </div>
 )
 }

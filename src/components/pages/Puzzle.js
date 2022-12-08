@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './style/Puzzle.css';
-import PuzzleImage from '../PuzzleImage';
 import Box from '@mui/material/box';
 
 // inventory assets
@@ -48,7 +47,9 @@ function handleBoxState () {
         <div id='puzzle-timer-container'>
             <p id='puzzle-timer'>Timer</p>
         </div>
-        <iframe title='puzzle-image' src='./../PuzzleImage.html' style={{width: '600px', height: '600px', display: 'flex', justifySelf: 'space-around'} }/>
+        <div id='puzzle-frame-container'>
+            <iframe id='puzzle-frame' title='puzzle-image' src='/puzzle-frame/' style={{width: '600px', height: '600px', display: 'flex', justifySelf: 'space-around'} }/>
+        </div>
         {/* <Question/> */}
         <div id='puzzle-inventory-container'>
             <div id='puzzle-inventory'>

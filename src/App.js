@@ -10,12 +10,16 @@ import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 import Puzzle from './components/pages/Puzzle';
 import Signup from "./components/pages/Signup"
+import PuzzleImage from "./components/PuzzleImage";
 
 function App() {
-  const [userId, setUserId] = useState(0)
-  const [userName, setUserName] = useState("")
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [token, setToken] = useState("")
+  const [userId, setUserId] = useState(0);
+  const [userName, setUserName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState("");
+  const [showHeader, setShowHeader] = useState(true)
+  const [showFooter, setShowFooter] = useState(true)
+  const [showNav, setShowNav] = useState(true)
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -69,8 +73,12 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header/>
-        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        {showHeader && 
+          <Header/>
+        }
+        {showNav && 
+          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+        }
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login
@@ -88,10 +96,20 @@ function App() {
             setUserId={setUserId}
             setUserName={setUserName}
           />} />
+          <Route path="/puzzle" element={<Puzzle/>}/>
+          <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
-        <StickyFooter />
+        {showFooter && 
+          <StickyFooter/>
+        }
+
       </Router>
+      {/* <Router>
+        <Routes>
+          
+        </Routes>
+      </Router> */}
     </div>
   );
 }

@@ -19,6 +19,16 @@
     text-align: center;
 }
 
+#puzzle-frame-container {
+    display: flex;
+    justify-content: center;
+}
+
+#puzzle-frame {
+    width: 70%;
+    height: 40%;
+}
+
 /* room view 1 */
 #puzzle-images {
     display: flex;
