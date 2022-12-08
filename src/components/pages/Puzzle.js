@@ -48,7 +48,7 @@ function handleBoxState () {
             <p id='puzzle-timer'>Timer</p>
         </div>
         <div id='puzzle-frame-container'>
-            <iframe id='puzzle-frame' title='puzzle-image' src='/puzzle-frame/' style={{width: '600px', height: '600px', display: 'flex', justifySelf: 'space-around'} }/>
+            <iframe id='puzzle-frame' title='puzzle-image' src='/puzzle-frame/' scrolling="no" style={{width: '800px', height: '652px', display: 'flex', justifySelf: 'space-around', overflow: 'hidden'}}/>
         </div>
         {/* <Question/> */}
         <div id='puzzle-inventory-container'>

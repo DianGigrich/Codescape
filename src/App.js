@@ -9,6 +9,7 @@ import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 import Puzzle from './components/pages/Puzzle';
+import PuzzleImage from "./components/PuzzleImage";
 import Signup from "./components/pages/Signup"
 import {
   ThemeProvider,
@@ -30,7 +31,7 @@ const theme = createTheme({
       fontFamily: 'Droid Sans',
   },
 });
-import PuzzleImage from "./components/PuzzleImage";
+
 
 function App() {
   const [userId, setUserId] = useState(0);

@@ -3,16 +3,14 @@
 } */
 
 .room-img {
-    position: relative;
-    /* left: 31%; */
-    width: 600px;
+    width: 644px;
 }
 
 .window {
-    position: relative;
-    left: 46%;
-    top: 56%;
-    width: 152px;
+    position: absolute;
+    left: 300px;
+    top: 170px;
+    width: 150px;
 }
 
 #puzzle-timer-container {
@@ -24,75 +22,69 @@
     justify-content: center;
 }
 
-#puzzle-frame {
-    width: 70%;
-    height: 40%;
-}
-
 /* room view 1 */
 #puzzle-images {
     display: flex;
     justify-content: center;
 }
 #door {
-    position: relative;
-    top: -127px;
-    left: 45px;
+    position: absolute;
+    top: 320px;
+    left: 200px;
     width: 170px;
 }
 
 #knob {
-    position: relative;
-    /* left: 47%;
-    top: 97%;
-    width: 138px; */
+    position: absolute;
+    top: 405px;
+    right: 400px;
 }
 
 #file-cabinet {
-    position: relative;
-    /* left: 53%;
-    top: 84%;
-    width: 132px; */
+    position: absolute;
+    top: 331px;
+    right: 220px;
+    width: 140px;
 }
 
 /* room view 2 */
 
 #table {
-    position: relative;
-    /* left: 41%;
-    top: 102%;
-    width: 134px; */
+    position: absolute;
+    top: 420px;
+    left: 189px;
+    width: 150px;
 }
 
 #tape-dispenser {
-    position: relative;
-    /* left: 44%;
-    top: 98%;
-    width: 293px; */
+    position: absolute;
+    top: 405px;
+    left: 245px;
+    width: 300px;
 }
 
 /* room view 3 */
 
 #utility-shelf {
-    position: relative;
-    /* left: 55%;
-    top: 90%;
-    width: 133px; */
+    position: absolute;
+    top: 295px;
+    left: 402px;
+    width: 200px;
 }
 
 #target-box {
-    position: relative;
-    /* left: 57%;
-    top: 85%;
-    width: 286px;  */
+    position: absolute;
+    top: 265px;
+    left: 455px;
+    width: 400px;
 }
 
 /* room view 4 */
 #shredder {
-    position: relative;
-    /* left: 47%;
-    top: 99%;
-    width: 166px; */
+    position: absolute;
+    top: 390px;
+    left: 295px;
+    width: 200px;
 }
 
 /* buttons and inventory */
