@@ -1,27 +1,18 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Typography from '@mui/material/Typography';
-// import { ThemeProvider } from '@mui/material/styles';
-// import Link from '@mui/material/Link';
-// import { createTheme } from '@mui/material/styles';
-// import { Paper } from '@mui/material'
-
-// import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
-
-
 
 
 function Header(props) {
 
     return (
        
-            <React.Fragment>
-                <Toolbar sx={{ borderBottom: 1, borderColor: 'divider', color: "primary" }}>
+            <React.Fragment sx={{bgcolor: "primary"}}>
+                <Toolbar sx={{ borderBottom: 1, borderColor: 'divider'}}>
                     <Typography
                         component="h2"
                         variant="h2"
