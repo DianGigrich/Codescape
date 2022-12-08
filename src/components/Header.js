@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -9,9 +9,7 @@ import Typography from '@mui/material/Typography';
 // import Link from '@mui/material/Link';
 
 function Header(props) {
-    const { sections, title } = props;
-
-    return (
+        return (
         <React.Fragment>
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Typography
