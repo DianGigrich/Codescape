@@ -1,7 +1,7 @@
 // in dev mode
-const URL_PREFIX= "http://localhost:3001"
+// const URL_PREFIX= "http://localhost:3001"
 // in prod mode
-// const URL_PREFIX= "https://codescape.herokuapp.com"
+const URL_PREFIX= "https://codescape.netlify.com"
 
 const  API = {
     login: (userObj)=>{
