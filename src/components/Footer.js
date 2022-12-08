@@ -19,7 +19,10 @@ function Copyright() {
   );
 }
 
-export default function StickyFooter() {
+export default function StickyFooter({puzzleImage}) {
+  if (puzzleImage===true) {
+    return (<></>)
+  } else {
   return (
     <Box
       sx={{
@@ -59,4 +62,5 @@ export default function StickyFooter() {
       </Box>
     </Box>
   );
+}
 }

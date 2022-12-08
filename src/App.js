@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
+import Puzzle from './components/pages/Puzzle';
+import PuzzleImage from "./components/PuzzleImage";
 import Signup from "./components/pages/Signup"
 import {
   ThemeProvider,
@@ -30,11 +32,15 @@ const theme = createTheme({
   },
 });
 
+
 function App() {
-  const [userId, setUserId] = useState(0)
-  const [userName, setUserName] = useState("")
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [token, setToken] = useState("")
+  const [userId, setUserId] = useState(0);
+  const [userName, setUserName] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState("");
+  const [showHeader, setShowHeader] = useState(true)
+  const [showFooter, setShowFooter] = useState(true)
+  const [showNav, setShowNav] = useState(true)
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -90,9 +96,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
+          {showHeader && 
           <Header />
-          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
-          <Routes>
+          }
+        {showNav && 
+          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+          }
+        <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login
               isLoggedIn={isLoggedIn}
@@ -109,11 +119,17 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="*" element={<h1>404</h1>} />
+            <Route path="/puzzle" element={<Puzzle/>}/>
+          <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
+          <Route path="*" element={<h1>404</h1>} />
           </Routes>
-          <StickyFooter />
-        </Router>
+          {showFooter && 
+          <StickyFooter/>
+          }
+
+      </Router>
       </ThemeProvider>
+  
     </div>
   );
 }
