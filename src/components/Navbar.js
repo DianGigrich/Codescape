@@ -3,6 +3,7 @@ import {Link,useNavigate} from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import {Button} from '@mui/material/';
 
 // TODO: fix navigation for server useage EXAMPLE BELOW
 
@@ -27,13 +28,14 @@ export default function Navbar(props) {
         indicatorColor="secondary"
         aria-label="secondary tabs example"
       >
+        <Button variant="contained" color="primary">Hello</Button>
           <Link to ="/">
             <Tab label="Home"/>
             </Link>
           {props.isLoggedIn?<Link to ="/Profile">
             <Tab label="Profile"/>
           </Link>:null}
-          {props.isLoggedIn?<Tab onClick={logoutFunc} label="Logout"></Tab>:<Link to="/login"><Tab label="Login"/></Link>}
+          {props.isLoggedIn?<Tab color="secondary" onClick={logoutFunc} label="Logout"></Tab>:<Link to="/login"><Tab label="Login"/></Link>}
       </Tabs>
       </Box>
     )
