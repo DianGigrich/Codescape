@@ -1,7 +1,7 @@
 import React from 'react';
 import klee from '../../assets/Pics/jumpty_dumpty_chrome.ico'
 import phd from '../../assets/Pics/phd.jpg'
-import Box from '@mui/material/Box';
+// import Box from '@mui/material/Box';
 import { createTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -19,11 +19,7 @@ import Grid from '@mui/material/Grid';
 
 // TODO: OBVIOUSLY A WORK IN PROGRESS
 
-interface ExpandMoreProps extends IconButtonProps {
-    expand: boolean;
-}
-
-const ExpandMore = styled((props: ExpandMoreProps) => {
+const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
 })(({ theme, expand }) => ({

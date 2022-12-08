@@ -10,6 +10,26 @@ import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 import Puzzle from './components/pages/Puzzle';
 import Signup from "./components/pages/Signup"
+import {
+  ThemeProvider,
+  CssBaseline,
+  createTheme
+} from "@mui/material"
+
+const theme = createTheme({
+  palette: {
+      mode: 'light',
+      primary: {
+          main: '#4db6ac',
+      },
+      secondary: {
+          main: '#fb8c00',
+      },
+  },
+  typography: {
+      fontFamily: 'Droid Sans',
+  },
+});
 import PuzzleImage from "./components/PuzzleImage";
 
 function App() {
@@ -72,44 +92,43 @@ function App() {
   }
   return (
     <div className="App">
-      <Router>
-        {showHeader && 
-          <Header/>
-        }
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          {showHeader && 
+          <Header />
+          }
         {showNav && 
           <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
-        }
+          }
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login
-            isLoggedIn={isLoggedIn}
-            handleLoginSubmit={handleLoginSubmit}
-          />} />
-          <Route path="/login/Signup" element={<Signup handleSignupSubmit={handleSignupSubmit} />} />
-          <Route path="/profile" element={<Profile
-            isLoggedIn={isLoggedIn}
-            userId={userId}
-            token={token}
-            userName={userName}
-            setIsLoggedIn={setIsLoggedIn}
-            setToken={setToken}
-            setUserId={setUserId}
-            setUserName={setUserName}
-          />} />
-          <Route path="/puzzle" element={<Puzzle/>}/>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login
+              isLoggedIn={isLoggedIn}
+              handleLoginSubmit={handleLoginSubmit}
+            />} />
+            <Route path="/login/Signup" element={<Signup handleSignupSubmit={handleSignupSubmit} />} />
+            <Route path="/profile" element={<Profile
+              isLoggedIn={isLoggedIn}
+              userId={userId}
+              token={token}
+              userName={userName}
+              setIsLoggedIn={setIsLoggedIn}
+              setToken={setToken}
+              setUserId={setUserId}
+              setUserName={setUserName}
+            />} />
+            <Route path="/puzzle" element={<Puzzle/>}/>
           <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
-        </Routes>
-        {showFooter && 
+          </Routes>
+          {showFooter && 
           <StickyFooter/>
-        }
+          }
 
       </Router>
-      {/* <Router>
-        <Routes>
-          
-        </Routes>
-      </Router> */}
+      </ThemeProvider>
+  
     </div>
   );
 }
