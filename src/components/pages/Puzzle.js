@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style/Puzzle.css';
-import Box from '@mui/material/box';
+import { Box } from '@mui/material/';
 
 // inventory assets
 import key from './../../assets/key.png';
