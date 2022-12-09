@@ -1,46 +1,51 @@
 import React from 'react';
-import {Link,useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import {Button} from '@mui/material/';
 
-// TODO: fix navigation for server useage EXAMPLE BELOW
+// import TabPanel from '@mui/material/'
+
 
 export default function Navbar(props) {
-    const navigate = useNavigate()
-    const logoutFunc = ()=>{
-      props.handleLogout()
-      navigate("/login")
-    }
-    const [value, setValue] = React.useState('one');
+  const navigate = useNavigate()
+  const logoutFunc = () => {
+    props.handleLogout()
+    navigate("/login")
+  }
+  const [value, setValue] = React.useState('Home');
 
-    const handleTabChange = (event, newValue) => {
-      setValue(newValue);
-    };
-  
-    return (
-        <Box sx={{ width: '100%' }}>
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
+
+  };
+
+  return (
+    <Box sx={{ width: '100%' }}>
       <Tabs
+        centered
         value={value}
+        variant="fullWidth"
         onChange={handleTabChange}
-        textColor="secondary"
         indicatorColor="secondary"
         aria-label="secondary tabs example"
       >
-        <Button variant="contained" color="primary">Hello</Button>
-          <Link to ="/">
-            <Tab label="Home"/>
-            </Link>
-          {props.isLoggedIn?<Link to ="/Profile">
-            <Tab label="Profile"/>
-          </Link>:null}
-          {props.isLoggedIn?<Tab color="secondary" onClick={logoutFunc} label="Logout"></Tab>:<Link to="/login"><Tab label="Login"/></Link>}
-      </Tabs>
-      </Box>
-    )
-  }
+        <Tab textColor="primary" value="Home" label="Home" onClick={() => navigate('/')} />
 
+        <Tab textColor="primary" value="Leaderboard" label="Leaderboard" onClick={() => navigate('/Leaderboard')} />
+
+        {/* {props.isLoggedIn ?  */}
+        <Tab value="Profile" textColor="primary" label="Profile" onClick={() => navigate('/Profile')} />
+        {/* :null} */}
+        {/* {props.isLoggedIn ?  */}
+        <Tab textColor="primary" onClick={logoutFunc} label="Logout" />
+        {/* //  :  */}
+        <Tab value="Login" textColor="primary" label="Login" onClick={() => navigate('/login')} />
+        {/* // } */}
+      </Tabs>
+    </Box>
+  )
+}
 
 // function Navbar({ currentPage, handlePageChange }) {
 
@@ -54,40 +59,3 @@ export default function Navbar(props) {
 //           Leaderboard
 //         </Link>
 //       </li>
-
-//       <li className="nav-item">
-//         <Link to="/"
-//           onClick={() => handlePageChange('Home')}
-//           className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>
-//           Home
-//         </Link>
-//       </li>
-
-//       <li className="nav-item">
-//         <Link to="/Profile"
-//           onClick={() => handlePageChange('Profile')}
-//           className={currentPage === 'Profile' ? 'nav-link active' : 'nav-link'}>
-//           Profile
-//         </Link>
-//       </li>
-
-//       <li className="nav-item">
-//         <Link to="/Login"
-//           onClick={() => handlePageChange('Login')}
-//           className={currentPage === 'Login' ? 'nav-link active' : 'nav-link'}>
-//           Login
-//         </Link>
-//       </li>
-
-//       <li className="nav-item">
-//         <Link to="/Logout"
-//           onClick={() => handlePageChange('Logout')}
-//           className={currentPage === 'Logout' ? 'nav-link active' : 'nav-link'}>
-//           Logout
-//         </Link>
-//       </li>
-//     </ul>
-//   );
-// }
-
-// export default Navbar;

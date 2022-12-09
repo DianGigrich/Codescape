@@ -6,7 +6,7 @@ function Leaderboard() {
     return (
 
         <div className="">
-            
+            OH hai there
         </div>
 
     )
