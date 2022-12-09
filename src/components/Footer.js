@@ -9,8 +9,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
       {'Copyright © '}
-      {/* TODO:fix this on deploy */}
-      <Link color="inherit" href="https://codescape.herokuapp.com/">
+       <Link color="inherit" href="https://codescape.netlify.com/">
        Codescape
       </Link>{' '}
       {new Date().getFullYear()}
@@ -32,10 +31,7 @@ export default function StickyFooter({puzzleImage}) {
       }}
     >
       <CssBaseline />
-      <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
-        <Typography variant="h3" component="h3" gutterBottom>
-          Codescape
-        </Typography>
+      <Container component="main" sx={{ mt: 8, mb: 2}} maxWidth="sm">
         <Typography variant="h6" component="h4" gutterBottom>
           {'Thank you for playing today.'}
         </Typography>
@@ -47,10 +43,7 @@ export default function StickyFooter({puzzleImage}) {
           py: 3,
           px: 2,
           mt: 'auto',
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+          
         }}
       >
         <Container maxWidth="sm">
