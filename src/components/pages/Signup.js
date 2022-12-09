@@ -83,6 +83,5 @@ export default function Signup(props) {
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
-
     )
 }

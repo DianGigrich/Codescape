@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom"
+import EditUser from '../EditUser'
 import API from "../../utils/API"
-import { Box, Container, Typography, Stack, Button } from '@mui/material'
+import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent, Modal } from '@mui/material'
+
 
 function Profile(props) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   // useEffect(()=>{
   //     const storedToken = localStorage.getItem("token")
   //     if(storedToken){
@@ -25,6 +27,10 @@ function Profile(props) {
   //       navigate("/login")
   //     }
   //   },[])
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  
   return (
 
     <main>
@@ -39,7 +45,7 @@ function Profile(props) {
         <Container maxWidth="sm">
           <Typography
             component="h1"
-            variant="h2"
+            variant="h3"
             align="center"
             color="text.primary"
             gutterBottom
@@ -55,26 +61,96 @@ function Profile(props) {
             spacing={2}
             justifyContent="center"
           >
-            {/* TODO: MAKE SURE THIS BUTTON LINK WORKS, BECAUSE IT PREVIOUSLY HAS NOT */}
-            <Button variant="contained" color="secondary"><Link to="/Puzzle">Escape Puzzle</Link></Button>
-            <Button variant="outlined" color="secondary">Edit User Account</Button>
+            <Button variant="contained" color="secondary" onClick={() => navigate('/Puzzle')}>Escape</Button>
+            <Button variant="outlined" color="secondary" onClick={handleOpen}>Edit User Account</Button>
           </Stack>
         </Container>
       </Box>
+      {open && <EditUser open={open} setOpen={setOpen} />}
+            <Container sx={{ py: 8 }} maxWidth="md">
+        <Grid container spacing={4}>
 
+          <Grid item xs={12} sm={6} md={4}>
+            <Card
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: '56.25%',
+                }}
+                image="https://source.unsplash.com/random"
+                alt="random"
+                onClick={() => navigate('/Puzzle')}
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Room of Error
+                </Typography>
+                <Typography>
+                  Can you escape within the time limit?
+                </Typography>
+              </CardContent>
+            </Card>
+            
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: '56.25%',
+                }}
+                image="https://placekitten.com/200/"
+                alt="random"
+                />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Future Puzzle
+                </Typography>
+                <Typography>
+                  Because one puzzle isn't enough. Lets find some more fun ways to practice!
+                </Typography>
+              </CardContent>
+            </Card>
+            
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card
+              sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+            >
+              
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                {props.userName}'s Scores
+                </Typography>
+                <Typography>
+                  This needs input
+                </Typography>
+              </CardContent>
+            </Card>
+            
+          </Grid>
+
+        </Grid>
+        </Container>
     </main>
-  //     {/* {
-  //       props.isLoggedIn?(
-  //       <div className="Profile">
-  //       <h1></h1>
-        
-  //       </div>
-  //       ):(
-  //           <h1>Please wait, something may have gone wrong.</h1>
-  //       )
-  //   }
-  //  */}
-      )
+    //     {/* {
+    //       props.isLoggedIn?(
+    //       <div className="Profile">
+    //       <h1></h1>
+
+    //       </div>
+    //       ):(
+    //           <h1>Please wait, something may have gone wrong.</h1>
+    //       )
+    //   }
+    //  */}
+  )
 }
 
 export default Profile

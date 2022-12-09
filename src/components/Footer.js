@@ -9,8 +9,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
       {'Copyright © '}
-      {/* TODO:fix this on deploy */}
-      <Link color="inherit" href="https://codescape.herokuapp.com/">
+       <Link color="inherit" href="https://codescape.netlify.com/">
        Codescape
       </Link>{' '}
       {new Date().getFullYear()}
