@@ -94,7 +94,7 @@ function Login(props) {
                             control={<Checkbox value="remember" color="primary" />}
                             label="Remember me"
                         />
-                        <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>Sign in</Button>
+                        <Button type="submit" fullWidth variant="contained" color="secondary" sx={{ mt: 3, mb: 2 }}>Sign in</Button>
                         <Grid container>
                             {/* <Grid item xs>
                 TODO: FORGOT PASSWORD?

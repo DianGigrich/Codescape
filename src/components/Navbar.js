@@ -3,9 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import {TabPanel} from '@mui/material/';
 
-// TODO: fix navigation for server useage EXAMPLE BELOW
 
 export default function Navbar(props) {
   const navigate = useNavigate()
@@ -17,20 +15,6 @@ export default function Navbar(props) {
 
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
-    // switch (newValue) {
-    //   case "home":
-    //     to ="/home"
-    //     break;
-    //     case "profile":
-    //       to ="/profile"
-    //       break;
-    //       case "login":
-    //         to ="/login"
-    //         break;
-    //         case "puzzle":
-    //           to ="/puzzle"
-    //           break;
-    // }
 
   };
 
@@ -54,7 +38,6 @@ export default function Navbar(props) {
   )
 }
 
-
 // function Navbar({ currentPage, handlePageChange }) {
 
 //   return (
@@ -67,40 +50,3 @@ export default function Navbar(props) {
 //           Leaderboard
 //         </Link>
 //       </li>
-
-//       <li className="nav-item">
-//         <Link to="/"
-//           onClick={() => handlePageChange('Home')}
-//           className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}>
-//           Home
-//         </Link>
-//       </li>
-
-//       <li className="nav-item">
-//         <Link to="/Profile"
-//           onClick={() => handlePageChange('Profile')}
-//           className={currentPage === 'Profile' ? 'nav-link active' : 'nav-link'}>
-//           Profile
-//         </Link>
-//       </li>
-
-//       <li className="nav-item">
-//         <Link to="/Login"
-//           onClick={() => handlePageChange('Login')}
-//           className={currentPage === 'Login' ? 'nav-link active' : 'nav-link'}>
-//           Login
-//         </Link>
-//       </li>
-
-//       <li className="nav-item">
-//         <Link to="/Logout"
-//           onClick={() => handlePageChange('Logout')}
-//           className={currentPage === 'Logout' ? 'nav-link active' : 'nav-link'}>
-//           Logout
-//         </Link>
-//       </li>
-//     </ul>
-//   );
-// }
-
-// export default Navbar;

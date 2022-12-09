@@ -9,7 +9,7 @@
 
 
 
-
+// TODO: redundant code!?
 
 // function PageRouter() {
 //     const [currentPage, setCurrentPage] = useState('Home');
