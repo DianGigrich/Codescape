@@ -40,11 +40,18 @@
     right: 400px;
 }
 
-#file-cabinet {
+.file-cabinet {
     position: absolute;
     top: 331px;
     right: 220px;
     width: 140px;
+}
+
+#open-file-cabinet {
+    position: absolute;
+    top: 305px;
+    right: 220px;
+    width: 180px;
 }
 
 /* room view 2 */
@@ -56,7 +63,14 @@
     width: 150px;
 }
 
-#tape-dispenser {
+.tape-dispenser {
+    position: absolute;
+    top: 405px;
+    left: 245px;
+    width: 300px;
+}
+
+#full-tape-dispenser {
     position: absolute;
     top: 405px;
     left: 245px;
@@ -72,10 +86,17 @@
     width: 200px;
 }
 
-#target-box {
+.box {
     position: absolute;
     top: 265px;
     left: 455px;
+    width: 400px;
+}
+
+#open-box {
+    position: absolute;
+    top: 250px;
+    left: 430px;
     width: 400px;
 }
 

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-// import ReactDOM from "react-dom/client"; 
 
 // import all of the images
 // image 1 assets
@@ -19,11 +18,12 @@ import fullTapeDispenser from './../assets/tapedispenserfull.png';
 // image 3 assets
 import utilityShelf from './../assets/utilityShelf.png';
 import closedBox from './../assets/closedBox.png';
-// import openBox from './../assets/OpenBox.png';
+import openBox from './../assets/openBox.png';
 
 // image 4 assets
 import shredder from './../assets/shredder.png';
-import { createPortal } from 'react-dom';
+// import { createPortal } from 'react-dom';
+// import { display } from '@mui/system';
 
 
 export default function PuzzleImage ({funcHeader, funcFooter, funcNav}) {
@@ -32,6 +32,18 @@ funcHeader(false)
 funcFooter(false)
 funcNav(false)
 
+const sendKey=()=>{
+    window.parent.postMessage(currentKey,"http://localhost:3000/puzzle")
+}
+const sendFile=()=>{
+    window.parent.postMessage(currentFile,"http://localhost:3000/puzzle")
+}
+const sendShreddedFile=()=>{
+    window.parent.postMessage(currentShreddedFile,"http://localhost:3000/puzzle")
+}
+const sendTapeRoll=()=>{
+    window.parent.postMessage(currentTapeRoll,"http://localhost:3000/puzzle")
+}
 
 // set state of puzzle
 const [currentView, setView] = useState(1)
@@ -39,18 +51,21 @@ const [currentView, setView] = useState(1)
 // // set state of interactable objects/image
 const [currentFileCabinet, setFileCabinet] = useState(false)
 const [currentTapeDispenser, setTapeDispenser] = useState(false)
-// const [currentBox, setBox] = useState(false)
+const [currentBox, setBox] = useState(false)
 // // const [currentDoor, setDoor] = useState(false)
 
 // // set state of obtainable items
-// const [currentShreddedFile, setShreddedFile] = useState(false)
-// const [currentTapeRoll, setTapeRoll] = useState(false)
-// const [currentFile, setFile] = useState(false)
-// const [currentKey, setKey] = useState(false)
+const [currentShreddedFile, setShreddedFile] = useState(false)
+const [currentTapeRoll, setTapeRoll] = useState(false)
+const [currentFile, setFile] = useState(false)
+const [currentKey, setKey] = useState(false)
+
+const [correct, setCorrect] = useState(true)
 
 function handleViewChangeNext () {
     if (currentView < 4) {
         setView(currentView + 1)
+        console.log(currentView)
     } else {
         setView(1)
     }
@@ -63,17 +78,64 @@ function handleViewChangePrev () {
         setView(4)
     }
 }
+function handleShreddedFileState () {
+    console.log('clicked!')
+    if (correct) {
+        setShreddedFile(true);
+        console.log("handleShreddedFileState is working!")
+    }
+}
 
-function handleFileCabinetState () {
+function handleTapeRollState() {
+    if (correct) {
+        setTapeRoll(true)
+        setBox(true)
+        console.log("handleTapeRollState is working!")
+    }
+}
 
+function handleFileState() {
+    console.log('clicked!')
+    if (!currentTapeDispenser) {
+        alert("This tape dispenser is missing something...")
+    } else if (!currentShreddedFile) {
+        alert("You can't put tape on that!")
+    } else if (correct) {
+        setShreddedFile(false)
+        setFile(true)
+        console.log("handleFileState is working!")
+    }
 }
 
 function handleTapeDispenserState () {
-
+    console.log('clicked!')
+    if (!currentTapeRoll) {
+        alert("This tape dispenser is empty...")
+    } else {
+        setTapeDispenser(true);
+        setTapeRoll(false)
+        console.log("handleTapeDispenserState is working!")
+    }
 }
 
-function handleBoxState () {
+function handleKeyState() {
+    console.log('clicked!')
+    if(!currentFile) {
+        alert("This file cabinet is missing something...");
+    } else if (correct) {
+        setFile(false)
+        setKey(true)
+        setFileCabinet(true)
+        console.log("handleKeyState is working!")
+    }
+}
 
+function handleWin () {
+    if (!currentKey) {
+        alert("This door is locked!")
+    } else {
+        alert("You've won!!!")
+    }
 }
 
 return (
@@ -85,10 +147,11 @@ return (
         {/* <iframe title="title" src="./html or URl"/> */}
         <div id='puzzle-image-1' style={currentView === 1 ? {display:'inline'}: {display:'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
-            <img id="door" src={door} alt="door"/>
+            <img id="door" src={door} alt="door" onClick={handleWin}/>
             <img id="knob" src={doorknob} alt="doorknob"/>
                 {/*changes source based on state*/}
-            <img id="file-cabinet" src={currentFileCabinet === false ? closedFileCabinet : openFileCabinet} alt="file cabinet closed iwth a potted plant on top"/>
+            <img className="file-cabinet" id='closed-file-cabinet' src={closedFileCabinet} style={currentFileCabinet === true ? {display: "none"} : {}} alt="file cabinet closed with a potted plant on top" onClick={handleKeyState}/>
+            <img className="file-cabinet" id='open-file-cabinet'src={openFileCabinet} style={currentFileCabinet === false ? {display: "none"} : {}}alt="open file cabinet with a potted plant on top"/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-2" style={currentView === 2 ? {display:'inline'}: {display: 'none'}}>
@@ -96,7 +159,8 @@ return (
             <img className="window" id="window-room-2" src={window} alt="window seperated into four panes"/>
             <img id="table" src={table} alt="empty table"/>
                 {/*changes source based on state*/}
-            <img id="tape-dispenser" src={currentTapeDispenser === false ? emptyTapeDispenser : fullTapeDispenser} alt="empty tape dispenser"/>
+            <img class="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState}/>
+            <img class="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}}alt="full tape dispenser" onClick={handleFileState}/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
@@ -104,13 +168,14 @@ return (
             <img className="window" id="window-room-3" src={window} alt="window seperated into four panes"/>
             <img id="utility-shelf" src={utilityShelf} alt="utility shelf with boxes"/>
                 {/*currentBox === false ? closedBox : openBox*/}
-            <img id="target-box" src={closedBox} alt="closed cardboard box"/>
+            <img className="box" id="closed-box" src={closedBox} style={currentBox === true ? {display: "none"} : {}} alt="closed cardboard box" onClick={handleTapeRollState}/>
+            <img className="box" id="open-box" src={openBox} style={currentBox === false ? {display: "none"} : {}} alt="open cardboard box"/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-4" style={currentView === 4 ? {display:'inline'}: {display: 'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
             <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
-            <img id="shredder" src={shredder} alt="shredder"/>
+            <img id="shredder" src={shredder} alt="shredder" onClick={handleShreddedFileState}/>
         </div>
         <button id="next-btn" onClick={handleViewChangeNext}>
             right
