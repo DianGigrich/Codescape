@@ -6,7 +6,7 @@ function Question() {
 
     return (
 
-        <div className="">
+        <div>
             
         </div>
 

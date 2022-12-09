@@ -50,69 +50,68 @@ function Login(props) {
     }
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    <Box component="form" onSubmit={loginHandle} sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            label="Username"
-                            id="name"
-                            name="username"
-                            autoComplete="name"
-                            value={loginName}
-                            onChange={e => setLoginName(e.target.value)}
-                        />
-                        <TextField margin="normal"
-                            required
-                            fullWidth
-                            label="Password"
-                            type="password"
-                            name="password"
-                            id="password"
-                            autoComplete="current-password"
-                            value={loginPassword}
-                            onChange={e => setLoginPassword(e.target.value)}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button type="submit" fullWidth variant="contained" color="secondary" sx={{ mt: 3, mb: 2 }}>Sign in</Button>
-                        <Grid container>
-                            {/* <Grid item xs>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Sign in
+                </Typography>
+                <Box component="form" onSubmit={loginHandle} sx={{ mt: 1 }}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        label="Username"
+                        id="name"
+                        name="username"
+                        autoComplete="name"
+                        value={loginName}
+                        onChange={e => setLoginName(e.target.value)}
+                    />
+                    <TextField margin="normal"
+                        required
+                        fullWidth
+                        label="Password"
+                        type="password"
+                        name="password"
+                        id="password"
+                        autoComplete="current-password"
+                        value={loginPassword}
+                        onChange={e => setLoginPassword(e.target.value)}
+                    />
+                    <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                    />
+                    <Button type="submit" variant="contained" color="secondary" sx={{ mt: 3, mb: 2, width: 1/1 }}>Sign in</Button>
+                    <Grid container>
+                        {/* <Grid item xs>
                 TODO: FORGOT PASSWORD?
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid> */}
-                            <Grid item>
-                                <Link to="./Signup" variant="body2">
-                                    {"Don't have an account? Sign Up"}
-                                </Link>
-                            </Grid>
+                        <Grid item>
+                            <Link to="./Signup" variant="body2">
+                                {"Don't have an account? Sign Up"}
+                            </Link>
                         </Grid>
-                    </Box>
+                    </Grid>
                 </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
-            </Container>
-        </ThemeProvider>
+            </Box>
+            <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Container>
+
     )
 }
 

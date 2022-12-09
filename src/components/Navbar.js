@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+// import TabPanel from '@mui/material/'
 
 
 export default function Navbar(props) {
@@ -11,7 +12,7 @@ export default function Navbar(props) {
     props.handleLogout()
     navigate("/login")
   }
-  const [value, setValue] = React.useState('one');
+  const [value, setValue] = React.useState('Home');
 
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
@@ -24,15 +25,25 @@ export default function Navbar(props) {
         centered
         sx={{ bgcolor: "#4db6ac" }}
         value={value}
+        variant="fullWidth"
         onChange={handleTabChange}
         textColor="secondary"
         indicatorColor="secondary"
         aria-label="secondary tabs example"
       >
-        <Link to="/"><Tab textColor="primary" label="Home"/></Link>
-        {props.isLoggedIn ? <Link to="/Profile"><Tab textColor="primary" label="Profile"/>
-        </Link>:null}
-        {props.isLoggedIn ? <Tab textColor="primary" onClick={logoutFunc} label="Logout" /> : <Link to="/login"><Tab textColor="primary" label="Login"/></Link>}
+        <Tab textColor="primary" value="Home" label="Home" onClick={()=> navigate('/')} />
+
+        <Tab textColor="primary" value="Leaderboard" label="Leaderboard" onClick={()=> navigate('/Leaderboard')} />
+
+        {/* {props.isLoggedIn ?  */}
+        {/* <Link to="/Profile"><Tab value="Profile" textColor="primary" label="Profile"/> */}
+        {/* </Link> */}
+        {/* :null} */}
+        {/* {props.isLoggedIn ?  */}
+        {/* <Tab textColor="primary" onClick={logoutFunc} label="Logout" /> */}
+        {/* //  :  */}
+        {/* <Link to="/login"><Tab value="Login" textColor="primary" label="Login"/></Link> */}
+        {/* // } */}
       </Tabs>
     </Box>
   )

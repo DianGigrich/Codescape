@@ -33,9 +33,6 @@ export default function StickyFooter({puzzleImage}) {
     >
       <CssBaseline />
       <Container component="main" sx={{ mt: 8, mb: 2}} maxWidth="sm">
-        <Typography variant="h3" component="h3" gutterBottom>
-          Codescape
-        </Typography>
         <Typography variant="h6" component="h4" gutterBottom>
           {'Thank you for playing today.'}
         </Typography>
@@ -47,10 +44,7 @@ export default function StickyFooter({puzzleImage}) {
           py: 3,
           px: 2,
           mt: 'auto',
-          backgroundColor: (theme) =>
-            theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+          
         }}
       >
         <Container maxWidth="sm">

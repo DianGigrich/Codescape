@@ -19,7 +19,7 @@ function Header(props) {
                         variant="h2"
                         align="center"
                         noWrap
-                        sx={{ flex: 1 }}
+                        sx={{ flex: 1, letterSpacing: 6 }}
                     >
                         Codescape
                     </Typography>

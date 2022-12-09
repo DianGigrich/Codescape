@@ -11,6 +11,7 @@ import Header from "./components/Header";
 import Puzzle from './components/pages/Puzzle';
 import PuzzleImage from "./components/PuzzleImage";
 import Signup from "./components/pages/Signup"
+import Leaderboard from "./components/pages/Leaderboard"
 import {
   ThemeProvider,
   CssBaseline,
@@ -22,6 +23,7 @@ const theme = createTheme({
       mode: 'light',
       primary: {
           main: '#4db6ac',
+          light: '70BCC4'
       },
       secondary: {
           main: '#fb8c00',
@@ -119,6 +121,7 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
+            <Route path="/leaderboard" element={<Leaderboard/>}/>
             <Route path="/puzzle" element={<Puzzle/>}/>
           <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />

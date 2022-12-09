@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 function Copyright(props) {
     return (
@@ -25,7 +23,6 @@ function Copyright(props) {
     );
 }
 
-const theme = createTheme();
 
 export default function Signup(props) {
     const navigate = useNavigate();
@@ -46,9 +43,9 @@ export default function Signup(props) {
     const [signupPassword, setSignupPassword] = useState("")
 
     return (
-         < ThemeProvider theme={theme} >
+     
             <Container component="main" maxWidth="xs">
-                <CssBaseline />
+              
                 <Box
                     sx={{
                         marginTop: 8,
@@ -80,12 +77,12 @@ export default function Signup(props) {
                             type="password" 
                             name="password" 
                             value={signupPassword} 
-                            onChange={e => setSignupPassword(e.target.value)} />
-                        <Button type="submit" color="secondary" >Submit</Button>
+                            onChange={e => setSignupPassword(e.target.value)}/>
+                        <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit"><Link to='/home'>Submit</Link></Button>
                     </Box>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
-        </ThemeProvider>
+
     )
 }
