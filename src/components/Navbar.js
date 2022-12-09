@@ -36,13 +36,12 @@ export default function Navbar(props) {
         <Tab textColor="primary" value="Leaderboard" label="Leaderboard" onClick={()=> navigate('/Leaderboard')} />
 
         {/* {props.isLoggedIn ?  */}
-        {/* <Link to="/Profile"><Tab value="Profile" textColor="primary" label="Profile"/> */}
-        {/* </Link> */}
-        {/* :null} */}
+        <Tab value="Profile" textColor="primary" label="Profile" onClick={()=> navigate('/Profile')}/>
+         {/* :null} */}
         {/* {props.isLoggedIn ?  */}
-        {/* <Tab textColor="primary" onClick={logoutFunc} label="Logout" /> */}
+        <Tab textColor="primary" onClick={logoutFunc} label="Logout" />
         {/* //  :  */}
-        {/* <Link to="/login"><Tab value="Login" textColor="primary" label="Login"/></Link> */}
+        <Tab value="Login" textColor="primary" label="Login" onClick={()=> navigate('/login')} />
         {/* // } */}
       </Tabs>
     </Box>
