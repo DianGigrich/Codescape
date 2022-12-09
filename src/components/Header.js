@@ -25,9 +25,9 @@ function Header(props) {
                 </Typography>
 
                 {/* TODO: THIS BUTTON DOES NOTHING RIGHT NOW */}
-                <IconButton sx={{fontSize: 'large'}}>
+                {/* <IconButton sx={{fontSize: 'large'}}>
                     <SettingsIcon onClick={() => navigate('/profile')}/>
-                </IconButton>
+                </IconButton> */}
                 <Button variant="contained" color="secondary" size="small" onClick={() => navigate('/login/Signup')}>
                     Sign up
                 </Button>
