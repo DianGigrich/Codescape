@@ -78,7 +78,7 @@ export default function Signup(props) {
                             name="password" 
                             value={signupPassword} 
                             onChange={e => setSignupPassword(e.target.value)}/>
-                        <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit"><Link to='/home'>Submit</Link></Button>
+                        <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit" onClick={()=>navigate('/profile')}>Submit</Button>
                     </Box>
                 </Box>
                 <Copyright sx={{ mt: 8, mb: 4 }} />
