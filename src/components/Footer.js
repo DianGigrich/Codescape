@@ -32,7 +32,7 @@ export default function StickyFooter({puzzleImage}) {
       }}
     >
       <CssBaseline />
-      <Container component="main" sx={{ mt: 8, mb: 2 }} maxWidth="sm">
+      <Container component="main" sx={{ mt: 8, mb: 2}} maxWidth="sm">
         <Typography variant="h3" component="h3" gutterBottom>
           Codescape
         </Typography>

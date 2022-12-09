@@ -11,9 +11,10 @@ function Header(props) {
 
     return (
        
-            <React.Fragment sx={{bgcolor: "primary"}}>
-                <Toolbar sx={{ borderBottom: 1, borderColor: 'divider'}}>
+            <React.Fragment >
+                <Toolbar  sx={{ borderBottom: 1, borderColor: 'divider', bgcolor: "#4db6ac" }}>
                     <Typography
+                        
                         component="h2"
                         variant="h2"
                         align="center"
@@ -33,7 +34,7 @@ function Header(props) {
                         </Button>
                     </Link>
                 </Toolbar>
-                <Toolbar
+                <Toolbar 
                     component="nav"
                     variant="dense"
                     sx={{ justifyContent: 'space-between', overflowX: 'auto' }}

@@ -1,17 +1,14 @@
 import React from 'react';
 import klee from '../../assets/Pics/jumpty_dumpty_chrome.ico'
 import phd from '../../assets/Pics/phd.jpg'
-// import Box from '@mui/material/Box';
-import { createTheme } from '@mui/material/styles';
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -44,7 +41,7 @@ export default function Home() {
                     <Card>
                         <CardHeader
                             avatar={
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="Puzzle">
+                                <Avatar sx={{ bgcolor: red[500]}} aria-label="Puzzle">
                                     K
                                 </Avatar>
                             }

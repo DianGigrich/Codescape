@@ -39,7 +39,7 @@ function Login(props) {
     }, [props.isLoggedIn])
     const [loginName, setLoginName] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
-   
+
 
     const loginHandle = e => {
         e.preventDefault();
@@ -67,7 +67,6 @@ function Login(props) {
                     <Typography component="h1" variant="h5">
                         Sign in
                     </Typography>
-
                     <Box component="form" onSubmit={loginHandle} sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
