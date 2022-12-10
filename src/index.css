@@ -31,9 +31,9 @@ code {
   transition: background-color 0.3s;
 }
 
-/* .drop-active {
+.drop-active {
   border-color: #aaa;
-} */
+}
 
 .drop-target {
   background-color: #29e;
@@ -48,8 +48,7 @@ code {
 .drag-stop {
   display: inline-block;
   min-width: 40px;
-  /* padding: 2em 0.5em; */
-  /* margin: 1rem 0 0 1rem; */
+  padding: .75em;
 
   color: #fff;
   background-color: #70BCC4;
@@ -63,13 +62,13 @@ code {
 
 .drag-drop {
   display: inline-block;
-  /* min-width: 40px; */
-  /* padding: 2em 0.5em; */
-  /* margin: 1rem 0 0 1rem; */
+  padding: .75em;
+ 
 
   color: #fff;
   background-color: #29e;
-  /* border: solid 2px #fff; */
+  border: solid 2px #fff;
+  border-radius: 15%;
 
   touch-action: none;
   transform: translate(0px, 0px);
@@ -77,8 +76,19 @@ code {
   transition: background-color 0.3s;
 }
 
-.drag-wrong{
-  border: 3px red solid;
+.drag-wrong {
+  display: inline-block;
+  min-width: 40px;
+  padding: .75em;
+
+  color: #fff;
+  background-color: #70BCC4;
+  border: solid 2px red;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
 }
 
 .drag-drop.can-drop {

@@ -30,7 +30,7 @@ function Profile(props) {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  
+
   return (
 
     <main>
@@ -67,13 +67,21 @@ function Profile(props) {
         </Container>
       </Box>
       {open && <EditUser open={open} setOpen={setOpen} />}
-            <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 8 }} maxWidth="md">
         <Grid container spacing={4}>
 
           <Grid item xs={12} sm={6} md={4}>
             <Card
               sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
             >
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Room of Error
+                </Typography>
+                <Typography>
+                  Can you escape within the time limit?
+                </Typography>
+              </CardContent>
               <CardMedia
                 component="img"
                 sx={{
@@ -84,30 +92,13 @@ function Profile(props) {
                 alt="random"
                 onClick={() => navigate('/Puzzle')}
               />
-              <CardContent sx={{ flexGrow: 1 }}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Room of Error
-                </Typography>
-                <Typography>
-                  Can you escape within the time limit?
-                </Typography>
-              </CardContent>
             </Card>
-            
+
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card
               sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
             >
-              <CardMedia
-                component="img"
-                sx={{
-                  // 16:9
-                  pt: '56.25%',
-                }}
-                image="https://placekitten.com/200/"
-                alt="random"
-                />
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
                   Future Puzzle
@@ -116,28 +107,37 @@ function Profile(props) {
                   Because one puzzle isn't enough. Lets find some more fun ways to practice!
                 </Typography>
               </CardContent>
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: '56.25%',
+                }}
+                image="https://placekitten.com/200/"
+                alt="random"
+              />
             </Card>
-            
+
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card
               sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
             >
-              
+
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
-                {props.userName}'s Scores
+                  {props.userName}'s Scores
                 </Typography>
                 <Typography>
                   This needs input
                 </Typography>
               </CardContent>
             </Card>
-            
+
           </Grid>
 
         </Grid>
-        </Container>
+      </Container>
     </main>
     //     {/* {
     //       props.isLoggedIn?(
