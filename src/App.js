@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import API from "./utils/API";
 import Home from "./components/pages/Home"
 import Profile from "./components/pages/Profile";
+import AboutUs from "./components/pages/AboutUs";
 import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
@@ -24,7 +25,7 @@ const theme = createTheme({
       mode: 'light',
       primary: {
           main: '#4db6ac',
-          light: '#70BCC4',
+          light: '#83ccc5',
       },
       secondary: {
           main: '#fb8c00',
@@ -221,6 +222,8 @@ function App() {
             />} />
             <Route path="/leaderboard" element={<Leaderboard/>}/>
             <Route path="/puzzle" element={<Puzzle/>}/>
+            <Route path="/aboutus" element={<AboutUs/>}/>
+
           <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
           </Routes>

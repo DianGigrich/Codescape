@@ -32,7 +32,7 @@ function Leaderboard() {
                         justifyContent="center"
                     >
                         <Avatar sx={{ bgcolor: 'secondary.main' }}>
-                        <EmojiEventsTwoToneIcon/>
+                            <EmojiEventsTwoToneIcon />
                         </Avatar>
                         <Typography variant="h4">
                             Kathy Bates :
@@ -40,11 +40,9 @@ function Leaderboard() {
                         </Typography>
                         <Typography variant="h4">
                             12:24 :
-
                         </Typography>
                         <Typography variant="h4">
-                             Room of Error
-
+                            Room of Error
                         </Typography>
                     </Stack>
                 </Container>

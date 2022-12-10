@@ -34,6 +34,9 @@ export default function Navbar(props) {
 
         <Tab textColor="primary" value="Leaderboard" label="Leaderboard" onClick={() => navigate('/Leaderboard')} />
 
+        <Tab textColor="primary" value="AboutUs" label="AboutUs" onClick={() => navigate('/AboutUs')} />
+
+
         {/* {props.isLoggedIn ?  */}
         <Tab value="Profile" textColor="primary" label="Profile" onClick={() => navigate('/Profile')} />
         {/* :null} */}
