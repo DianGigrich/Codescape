@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useState} from 'react';
 import './style/Puzzle.css';
 import { Box, Button } from '@mui/material/';
 import Question from '../Question'
@@ -9,26 +9,13 @@ import file from './../../assets/file.png';
 import shreddedFile from './../../assets/shreddedFile.png';
 import tapeRoll from './../../assets/tapeRoll.png';
 
-function Puzzle () {
+function Puzzle ({currentKey, currentFile, currentShreddedFile, currentTapeRoll }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     
 // set state of puzzle
 const [currentView, setView] = useState(1)
 
-    const iframeRef = useRef(null)
-    function listenKey () {
-
-    }
-    function listenFile () {
-
-    }
-    function listenShreddedFile () {
-
-    }
-    function listenTapeRoll () {
-
-    }
     return (
 <>      
         {/* <Start/> */}
@@ -38,21 +25,18 @@ const [currentView, setView] = useState(1)
             <p id='puzzle-timer'>Timer</p>
         </div>
         <div id='puzzle-frame-container'>
-            <iframe ref={iframeRef} id='puzzle-frame' title='puzzle-image' src='/puzzle-frame/' scrolling="no" style={{width: '800px', height: '652px', display: 'flex', justifySelf: 'space-around', overflow: 'hidden'}}/>
+            <iframe id='puzzle-frame' title='puzzle-image' src='/puzzle-frame/' scrolling="no" style={{width: '800px', height: '652px', display: 'flex', justifySelf: 'space-around', overflow: 'hidden'}}/>
         </div>
         {/* TODO:<Question/> */}
         <Button onClick={handleOpen}>QUESTION BUTTON</Button>
     {open && <Question open={open} setOpen={setOpen} />}
-        {/* style={currentKey === false ? {display: "none"}: {}} 
-        style={currentFile === false ? {display: "none"}: {}}
-        style={currentShreddedFile === false ? {display: "none"}: {}}
-        style={currentTapeRoll === false ? {display: "none"}: {}}*/}
+        <div style={{display: "block", backgroundColor: "gray", width: "50%", margin: "0 auto", textAlign: "center"}}>Inventory:<br/></div>
         <div id='puzzle-inventory-container'>
             <div id='puzzle-inventory'>
-                <img id="key" src={key} alt="key" />
-                <img id="file" src={file} alt="file" />
-                <img id="shredded-file" src={shreddedFile} alt="shredded file" />
-                <img id="tape-roll" src={tapeRoll} alt="tape roll" />
+                <img id="key" src={key} alt="key" style={currentKey === false ? {visibility: "hidden"}: {}}/>
+                <img id="file" src={file} alt="file" style={currentFile === false ? {visibility: "hidden"}: {}}/>
+                <img id="shredded-file" src={shreddedFile} alt="shredded file" style={currentShreddedFile === false ? {visibility: "hidden"}: {}}/>
+                <img id="tape-roll" src={tapeRoll} alt="tape roll" style={currentTapeRoll === false ? {visibility: "hidden"}: {}}/>
             </div>
         </div>
     </Box>

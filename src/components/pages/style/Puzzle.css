@@ -118,11 +118,13 @@
 }
 #puzzle-inventory-container {
     display: flex;
+    margin: 0 auto;
     justify-content: center;
+    width: 50%;
+    background-color: gray;
 }
 #puzzle-inventory {
     justify-self: end;
     display: inline-flex;
-    background-color: gray;
 }
 

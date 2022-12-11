@@ -26,24 +26,17 @@ import shredder from './../assets/shredder.png';
 // import { display } from '@mui/system';
 
 
-export default function PuzzleImage ({funcHeader, funcFooter, funcNav}) {
+export default function PuzzleImage ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
 
 funcHeader(false)
 funcFooter(false)
 funcNav(false)
 
-const sendKey=()=>{
-    window.parent.postMessage(currentKey,"http://localhost:3000/puzzle")
-}
-const sendFile=()=>{
-    window.parent.postMessage(currentFile,"http://localhost:3000/puzzle")
-}
-const sendShreddedFile=()=>{
-    window.parent.postMessage(currentShreddedFile,"http://localhost:3000/puzzle")
-}
-const sendTapeRoll=()=>{
-    window.parent.postMessage(currentTapeRoll,"http://localhost:3000/puzzle")
-}
+setKey(true)
+setFile(true)
+setShreddedFile(true)
+setTapeRoll(true)
+
 
 // set state of puzzle
 const [currentView, setView] = useState(1)
@@ -54,18 +47,12 @@ const [currentTapeDispenser, setTapeDispenser] = useState(false)
 const [currentBox, setBox] = useState(false)
 // // const [currentDoor, setDoor] = useState(false)
 
-// // set state of obtainable items
-const [currentShreddedFile, setShreddedFile] = useState(false)
-const [currentTapeRoll, setTapeRoll] = useState(false)
-const [currentFile, setFile] = useState(false)
-const [currentKey, setKey] = useState(false)
 
 const [correct, setCorrect] = useState(true)
 
 function handleViewChangeNext () {
     if (currentView < 4) {
         setView(currentView + 1)
-        console.log(currentView)
     } else {
         setView(1)
     }
@@ -78,15 +65,16 @@ function handleViewChangePrev () {
         setView(4)
     }
 }
-function handleShreddedFileState () {
+const handleShreddedFileState = async () => {
     console.log('clicked!')
     if (correct) {
-        setShreddedFile(true);
+        setShreddedFile(true)
         console.log("handleShreddedFileState is working!")
     }
 }
 
-function handleTapeRollState() {
+const handleTapeRollState = async () => {
+    console.log("box clicked!")
     if (correct) {
         setTapeRoll(true)
         setBox(true)
@@ -94,11 +82,11 @@ function handleTapeRollState() {
     }
 }
 
-function handleFileState() {
+const handleFileState = async () => {
     console.log('clicked!')
-    if (!currentTapeDispenser) {
+    if (currentTapeDispenser === false) {
         alert("This tape dispenser is missing something...")
-    } else if (!currentShreddedFile) {
+    } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
     } else if (correct) {
         setShreddedFile(false)
@@ -107,31 +95,33 @@ function handleFileState() {
     }
 }
 
-function handleTapeDispenserState () {
+const handleTapeDispenserState = async ()=> {
     console.log('clicked!')
-    if (!currentTapeRoll) {
+    if (currentTapeRoll===false) {
         alert("This tape dispenser is empty...")
-    } else {
+    } else if (currentShreddedFile === false) {
+        alert("You can't put tape on that!")
+    }
+    else if (correct) {
         setTapeDispenser(true);
         setTapeRoll(false)
         console.log("handleTapeDispenserState is working!")
     }
 }
 
-function handleKeyState() {
+const handleKeyState = async ()=> {
     console.log('clicked!')
-    if(!currentFile) {
+    if(currentFile === false) {
         alert("This file cabinet is missing something...");
     } else if (correct) {
         setFile(false)
         setKey(true)
-        setFileCabinet(true)
         console.log("handleKeyState is working!")
     }
 }
 
 function handleWin () {
-    if (!currentKey) {
+    if (currentKey === false) {
         alert("This door is locked!")
     } else {
         alert("You've won!!!")

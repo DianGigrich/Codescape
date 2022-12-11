@@ -44,6 +44,12 @@ function App() {
   const [showFooter, setShowFooter] = useState(true)
   const [showNav, setShowNav] = useState(true)
 
+  // puzzle states
+  const [currentShreddedFile, setShreddedFile] = useState(false)
+  const [currentTapeRoll, setTapeRoll] = useState(false)
+  const [currentFile, setFile] = useState(false)
+  const [currentKey, setKey] = useState(false)
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
     if (storedToken) {
@@ -121,9 +127,9 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="/leaderboard" element={<Leaderboard/>}/>
-            <Route path="/puzzle" element={<Puzzle/>}/>
-          <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
+            <Route path="/leaderboard" element={<Leaderboard/>}/> 
+            <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />}/>
+          <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter && 
