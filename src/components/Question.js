@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Questionitem from './Questionitem'
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -8,6 +9,15 @@ import '../index.css';
 
 export default function Question({ open, setOpen }) {
   const handleClose = () => setOpen(false);
+
+  useEffect(()=>{
+    API.getQuestions(props).then(data=>{
+        console.log(data)
+        setQuestions(data)
+    })
+},[props])
+
+  const {questions, setQuestions} = useState()
 
   return (
     <div>
@@ -37,32 +47,16 @@ export default function Question({ open, setOpen }) {
           <Typography component="h1" variant="h5">
             Question
           </Typography>
-          <Typography component="h1" variant="h5">
-            How many licks does it take to get to the center of a tootsie pop?
-          </Typography>
-          <Stack
-            sx={{ pt: 4 }}
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-          >
-            <div id="inner-dropzone" className="dropzone">Pizza </div>
-            <div id="second-dropzone" className="dropzone">Pasta </div>
-
-          </Stack>
-
-          <Stack
-            sx={{ pt: 4 }}
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-          >
-            <div id="pizza-drop" className="drag-drop"> Pizza </div>
-            <div id="pasta-drop" className="drag-drop"> Pasta </div>
-          </Stack>
+          {questions.map((item)=><Questionitem 
+            key={item.id} 
+            id={item.id} 
+            question={item.question} 
+            answer={item.answer}
+            difficulty={item.difficulty}
+                      />)}
           <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleClose}>Button</Button>
         </Box>
       </Modal>
     </div >
-  );
+  )
 }

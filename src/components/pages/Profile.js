@@ -62,7 +62,7 @@ function Profile(props) {
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="secondary" onClick={() => navigate('/Puzzle')}>Escape</Button>
+            <Button variant="contained" color="secondary">Set Difficulty</Button>
             <Button variant="outlined" color="secondary" onClick={handleOpen}><IconButton sx={{fontSize: 'large'}}>
                     <SettingsIcon onClick={() => navigate('/profile')}/>
                 </IconButton>Edit User Account</Button>

@@ -162,7 +162,6 @@ interact('.drag-drop')
     },
   })
 
-
 function App() {
   const [userId, setUserId] = useState(0);
   const [userName, setUserName] = useState("");
@@ -252,14 +251,12 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard/>}/>
             <Route path="/puzzle" element={<Puzzle/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-
           <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter && 
           <StickyFooter/>
           }
-
       </Router>
       </ThemeProvider>
   
