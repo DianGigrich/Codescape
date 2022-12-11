@@ -2,8 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-// import IconButton from '@mui/material/IconButton';
-// import SettingsIcon from '@mui/icons-material/Settings';
+
 import Typography from '@mui/material/Typography';
 
 
@@ -25,9 +24,7 @@ function Header(props) {
                 </Typography>
 
                 {/* TODO: THIS BUTTON DOES NOTHING RIGHT NOW */}
-                {/* <IconButton sx={{fontSize: 'large'}}>
-                    <SettingsIcon onClick={() => navigate('/profile')}/>
-                </IconButton> */}
+                
                 <Button variant="contained" color="secondary" size="small" onClick={() => navigate('/login/Signup')}>
                     Sign up
                 </Button>

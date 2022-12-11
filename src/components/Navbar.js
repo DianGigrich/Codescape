@@ -4,8 +4,6 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
-// import TabPanel from '@mui/material/'
-
 
 export default function Navbar(props) {
   const navigate = useNavigate()
@@ -34,8 +32,7 @@ export default function Navbar(props) {
 
         <Tab textColor="primary" value="Leaderboard" label="Leaderboard" onClick={() => navigate('/Leaderboard')} />
 
-        <Tab textColor="primary" value="AboutUs" label="AboutUs" onClick={() => navigate('/AboutUs')} />
-
+        <Tab textColor="primary" value="AboutUs" label="About Us" onClick={() => navigate('/AboutUs')} />
 
         {/* {props.isLoggedIn ?  */}
         <Tab value="Profile" textColor="primary" label="Profile" onClick={() => navigate('/Profile')} />
@@ -50,15 +47,3 @@ export default function Navbar(props) {
   )
 }
 
-// function Navbar({ currentPage, handlePageChange }) {
-
-//   return (
-//     <ul className="nav nav-tabs">
-
-//       <li className="nav-item">
-//         <Link to="/Leaderboard"
-//           onClick={() => handlePageChange('Leaderboard')}
-//           className={currentPage === 'Leaderboard' ? 'nav-link active' : 'nav-link'}>
-//           Leaderboard
-//         </Link>
-//       </li>

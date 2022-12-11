@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import EditUser from '../EditUser'
 import API from "../../utils/API"
 import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent, Modal } from '@mui/material'
-
+import IconButton from '@mui/material/IconButton';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 function Profile(props) {
   const navigate = useNavigate();
@@ -62,7 +63,9 @@ function Profile(props) {
             justifyContent="center"
           >
             <Button variant="contained" color="secondary" onClick={() => navigate('/Puzzle')}>Escape</Button>
-            <Button variant="outlined" color="secondary" onClick={handleOpen}>Edit User Account</Button>
+            <Button variant="outlined" color="secondary" onClick={handleOpen}><IconButton sx={{fontSize: 'large'}}>
+                    <SettingsIcon onClick={() => navigate('/profile')}/>
+                </IconButton>Edit User Account</Button>
           </Stack>
         </Container>
       </Box>

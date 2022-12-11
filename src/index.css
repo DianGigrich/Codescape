@@ -95,3 +95,10 @@ code {
   color: #000;
   background-color: #4e4;
 }
+
+.putmedown1{
+  height: 20px;
+  touch-action: none;
+  color:red;
+  font-style: italic;
+}

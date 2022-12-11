@@ -19,7 +19,6 @@ export default function Question({ open, setOpen }) {
       >
         <Box
           sx={{
-
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',

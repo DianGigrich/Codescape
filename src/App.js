@@ -76,7 +76,7 @@ interact('.dropzone').dropzone({
     // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
     draggableElement.classList.add('can-drop')
-  },
+   },
 
   ondragleave: function (event) {
     // remove the drop feedback style
@@ -105,6 +105,10 @@ interact('.dropzone').dropzone({
   }
 })
 
+interact('.putmedown').dropzone({
+
+})
+
 interact('.drag-drop')
   .draggable({
     inertia: true,
@@ -131,6 +135,31 @@ interact('.drag-drop')
     autoScroll: true,
     // dragMoveListener from the dragging demo above
     listeners: { move: dragMoveListener }
+  })
+ 
+
+  interact('.putmedown')
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    // dragMoveListener from the dragging demo above
+    listeners: { move: dragMoveListener },
+    
+    
+    onmove : function (event) {
+      event.target.classList.add('putmedown1')
+      event.target.textContent = "~PUT ME DOWN~"
+    },
+    onend  : function (event) {
+      event.target.textContent = "Thank you!"
+      event.target.classList.remove('putmedown1')
+    },
   })
 
 
