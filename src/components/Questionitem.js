@@ -14,7 +14,7 @@ export default function Questionitem(props) {
         spacing={2}
         justifyContent="center"
       >
-        <div className="dropzone">{props.solution}</div>
+        <div className="dropzone">{props.solution}Here</div>
       </Stack>
       <Stack
         sx={{ pt: 4 }}
@@ -22,7 +22,8 @@ export default function Questionitem(props) {
         spacing={2}
         justifyContent="center"
       >
-        <div className="drag-drop"> {props.solution}</div>
+
+        <div className="drag-drop"> {props.solution}This</div>
 
       </Stack>
     </Container>

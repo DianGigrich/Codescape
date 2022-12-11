@@ -25,12 +25,13 @@ function Copyright(props) {
 
 
 export default function Signup(props) {
+    
     const navigate = useNavigate();
-    useEffect(() => {
-        if (props.isLoggedIn) {
+    useEffect(()=>{
+        if(props.isLoggedIn){
             navigate("/Profile")
         }
-    }, [props.isLoggedIn])
+    },[props.isLoggedIn])
 
     const signupHandle = e => {
         e.preventDefault();
@@ -78,7 +79,7 @@ export default function Signup(props) {
                         name="password"
                         value={signupPassword}
                         onChange={e => setSignupPassword(e.target.value)} />
-                    <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit" onClick={() => navigate('/profile')}>Submit</Button>
+                    <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit" onClick={() => navigate('/Profile')}>Submit</Button>
                 </Box>
             </Box>
             <Copyright sx={{ mt: 8, mb: 4 }} />
