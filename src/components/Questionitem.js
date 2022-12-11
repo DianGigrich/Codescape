@@ -5,7 +5,7 @@ export default function Questionitem(props) {
   return (
     <Container>
       <Typography component="h1" variant="h5">
-        {props.question}
+        {props.text}
       </Typography>
       <Stack
         sx={{ pt: 4 }}
@@ -13,7 +13,7 @@ export default function Questionitem(props) {
         spacing={2}
         justifyContent="center"
       >
-        <div className="dropzone">{props.answer}</div>
+        <div className="dropzone">{props.solution}</div>
       </Stack>
       <Stack
         sx={{ pt: 4 }}
@@ -21,7 +21,7 @@ export default function Questionitem(props) {
         spacing={2}
         justifyContent="center"
       >
-        <div className="drag-drop"> {props.answer}</div>
+        <div className="drag-drop"> {props.solution}</div>
 
       </Stack>
     </Container>

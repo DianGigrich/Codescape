@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Button, Stack } from '@mui/material/'
 import '../index.css';
-// import * as interact from 'interactjs';
+
 
 export default function Question({ open, setOpen }) {
   const handleClose = () => setOpen(false);
@@ -50,9 +50,9 @@ export default function Question({ open, setOpen }) {
           {questions.map((item)=><Questionitem 
             key={item.id} 
             id={item.id} 
-            question={item.question} 
-            answer={item.answer}
-            difficulty={item.difficulty}
+            text={item.text} 
+            solution={item.solution}
+            level={item.level}
                       />)}
           <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleClose}>Button</Button>
         </Box>
