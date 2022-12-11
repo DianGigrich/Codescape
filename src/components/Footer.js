@@ -35,7 +35,7 @@ export default function StickyFooter({puzzleImage}) {
         <Typography className="putmedown" variant="h6" component="h4" gutterBottom>
           {'Thank you for playing today.'}
         </Typography>
-        <a href="https://github.com/DianGigrich/Codescape" alt="github link" target="_blank" rel="noopener"><Typography variant="h6">Codescape <CopyrightIcon/></Typography></a>
+        <a href="https://github.com/DianGigrich/Codescape" alt="github link" target="_blank" rel="noreferrer"><Typography variant="h6"><CopyrightIcon/>Codescape </Typography></a>
       </Container>
       <Box
         component="footer"
