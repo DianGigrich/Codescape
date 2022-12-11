@@ -8,26 +8,26 @@ import SettingsIcon from '@mui/icons-material/Settings';
 
 function Profile(props) {
   const navigate = useNavigate();
-  // useEffect(()=>{
-  //     const storedToken = localStorage.getItem("token")
-  //     if(storedToken){
-  //       console.log(storedToken)
-  //       API.getUserFromToken(storedToken).then(data=>{
-  //         if(data.user){
-  //           console.log(data)
-  //           props.setToken(storedToken)
-  //           props.setIsLoggedIn(true)
-  //           props.setUserId(data.user.id)
-  //           props.setUserName(data.user.username)
-  //         } else {
-  //             navigate("/login")
-  //         }
-  //       })
-  //     } else {
-  //       console.log('no stored token')
-  //       navigate("/login")
-  //     }
-  //   },[])
+  useEffect(()=>{
+      const storedToken = localStorage.getItem("token")
+      if(storedToken){
+        console.log(storedToken)
+        API.getUserFromToken(storedToken).then(data=>{
+          if(data.user){
+            console.log(data)
+            props.setToken(storedToken)
+            props.setIsLoggedIn(true)
+            props.setUserId(data.user.id)
+            props.setUserName(data.user.username)
+          } else {
+              navigate("/login")
+          }
+        })
+      } else {
+        console.log('no stored token')
+        navigate("/login")
+      }
+    },[])
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

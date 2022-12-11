@@ -43,45 +43,45 @@ export default function Signup(props) {
     const [signupPassword, setSignupPassword] = useState("")
 
     return (
-     
-            <Container component="main" maxWidth="xs">
-              
-                <Box
-                    sx={{
-                        marginTop: 8,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign Up
-                    </Typography>
-                    <Box component="form" onSubmit={signupHandle}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            label="Username"
-                            name="username"
-                            value={signupName}
-                            onChange={e => setSignupName(e.target.value)} />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            label="password"
-                            type="password" 
-                            name="password" 
-                            value={signupPassword} 
-                            onChange={e => setSignupPassword(e.target.value)}/>
-                        <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit" onClick={()=>navigate('/profile')}>Submit</Button>
-                    </Box>
+
+        <Container component="main" maxWidth="xs">
+
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <LockOutlinedIcon />
+                </Avatar>
+                <Typography component="h1" variant="h5">
+                    Sign Up
+                </Typography>
+                <Box component="form" onSubmit={signupHandle}>
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        label="Username"
+                        name="username"
+                        value={signupName}
+                        onChange={e => setSignupName(e.target.value)} />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        label="password"
+                        type="password"
+                        name="password"
+                        value={signupPassword}
+                        onChange={e => setSignupPassword(e.target.value)} />
+                    <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit" onClick={() => navigate('/profile')}>Submit</Button>
                 </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
-            </Container>
+            </Box>
+            <Copyright sx={{ mt: 8, mb: 4 }} />
+        </Container>
     )
 }

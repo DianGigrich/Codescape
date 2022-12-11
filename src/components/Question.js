@@ -1,21 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+// import API from '../../utils/API'
 import Questionitem from './Questionitem'
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { Button, Stack } from '@mui/material/'
+import { Box, Typography, Modal, Button} from '@mui/material/';
+
 import '../index.css';
 
 
 export default function Question({ open, setOpen }) {
   const handleClose = () => setOpen(false);
 
-  useEffect(()=>{
-    API.getQuestions(props).then(data=>{
-        console.log(data)
-        setQuestions(data)
-    })
-},[props])
+//   useEffect(()=>{
+//     API.getQuestions(props).then(data=>{
+//         console.log(data)
+//         setQuestions(data)
+//     })
+// },[props])
 
   const {questions, setQuestions} = useState()
 
