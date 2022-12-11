@@ -11,3 +11,94 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* dropzone */
+/* #second-dropzone {
+  height:80px;
+}
+
+#inner-dropzone {
+  height: 80px;
+} */
+
+.dropzone {
+  background-color: #bfe4ff;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  /* width: 80%; */
+  transition: background-color 0.3s;
+}
+
+.drop-active {
+  border-color: #aaa;
+}
+
+.drop-target {
+  background-color: #29e;
+  /* border-color: #fff; */
+  /* border-style: solid; */
+}
+
+.plop {
+  background-color: pink;
+}
+
+.drag-stop {
+  display: inline-block;
+  min-width: 40px;
+  padding: .75em;
+
+  color: #fff;
+  background-color: #70BCC4;
+  border: solid 2px #fff;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop {
+  display: inline-block;
+  padding: .75em;
+ 
+
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+  border-radius: 15%;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-wrong {
+  display: inline-block;
+  min-width: 40px;
+  padding: .75em;
+
+  color: #fff;
+  background-color: #70BCC4;
+  border: solid 2px red;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+  color: #000;
+  background-color: #4e4;
+}
+
+.putmedown1{
+  height: 20px;
+  touch-action: none;
+  color:red;
+  font-style: italic;
+}

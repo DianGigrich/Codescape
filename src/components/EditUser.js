@@ -2,19 +2,10 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { TextField, Grid, FormControlLabel, Button } from '@mui/material/'
+import { TextField, Button } from '@mui/material/'
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
+
+
 
 export default function EditUser({ open, setOpen, props }) {
     const handleClose = () => setOpen(false);
@@ -34,13 +25,15 @@ export default function EditUser({ open, setOpen, props }) {
         // TODO: does something like deleteing all info
 
     }
+
     return (
-        <div>
+        <div >
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                
             >
                 <Box 
                     sx={{
@@ -49,8 +42,15 @@ export default function EditUser({ open, setOpen, props }) {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        bgcolor:'#FFFFFF',
- 
+                        position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '80%',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
                     }}
                     
                 >
@@ -70,6 +70,8 @@ export default function EditUser({ open, setOpen, props }) {
                             value={loginName}
                             onChange={e => setLoginName(e.target.value)}
                         />
+ 
+
                         <TextField margin="normal"
                             required
                             fullWidth
@@ -81,8 +83,10 @@ export default function EditUser({ open, setOpen, props }) {
                             value={loginPassword}
                             onChange={e => setLoginPassword(e.target.value)}
                         />
+                    
+
                         <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2, width: 1 / 1 }}>Update</Button>
-                        <Button type="submit" variant="contained" color="secondary" sx={{ mt: 3, mb: 2, width: 1 / 1 }} onClick={deleteAcct()}>Delete</Button>
+                        <Button type="submit" variant="contained" color="secondary" sx={{ mt: 3, mb: 2, width: 1 / 1 }} onClick={deleteAcct()}>Delete Account</Button>
                     </Box>
                 </Box>
             </Modal>

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
+import CopyrightIcon from '@mui/icons-material/Copyright';
 
 function Copyright() {
   return (
@@ -29,13 +29,13 @@ export default function StickyFooter({puzzleImage}) {
         flexDirection: 'column',
         minHeight: '100vh',
       }}
+      
     >
-      <CssBaseline />
-      <Container component="main" sx={{ mt: 8, mb: 2}} maxWidth="sm">
-        <Typography variant="h6" component="h4" gutterBottom>
+      <Container  component="main" sx={{ mt: 8, mb: 2}} maxWidth="sm">
+        <Typography className="putmedown" variant="h6" component="h4" gutterBottom>
           {'Thank you for playing today.'}
         </Typography>
-        <Typography variant="body1">Practice Practice Practice!</Typography>
+        <a href="https://github.com/DianGigrich/Codescape" alt="github link" target="_blank" rel="noreferrer"><Typography variant="h6"><CopyrightIcon/>Codescape </Typography></a>
       </Container>
       <Box
         component="footer"
