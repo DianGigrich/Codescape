@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import API from "./utils/API";
 import Home from "./components/pages/Home"
 import Profile from "./components/pages/Profile";
+import AboutUs from "./components/pages/AboutUs";
 import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
@@ -17,13 +18,14 @@ import {
   CssBaseline,
   createTheme
 } from "@mui/material"
+import * as interact from 'interactjs';
 
 const theme = createTheme({
   palette: {
       mode: 'light',
       primary: {
           main: '#4db6ac',
-          light: '70BCC4'
+          light: '#83ccc5',
       },
       secondary: {
           main: '#fb8c00',
@@ -34,6 +36,131 @@ const theme = createTheme({
   }
 });
 
+
+
+function dragMoveListener(event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+
+interact('.dropzone').dropzone({
+  // only accept elements matching this CSS selector
+  accept: ['#pizza-drop', '#pasta-drop'],
+
+  // Require a 75% element overlap for a drop to be possible
+  overlap: 0.75,
+
+  // listen for drop related events:
+
+  ondropactivate: function (event) {
+    // add active dropzone feedback
+    event.target.classList.add('drop-active')
+  },
+
+  ondragenter: function (event) {
+    var draggableElement = event.relatedTarget
+    var dropzoneElement = event.target
+
+    // feedback the possibility of a drop
+    dropzoneElement.classList.add('drop-target')
+    draggableElement.classList.add('can-drop')
+   },
+
+  ondragleave: function (event) {
+    // remove the drop feedback style
+    event.target.classList.remove('drop-target')
+    event.relatedTarget.classList.remove('can-drop')
+  },
+
+  ondrop: function (event) {
+    if (event.target.innerText === 'Pizza' && event.relatedTarget.innerText === "Pizza") {
+      event.relatedTarget.classList.remove('drag-drop')
+
+      event.relatedTarget.classList.add('drag-stop')
+
+    } else {
+      event.relatedTarget.classList.remove('drop-active')
+      event.relatedTarget.classList.remove('drop-target')
+      event.relatedTarget.classList.add('drop-wrong')
+    }
+  },
+
+  ondropdeactivate: function (event) {
+    // remove active dropzone feedback
+    event.target.classList.remove('drop-active')
+    event.target.classList.remove('drop-target')
+    event.target.classList.add('drop-wrong')
+  }
+})
+
+interact('.putmedown').dropzone({
+
+})
+
+interact('.drag-drop')
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'self',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    // dragMoveListener from the dragging demo above
+    listeners: { move: dragMoveListener }
+  })
+
+  interact('.welcome')
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    // dragMoveListener from the dragging demo above
+    listeners: { move: dragMoveListener }
+  })
+ 
+
+  interact('.putmedown')
+  .draggable({
+    inertia: true,
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    autoScroll: true,
+    // dragMoveListener from the dragging demo above
+    listeners: { move: dragMoveListener },
+    
+    
+    onmove : function (event) {
+      event.target.classList.add('putmedown1')
+      event.target.textContent = "~PUT ME DOWN~"
+    },
+    onend  : function (event) {
+      event.target.textContent = "Thank you!"
+      event.target.classList.remove('putmedown1')
+    },
+  })
 
 function App() {
   const [userId, setUserId] = useState(0);
@@ -129,13 +256,13 @@ function App() {
             />} />
             <Route path="/leaderboard" element={<Leaderboard/>}/> 
             <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />}/>
+            <Route path="/aboutus" element={<AboutUs/>}/>
           <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter && 
           <StickyFooter/>
           }
-
       </Router>
       </ThemeProvider>
   
