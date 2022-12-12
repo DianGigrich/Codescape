@@ -22,8 +22,16 @@ import openBox from './../assets/openBox.png';
 
 // image 4 assets
 import shredder from './../assets/shredder.png';
+import openShredder from './../assets/openShredder.png';
 // import { createPortal } from 'react-dom';
 // import { display } from '@mui/system';
+
+// inventory assets
+import key from './../assets/key.png';
+import file from './../assets/file.png';
+import shreddedFile from './../assets/shreddedFile.png';
+import tapeRoll from './../assets/tapeRoll.png';
+
 
 
 export default function PuzzleImage ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
@@ -130,7 +138,7 @@ function handleWin () {
 }
 
 return (
-        
+    <>
     <div id='puzzle-images'>
         <button id="prev-btn" onClick={handleViewChangePrev}>
             left
@@ -166,11 +174,22 @@ return (
         <div id="puzzle-image-4" style={currentView === 4 ? {display:'inline'}: {display: 'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
             <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
-            <img id="shredder" src={shredder} alt="shredder" onClick={handleShreddedFileState}/>
+            <img id="shredder" src={shredder} alt="shredder" style={currentShreddedFile === true ? {display: 'none'} : {}} onClick={handleShreddedFileState}/>
+            <img id="open-shredder" src={openShredder} alt="shredder with top off" style={currentShreddedFile === false ? {display: 'none'} : {}}/>
         </div>
         <button id="next-btn" onClick={handleViewChangeNext}>
             right
         </button>
     </div>
+    <div style={{display: "block", backgroundColor: "gray", width: "50%", margin: "0 auto", textAlign: "center"}}>Inventory:<br/></div>
+    <div id='puzzle-inventory-container'>
+        <div id='puzzle-inventory'>
+            <img id="key" src={key} alt="key" style={currentKey === false ? {visibility: "hidden", height: "50px"}: {height: "50px"}}/>
+            <img id="file" src={file} alt="file" style={currentFile === false ? {visibility: "hidden", height: "50px"}: {height: "50px"}}/>
+            <img id="shredded-file" src={shreddedFile} alt="shredded file" style={currentShreddedFile === false ? {visibility: "hidden", height: "50px"}: {height: "50px"}}/>
+            <img id="tape-roll" src={tapeRoll} alt="tape roll" style={currentTapeRoll === false ? {visibility: "hidden", height: "50px"}: {height: "50px"}}/>
+        </div>
+    </div>
+    </>
 )
 }

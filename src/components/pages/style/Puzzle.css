@@ -3,7 +3,7 @@
 } */
 
 .room-img {
-    width: 644px;
+    width: 565px;
 }
 
 .window {
@@ -29,27 +29,27 @@
 }
 #door {
     position: absolute;
-    top: 320px;
-    left: 200px;
+    top: 260px;
+    left: 220px;
     width: 170px;
 }
 
 #knob {
     position: absolute;
-    top: 405px;
-    right: 400px;
+    top: 340px;
+    right: 380px;
 }
 
 .file-cabinet {
     position: absolute;
-    top: 331px;
+    top: 270px;
     right: 220px;
     width: 140px;
 }
 
 #open-file-cabinet {
     position: absolute;
-    top: 305px;
+    top: 250px;
     right: 220px;
     width: 180px;
 }
@@ -58,16 +58,16 @@
 
 #table {
     position: absolute;
-    top: 420px;
-    left: 189px;
+    top: 350px;
+    left: 200px;
     width: 150px;
 }
 
 .tape-dispenser {
     position: absolute;
-    top: 405px;
+    top: 345px;
     left: 245px;
-    width: 300px;
+    width: 40px;
 }
 
 #full-tape-dispenser {
@@ -81,31 +81,38 @@
 
 #utility-shelf {
     position: absolute;
-    top: 295px;
-    left: 402px;
-    width: 200px;
+    top: 265px;
+    left: 400px;
+    width: 170px;
 }
 
 .box {
     position: absolute;
-    top: 265px;
-    left: 455px;
-    width: 400px;
+    top: 240px;
+    left: 445px;
+    width: 70px;
 }
 
 #open-box {
     position: absolute;
-    top: 250px;
+    top: 215px;
     left: 430px;
-    width: 400px;
+    width: 100px;
 }
 
 /* room view 4 */
 #shredder {
     position: absolute;
-    top: 390px;
+    top: 340px;
     left: 295px;
-    width: 200px;
+    width: 125px;
+}
+
+#open-shredder {
+    position: absolute;
+    top: 340px;
+    left: 295px;
+    width: 150px;
 }
 
 /* buttons and inventory */
