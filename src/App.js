@@ -20,6 +20,8 @@ import {
 } from "@mui/material"
 import * as interact from 'interactjs';
 
+let ifr = document.querySelector('#puzzle-frame')
+
 const theme = createTheme({
   palette: {
       mode: 'light',
@@ -171,6 +173,13 @@ function App() {
   const [showFooter, setShowFooter] = useState(true)
   const [showNav, setShowNav] = useState(true)
 
+  // puzzle states
+  const [currentShreddedFile, setShreddedFile] = useState(false)
+  const [currentTapeRoll, setTapeRoll] = useState(false)
+  const [currentFile, setFile] = useState(false)
+  const [currentKey, setKey] = useState(false)
+  const [receivedMessage, setReceivedMessage] = useState("")
+
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
     if (storedToken) {
@@ -188,6 +197,15 @@ function App() {
       console.log('no stored token')
     }
   }, [])
+
+//   useEffect(() => {
+//     window.addEventListener("message",function(e){
+//         if(e.origin !== "http://localhost:3000/puzzle-frame") {
+//             return;
+//         } 
+//         setReceivedMessage(e.data)
+//     })
+// },[])
 
   const handleLoginSubmit = userObj => {
     console.log('handle login')
@@ -254,10 +272,10 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="/leaderboard" element={<Leaderboard/>}/>
-            <Route path="/puzzle" element={<Puzzle/>}/>
+            <Route path="/leaderboard" element={<Leaderboard/>}/> 
+            <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-          <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
+          <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter && 

@@ -68,7 +68,11 @@ function AboutUs() {
                                         Kristen Killingsworth
                                     </Typography>
                                     <Typography>
-                                        This needs input
+                                        I'm a UW grad with a bachelor's in fine arts. I graduated at the end of 2020 and the pandemic definitely affected my post-grad plans. I decided to make a change and signed up for a coding bootcamp. Now we are here and I'm making awesome websites like this one!
+                                    </Typography>
+                                    <br/>
+                                    <Typography>
+                                        On a more personal note, I have one cat and my hobbies include knitting and crochet. I haven't had much time to work on those hobbies outside of the bootcamp, so I am looking forward to some free time to work on my projects that have been neglected for three months. 
                                     </Typography>
                                 </CardContent>
                             </Card>
