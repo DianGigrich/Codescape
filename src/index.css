@@ -23,6 +23,11 @@ code {
   transition: background-color 0.3s;
 }
 
+.dropzone-words {
+  visibility: hidden;
+  margin: 0;
+}
+
 .drop-active {
   border-color: #aaa;
 }

@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import Question from './Question';
+import { Button } from '@mui/material/';
 
 // import all of the images
 // image 1 assets
@@ -35,15 +37,14 @@ import tapeRoll from './../assets/tapeRoll.png';
 
 
 export default function PuzzleImage ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
+// question modal states?
+const [open, setOpen] = useState(false);
+const handleOpen = () => setOpen(true);
 
+// gets rid of header, nav, footer in iframe
 funcHeader(false)
 funcFooter(false)
 funcNav(false)
-
-const sendMessage = () => {
-    window.parent.postMessage(currentTapeRoll,"http://localhost:3000")
-    console.log("message sent")
-}
 
 // set state of puzzle
 const [currentView, setView] = useState(1)
@@ -57,6 +58,7 @@ const [currentBox, setBox] = useState(false)
 
 const [correct, setCorrect] = useState(true)
 
+// click events for right/left buttons
 function handleViewChangeNext () {
     if (currentView < 4) {
         setView(currentView + 1)
@@ -72,8 +74,11 @@ function handleViewChangePrev () {
         setView(4)
     }
 }
+
+// click events for assets
 const handleShreddedFileState = async () => {
     console.log('clicked!')
+    handleOpen()
     if (correct) {
         setShreddedFile(true)
         console.log("handleShreddedFileState is working!")
@@ -82,16 +87,17 @@ const handleShreddedFileState = async () => {
 
 const handleTapeRollState = async () => {
     console.log("box clicked!")
+    handleOpen()
     if (correct) {
         setTapeRoll(true)
         setBox(true)
         console.log("handleTapeRollState is working!")
-        sendMessage()
     }
 }
 
 const handleFileState = async () => {
     console.log('clicked!')
+    handleOpen()
     if (currentTapeDispenser === false) {
         alert("This tape dispenser is missing something...")
     } else if (currentShreddedFile === false) {
@@ -105,6 +111,7 @@ const handleFileState = async () => {
 
 const handleTapeDispenserState = async ()=> {
     console.log('clicked!')
+    handleOpen()
     if (currentTapeRoll === false) {
         alert("This tape dispenser is empty...")
     } else if (currentShreddedFile === false) {
@@ -119,6 +126,7 @@ const handleTapeDispenserState = async ()=> {
 
 const handleKeyState = async ()=> {
     console.log('clicked!')
+    handleOpen()
     if(currentFile === false) {
         alert("This file cabinet is missing something...");
     } else if (correct) {
@@ -139,6 +147,8 @@ function handleWin () {
 
 return (
     <>
+    <Button onClick={handleOpen}>QUESTION BUTTON</Button>
+    {open && <Question open={open} setOpen={setOpen} />}
     <div id='puzzle-images'>
         <button id="prev-btn" onClick={handleViewChangePrev}>
             left

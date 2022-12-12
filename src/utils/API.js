@@ -52,7 +52,22 @@ const API = {
     },
 
     getQuestions: () => {
-        return fetch(`${URL_PREFIX}/api/questions/level/${level}`, {
+        let randId = 0
+        console.log(level)
+        // (easy 1-10, med 11-20, hard 21-30)
+        if (level === 1 || "easy") {
+            randId = Math.floor(Math.random() * (11 - 1) + 1);
+            console.log(randId)
+        } else if (level === 2 || "medium") {
+            randId = Math.floor(Math.random() * (21 - 11) + 11);
+            console.log(randId)
+        } else if (level === 3 || "hard") {
+            randId = Math.floor(Math.random() * (31 - 21) + 21);
+            console.log(randId)
+        } else {
+            alert("uh oh")
+        }
+        return fetch(`${URL_PREFIX}/api/questions/${randId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
