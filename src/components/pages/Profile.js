@@ -3,17 +3,19 @@ import {  useNavigate } from "react-router-dom"
 import EditUser from '../EditUser'
 import API from "../../utils/API"
 import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent } from '@mui/material'
-import IconButton from '@mui/material/IconButton';
-import SettingsIcon from '@mui/icons-material/Settings';
+
 
 function Profile(props) {
   const navigate = useNavigate();
+
   useEffect(()=>{
+
       const storedToken = localStorage.getItem("token")
+
       if(storedToken){
         console.log(storedToken)
         API.getUserFromToken(storedToken).then(data=>{
-          console.log('-----', data)
+        
           if(data.user){
             console.log(data)
             props.setToken(storedToken)
@@ -63,14 +65,13 @@ function Profile(props) {
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="secondary">Set Difficulty</Button>
-            <Button variant="outlined" color="secondary" onClick={handleOpen}><IconButton sx={{fontSize: 'large'}}>
-                    <SettingsIcon onClick={() => navigate('/profile')}/>
-                </IconButton>Edit User Account</Button>
+            <Button variant="contained" color="secondary">Change Difficulty</Button>
+            <Button variant="outlined" color="secondary"  onClick={handleOpen}>Edit User Account</Button>
+              
           </Stack>
         </Container>
       </Box>
-      {open && <EditUser open={open} setOpen={setOpen} />}
+      {open && <EditUser open={open} setOpen={setOpen} userId={props.userId} />}
       <Container sx={{ py: 8 }} maxWidth="md">
         <Grid container spacing={4}>
 

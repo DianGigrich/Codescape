@@ -1,22 +1,26 @@
 import React, {useState, useEffect} from 'react';
-// import API from '../../utils/API'
+import API from '../utils/API'
 import Questionitem from './Questionitem'
 import { Box, Typography, Modal, Button} from '@mui/material/';
 
 import '../index.css';
 
 
-export default function Question({ open, setOpen }) {
+export default function Question(props) {
+  const { open, setOpen } = props;
   const handleClose = () => setOpen(false);
 
-//   useEffect(()=>{
-//     API.getQuestions(props).then(data=>{
-//         console.log(data)
-//         setQuestions(data)
-//     })
-// },[props])
+  const [questions, setQuestions] = useState([])
 
-  const {questions, setQuestions} = useState()
+
+  useEffect(()=>{
+    API.getQuestions(props).then(data=>{
+        console.log(data)
+        setQuestions(data)
+        console.log(questions, "1")
+    })
+},[props])
+ console.log(questions, "2")
 
   return (
     <div>
@@ -46,13 +50,14 @@ export default function Question({ open, setOpen }) {
           <Typography component="h1" variant="h5">
             Question
           </Typography>
-          {questions.map((item)=><Questionitem 
+          <Questionitem/>
+          {questions.map((item)=> { return(<Questionitem 
             key={item.id} 
             id={item.id} 
             text={item.text} 
             solution={item.solution}
             level={item.level}
-                      />)}
+                      />)})}
           <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleClose}>Button</Button>
         </Box>
       </Modal>
