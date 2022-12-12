@@ -13,6 +13,7 @@ function Profile(props) {
       if(storedToken){
         console.log(storedToken)
         API.getUserFromToken(storedToken).then(data=>{
+          console.log('-----', data)
           if(data.user){
             console.log(data)
             props.setToken(storedToken)
@@ -20,7 +21,7 @@ function Profile(props) {
             props.setUserId(data.user.id)
             props.setUserName(data.user.username)
           } else {
-              navigate("/login")
+              navigate("/404")
           }
         })
       } else {

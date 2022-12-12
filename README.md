@@ -28,7 +28,6 @@ https://github.com/DianGigrich/Codescape
 ## Screenshot:
 ![Screenshot of project](./assets/screenshot.png)
 
-
 ## Credits
 Joe Rehfuss for teaching us. The TAs in class: Lindsey, Austin, and Henry. W3Schools, Mozilla, and StackOverflow. Thanks to the entire internet for help.
 

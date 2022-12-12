@@ -38,7 +38,8 @@ export default function Signup(props) {
         props.handleSignupSubmit({
             username: signupName,
             password: signupPassword
-        })
+        }, navigate);
+
     }
     const [signupName, setSignupName] = useState("")
     const [signupPassword, setSignupPassword] = useState("")
@@ -79,7 +80,7 @@ export default function Signup(props) {
                         name="password"
                         value={signupPassword}
                         onChange={e => setSignupPassword(e.target.value)} />
-                    <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit" onClick={() => navigate('/Profile')}>Submit</Button>
+                    <Button type="submit" variant="outlined" fullWidth color="secondary" label="Submit">Submit</Button>
                 </Box>
             </Box>
             <Copyright sx={{ mt: 8, mb: 4 }} />
