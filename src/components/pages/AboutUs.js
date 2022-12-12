@@ -38,7 +38,11 @@ function AboutUs() {
                                        Machiko Carroll
                                     </Typography>
                                     <Typography>
-                                        Has things to say!
+                                        My coding journey has just begun! I enjoy going for a walk with my family including our Pomeranian! My kids and the pup keep me busy everyday. 
+                                    </Typography>
+                                    <br></br>
+                                    <Typography>
+                                       My background is Accounting. There are so many things to be automated. One day I will create apps to help my accounting friends! 
                                     </Typography>
                                 </CardContent>
                             </Card>
