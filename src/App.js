@@ -208,6 +208,7 @@ function App() {
 // },[])
 
   const handleLoginSubmit = userObj => {
+    console.log('handle login')
     API.login(userObj).then(data => {
       console.log(data);
       if (data.token) {
@@ -219,8 +220,11 @@ function App() {
       }
     })
   }
-  const handleSignupSubmit = userObj => {
+
+  const handleSignupSubmit = (userObj, navigate) => {
+    console.log(1)
     API.signup(userObj).then(data => {
+      console.log(2)
       console.log(data);
       if (data.token) {
         setUserId(data.user.id)
@@ -228,8 +232,10 @@ function App() {
         setIsLoggedIn(true)
         setUserName(data.user.username)
         localStorage.setItem("token", data.token)
+        navigate('/Profile')
       }
     })
+    console.log(3)
   }
   const handleLogout = () => {
     localStorage.removeItem("token");

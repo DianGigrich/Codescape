@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from "react-router-dom"
+import {  useNavigate } from "react-router-dom"
 import EditUser from '../EditUser'
 import API from "../../utils/API"
-import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent, Modal } from '@mui/material'
+import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import SettingsIcon from '@mui/icons-material/Settings';
 
@@ -13,6 +13,7 @@ function Profile(props) {
       if(storedToken){
         console.log(storedToken)
         API.getUserFromToken(storedToken).then(data=>{
+          console.log('-----', data)
           if(data.user){
             console.log(data)
             props.setToken(storedToken)
@@ -20,7 +21,7 @@ function Profile(props) {
             props.setUserId(data.user.id)
             props.setUserName(data.user.username)
           } else {
-              navigate("/login")
+              navigate("/404")
           }
         })
       } else {

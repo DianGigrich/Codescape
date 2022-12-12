@@ -13,16 +13,8 @@ code {
 }
 
 /* dropzone */
-/* #second-dropzone {
-  height:80px;
-}
-
-#inner-dropzone {
-  height: 80px;
-} */
-
 .dropzone {
-  background-color: #bfe4ff;
+  background-color: #b9e2de;
   border: dashed 4px transparent;
   border-radius: 4px;
   margin: 10px auto 30px;
@@ -36,9 +28,9 @@ code {
 }
 
 .drop-target {
-  background-color: #29e;
-  /* border-color: #fff; */
-  /* border-style: solid; */
+  background-color: #b9e2de;
+  border-color: #fff;
+  border-style: solid;
 }
 
 .plop {
@@ -51,7 +43,7 @@ code {
   padding: .75em;
 
   color: #fff;
-  background-color: #70BCC4;
+  background-color: #83ccc5;
   border: solid 2px #fff;
 
   touch-action: none;
@@ -66,7 +58,7 @@ code {
  
 
   color: #fff;
-  background-color: #29e;
+  background-color: #83ccc5;
   border: solid 2px #fff;
   border-radius: 15%;
 
@@ -82,7 +74,7 @@ code {
   padding: .75em;
 
   color: #fff;
-  background-color: #70BCC4;
+  background-color: #83ccc5;
   border: solid 2px red;
 
   touch-action: none;
