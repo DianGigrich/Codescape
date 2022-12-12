@@ -29,9 +29,11 @@ const  API = {
     getUserFromToken:(token)=>{
         return fetch(`${URL_PREFIX}/api/users/getuserfromtoken`,{
             method:"GET",
-            headers:{
-                "Authorization":`Bearer ${token}`
-            }
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`, // notice the Bearer before your token
+            },
+    
         }).then(res=>res.json())
     },
     // TODO: FIX EXAMPLE TEXT TO REFLECT OUR CODESCAPE_DB

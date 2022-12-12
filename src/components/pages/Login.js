@@ -31,7 +31,7 @@ function Login(props) {
     const navigate = useNavigate();
     useEffect(() => {
         if (props.isLoggedIn) {
-            navigate("/Profile")
+            navigate("/Profile")  
         }
 
     }, [props.isLoggedIn])

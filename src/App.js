@@ -191,7 +191,7 @@ function App() {
 
   const handleLoginSubmit = userObj => {
     API.login(userObj).then(data => {
-      console.log(data);
+      // console.log(data);
       if (data.token) {
         setUserId(data.user.id)
         setToken(data.token)
