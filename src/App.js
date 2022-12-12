@@ -198,14 +198,14 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    window.addEventListener("message",function(e){
-        if(e.origin !== "http://localhost:3000/puzzle-frame") {
-            return;
-        } 
-        setReceivedMessage(e.data)
-    })
-},[])
+//   useEffect(() => {
+//     window.addEventListener("message",function(e){
+//         if(e.origin !== "http://localhost:3000/puzzle-frame") {
+//             return;
+//         } 
+//         setReceivedMessage(e.data)
+//     })
+// },[])
 
   const handleLoginSubmit = userObj => {
     API.login(userObj).then(data => {
