@@ -29,6 +29,7 @@ const theme = createTheme();
 
 function Login(props) {
     const navigate = useNavigate();
+    const [difficultyLevel, setDifficultyLevel] = useState("")
     useEffect(() => {
         if (props.isLoggedIn) {
             navigate("/Profile")
@@ -39,12 +40,14 @@ function Login(props) {
     const [loginPassword, setLoginPassword] = useState("")
 
 
+
     const loginHandle = e => {
         e.preventDefault();
         props.handleLoginSubmit({
             username: loginName,
             password: loginPassword
         })
+        localStorage.setItem("difficultyLevel", difficultyLevel)
     }
 
     return (
@@ -75,6 +78,7 @@ function Login(props) {
                         value={loginName}
                         onChange={e => setLoginName(e.target.value)}
                     />
+                    
                     <TextField margin="normal"
                         required
                         fullWidth
@@ -85,6 +89,16 @@ function Login(props) {
                         autoComplete="current-password"
                         value={loginPassword}
                         onChange={e => setLoginPassword(e.target.value)}
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        label="difficulty"
+                        id="name"
+                        name="level"
+                        value={difficultyLevel}
+                        onChange={e => setDifficultyLevel(e.target.value)}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
