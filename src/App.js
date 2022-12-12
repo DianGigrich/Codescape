@@ -20,6 +20,8 @@ import {
 } from "@mui/material"
 import * as interact from 'interactjs';
 
+let ifr = document.querySelector('#puzzle-frame')
+
 const theme = createTheme({
   palette: {
       mode: 'light',
@@ -176,6 +178,7 @@ function App() {
   const [currentTapeRoll, setTapeRoll] = useState(false)
   const [currentFile, setFile] = useState(false)
   const [currentKey, setKey] = useState(false)
+  const [receivedMessage, setReceivedMessage] = useState("")
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -194,6 +197,15 @@ function App() {
       console.log('no stored token')
     }
   }, [])
+
+  useEffect(() => {
+    window.addEventListener("message",function(e){
+        if(e.origin !== "http://localhost:3000/puzzle-frame") {
+            return;
+        } 
+        setReceivedMessage(e.data)
+    })
+},[])
 
   const handleLoginSubmit = userObj => {
     API.login(userObj).then(data => {

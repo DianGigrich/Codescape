@@ -10,14 +10,15 @@ import shreddedFile from './../../assets/shreddedFile.png';
 import tapeRoll from './../../assets/tapeRoll.png';
 
 function Puzzle ({currentKey, currentFile, currentShreddedFile, currentTapeRoll }) {
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    
+// question modal states?
+const [open, setOpen] = useState(false);
+const handleOpen = () => setOpen(true);
+
 // set state of puzzle
 const [currentView, setView] = useState(1)
 
     return (
-<>      
+<div id='puzzle'>      
         {/* <Start/> */}
         
         <Box className='puzzle-container'>
@@ -41,7 +42,7 @@ const [currentView, setView] = useState(1)
         </div>
     </Box>
     
-</>
+</div>
     )
 }
 

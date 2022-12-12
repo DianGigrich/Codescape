@@ -32,11 +32,10 @@ funcHeader(false)
 funcFooter(false)
 funcNav(false)
 
-setKey(true)
-setFile(true)
-setShreddedFile(true)
-setTapeRoll(true)
-
+const sendMessage = () => {
+    window.parent.postMessage(currentTapeRoll,"http://localhost:3000")
+    console.log("message sent")
+}
 
 // set state of puzzle
 const [currentView, setView] = useState(1)
@@ -79,6 +78,7 @@ const handleTapeRollState = async () => {
         setTapeRoll(true)
         setBox(true)
         console.log("handleTapeRollState is working!")
+        sendMessage()
     }
 }
 
@@ -97,7 +97,7 @@ const handleFileState = async () => {
 
 const handleTapeDispenserState = async ()=> {
     console.log('clicked!')
-    if (currentTapeRoll===false) {
+    if (currentTapeRoll === false) {
         alert("This tape dispenser is empty...")
     } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
@@ -114,6 +114,7 @@ const handleKeyState = async ()=> {
     if(currentFile === false) {
         alert("This file cabinet is missing something...");
     } else if (correct) {
+        setFileCabinet(true)
         setFile(false)
         setKey(true)
         console.log("handleKeyState is working!")
@@ -141,7 +142,7 @@ return (
             <img id="knob" src={doorknob} alt="doorknob"/>
                 {/*changes source based on state*/}
             <img className="file-cabinet" id='closed-file-cabinet' src={closedFileCabinet} style={currentFileCabinet === true ? {display: "none"} : {}} alt="file cabinet closed with a potted plant on top" onClick={handleKeyState}/>
-            <img className="file-cabinet" id='open-file-cabinet'src={openFileCabinet} style={currentFileCabinet === false ? {display: "none"} : {}}alt="open file cabinet with a potted plant on top"/>
+            <img className="file-cabinet" id='open-file-cabinet'src={openFileCabinet} style={currentFileCabinet === false ? {display: "none"} : {}} alt="open file cabinet with a potted plant on top"/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-2" style={currentView === 2 ? {display:'inline'}: {display: 'none'}}>
