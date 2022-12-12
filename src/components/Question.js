@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import API from '../utils/API'
-import Questionitem from './Questionitem'
-import { Box, Typography, Modal, Button} from '@mui/material/';
+import Questionitem from './Questionitem';
+import QuestionAnswer from './QuestionAnswer';
+import { Box, Typography, Modal, Button, Stack} from '@mui/material/';
 
 import '../index.css';
 
@@ -10,17 +11,41 @@ export default function Question(props) {
   const { open, setOpen } = props;
   const handleClose = () => setOpen(false);
 
-  const [questions, setQuestions] = useState([])
+  const [question, setQuestions] = useState({})
 
 
   useEffect(()=>{
     API.getQuestions(props).then(data=>{
         console.log(data)
         setQuestions(data)
-        console.log(questions, "1")
+        console.log(question, "1")
     })
 },[props])
- console.log(questions, "2")
+ console.log(question, "2")
+
+//  solution logic
+ let solutionStr = `${question.solution}`;
+console.log(solutionStr);
+const solutionArr = solutionStr.split('^');
+console.log(solutionArr);
+
+const solutionArrCopy = [...solutionArr]
+const shuffleArray = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const item = arr[i];
+    arr[i] = arr[j];
+    arr[j] = item;
+  }
+}
+shuffleArray(solutionArrCopy);
+console.log(solutionArrCopy, solutionArr);
+
+const answerArr = []
+
+function handleCheck () {
+  
+}
 
   return (
     <div>
@@ -50,15 +75,37 @@ export default function Question(props) {
           <Typography component="h1" variant="h5">
             Question
           </Typography>
-          <Questionitem/>
-          {questions.map((item)=> { return(<Questionitem 
-            key={item.id} 
-            id={item.id} 
-            text={item.text} 
-            solution={item.solution}
-            level={item.level}
+          <Typography component="h3" variant="h5">
+            {question.text}
+          </Typography>
+          <Stack
+            sx={{ pt: 4, width: "100%", color: "#b9e2de"}}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
+            
+          >
+           {solutionArr.map((item)=> { return(<Questionitem 
+              text={question.text}
+              item={item}
+              />)})}
+          </Stack>
+          <Stack
+            sx={{ pt: 4 }}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
+          >
+            {solutionArrCopy.map((item)=> { return(<QuestionAnswer 
+            key={question.id} 
+            // id={question.id} 
+            // text={question.text} 
+            solution={item}
+            // level={question.level}
                       />)})}
-          <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleClose}>Button</Button>
+          </Stack>
+          <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleCheck}>Check Solution</Button>
+          <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleClose}>Close</Button>
         </Box>
       </Modal>
     </div >
