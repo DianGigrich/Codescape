@@ -4,39 +4,39 @@ import { Button } from '@mui/material/';
 
 // import all of the images
 // image 1 assets
-import room from './../assets/room.png';
-import door from './../assets/door.png';
-import doorknob from './../assets/doorknob.png';
-import closedFileCabinet from './../assets/filecabinetclosed.png';
-import openFileCabinet from './../assets/fileCabinetOpen.png';
-// import openDoor from './../../assets/openDoor.png';
+import room from './../assets/RoomOfError/room.png';
+import door from './../assets/RoomOfError/door.png';
+import doorknob from './../assets/RoomOfError/doorknob.png';
+import closedFileCabinet from './../assets/RoomOfError/filecabinetclosed.png';
+import openFileCabinet from './../assets/RoomOfError/fileCabinetOpen.png';
+// import openDoor from './../../assets/RoomOfError/openDoor.png';
 
 // image 2 assets
-import window from './../assets/window.png';
-import table from './../assets/table.png';
-import emptyTapeDispenser from './../assets/tapedispenserEmpty.png';
-import fullTapeDispenser from './../assets/tapedispenserfull.png';
+import window from './../assets/RoomOfError/window.png';
+import table from './../assets/RoomOfError/table.png';
+import emptyTapeDispenser from './../assets/RoomOfError/tapedispenserEmpty.png';
+import fullTapeDispenser from './../assets/RoomOfError/tapedispenserfull.png';
 
 // image 3 assets
-import utilityShelf from './../assets/utilityShelf.png';
-import closedBox from './../assets/closedBox.png';
-import openBox from './../assets/openBox.png';
+import utilityShelf from './../assets/RoomOfError/utilityShelf.png';
+import closedBox from './../assets/RoomOfError/closedBox.png';
+import openBox from './../assets/RoomOfError/openBox.png';
 
 // image 4 assets
-import shredder from './../assets/shredder.png';
-import openShredder from './../assets/openShredder.png';
+import shredder from './../assets/RoomOfError/shredder.png';
+import openShredder from './../assets/RoomOfError/openShredder.png';
 // import { createPortal } from 'react-dom';
 // import { display } from '@mui/system';
 
 // inventory assets
-import key from './../assets/key.png';
-import file from './../assets/file.png';
-import shreddedFile from './../assets/shreddedFile.png';
-import tapeRoll from './../assets/tapeRoll.png';
+import key from './../assets/RoomOfError/key.png';
+import file from './../assets/RoomOfError/file.png';
+import shreddedFile from './../assets/RoomOfError/shreddedFile.png';
+import tapeRoll from './../assets/RoomOfError/tapeRoll.png';
 
 
 
-export default function RoomOfErrorFrame ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
+export default function RoomOfErrorFrame ({funcHeader, funcFooter, funcNav}) {
 // question modal states?
 const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
@@ -48,6 +48,12 @@ funcNav(false)
 
 // set state of puzzle
 const [currentView, setView] = useState(1)
+
+// inventory item states
+const [currentShreddedFile, setShreddedFile] = useState(false)
+const [currentTapeRoll, setTapeRoll] = useState(false)
+const [currentFile, setFile] = useState(false)
+const [currentKey, setKey] = useState(false)
 
 // // set state of interactable objects/image
 const [currentFileCabinet, setFileCabinet] = useState(false)

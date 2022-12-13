@@ -1,15 +1,10 @@
-import React, {useState} from 'react';
-import './style/Puzzle.css';
+import React from 'react';
+import './style/RoomOfError.css';
 import { Box } from '@mui/material/';
 
 
 
 function RoomOfError () {
-
-
-
-// set state of puzzle
-const [currentView, setView] = useState(1)
 
     return (
 <div id='puzzle'>      

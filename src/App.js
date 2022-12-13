@@ -11,16 +11,16 @@ import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
 import RoomOfError from './components/pages/RoomOfError';
 import RoomOfErrorFrame from "./components/RoomOfErrorFrame";
-import Signup from "./components/pages/Signup"
-import Leaderboard from "./components/pages/Leaderboard"
+import NewPuzzle from './components/pages/NewPuzzle';
+import NewPuzzleFrame from './components/NewPuzzleFrame';
+import Signup from "./components/pages/Signup";
+import Leaderboard from "./components/pages/Leaderboard";
 import {
   ThemeProvider,
   CssBaseline,
   createTheme
 } from "@mui/material"
 import * as interact from 'interactjs';
-
-let ifr = document.querySelector('#puzzle-frame')
 
 const theme = createTheme({
   palette: {
@@ -173,12 +173,6 @@ function App() {
   const [showFooter, setShowFooter] = useState(true)
   const [showNav, setShowNav] = useState(true)
 
-  // puzzle states
-  const [currentShreddedFile, setShreddedFile] = useState(false)
-  const [currentTapeRoll, setTapeRoll] = useState(false)
-  const [currentFile, setFile] = useState(false)
-  const [currentKey, setKey] = useState(false)
-  const [receivedMessage, setReceivedMessage] = useState("")
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -198,14 +192,6 @@ function App() {
     }
   }, [])
 
-//   useEffect(() => {
-//     window.addEventListener("message",function(e){
-//         if(e.origin !== "http://localhost:3000/puzzle-frame") {
-//             return;
-//         } 
-//         setReceivedMessage(e.data)
-//     })
-// },[])
 
   const handleLoginSubmit = userObj => {
     console.log('handle login')
@@ -275,8 +261,10 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard/>}/> 
             <Route path="/room-of-error" element={<RoomOfError/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-          <Route path="/room-of-error-frame" element={<RoomOfErrorFrame setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
-          <Route path="*" element={<h1>404</h1>} />
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
+            <Route path='/new-puzzle' element={<NewPuzzle/>}/>
+            <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
+            <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter && 
           <StickyFooter/>
