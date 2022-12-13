@@ -120,6 +120,7 @@ function Profile(props) {
                 }}
                 image="https://placekitten.com/200/"
                 alt="random"
+                onClick={() => navigate('/new-puzzle')}
               />
             </Card>
 
