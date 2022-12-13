@@ -36,7 +36,7 @@ import tapeRoll from './../assets/tapeRoll.png';
 
 
 
-export default function PuzzleImage ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
+export default function RoomOfErrorFrame ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
 // question modal states?
 const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);

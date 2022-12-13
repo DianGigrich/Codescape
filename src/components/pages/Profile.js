@@ -95,7 +95,7 @@ function Profile(props) {
                 }}
                 image="https://source.unsplash.com/random"
                 alt="random"
-                onClick={() => navigate('/Puzzle')}
+                onClick={() => navigate('/room-of-error')}
               />
             </Card>
 

@@ -9,8 +9,8 @@ import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
-import Puzzle from './components/pages/Puzzle';
-import PuzzleImage from "./components/PuzzleImage";
+import RoomOfError from './components/pages/RoomOfError';
+import RoomOfErrorFrame from "./components/RoomOfErrorFrame";
 import Signup from "./components/pages/Signup"
 import Leaderboard from "./components/pages/Leaderboard"
 import {
@@ -273,9 +273,9 @@ function App() {
               setUserName={setUserName}
             />} />
             <Route path="/leaderboard" element={<Leaderboard/>}/> 
-            <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />}/>
+            <Route path="/room-of-error" element={<RoomOfError/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-          <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
+          <Route path="/room-of-error-frame" element={<RoomOfErrorFrame setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
           <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter && 
