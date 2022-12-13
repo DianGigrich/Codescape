@@ -96,7 +96,6 @@ interact('.dropzone').dropzone({
     answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
     if (event.target.innerText === event.relatedTarget.innerText) {
-      
       event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
 
@@ -109,7 +108,6 @@ interact('.dropzone').dropzone({
    
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
       localStorage.setItem("correct", true)
-      alert("this actually worked")
       localStorage.setItem("modalClosed", true)
       answerObj = {}
     }

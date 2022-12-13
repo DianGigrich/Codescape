@@ -1,52 +1,57 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Question from './Question';
-import { Button } from '@mui/material/';
+import { Button, Popover, Typography} from '@mui/material/';
 
 // import all of the images
 // image 1 assets
-import room from './../assets/RoomOfError/room.png';
-import door from './../assets/RoomOfError/door.png';
-import doorknob from './../assets/RoomOfError/doorknob.png';
-import closedFileCabinet from './../assets/RoomOfError/filecabinetclosed.png';
-import openFileCabinet from './../assets/RoomOfError/fileCabinetOpen.png';
-// import openDoor from './../../assets/RoomOfError/openDoor.png';
+import room from './../assets/room.png';
+import door from './../assets/door.png';
+import doorknob from './../assets/doorknob.png';
+import closedFileCabinet from './../assets/filecabinetclosed.png';
+import openFileCabinet from './../assets/fileCabinetOpen.png';
+// import openDoor from './../../assets/openDoor.png';
 
 // image 2 assets
-import window from './../assets/RoomOfError/window.png';
-import table from './../assets/RoomOfError/table.png';
-import emptyTapeDispenser from './../assets/RoomOfError/tapedispenserEmpty.png';
-import fullTapeDispenser from './../assets/RoomOfError/tapedispenserfull.png';
+import window from './../assets/window.png';
+import table from './../assets/table.png';
+import emptyTapeDispenser from './../assets/tapedispenserEmpty.png';
+import fullTapeDispenser from './../assets/tapedispenserfull.png';
 
 // image 3 assets
-import utilityShelf from './../assets/RoomOfError/utilityShelf.png';
-import closedBox from './../assets/RoomOfError/closedBox.png';
-import openBox from './../assets/RoomOfError/openBox.png';
+import utilityShelf from './../assets/utilityShelf.png';
+import closedBox from './../assets/closedBox.png';
+import openBox from './../assets/openBox.png';
 
 // image 4 assets
-import shredder from './../assets/RoomOfError/shredder.png';
-import openShredder from './../assets/RoomOfError/openShredder.png';
+import shredder from './../assets/shredder.png';
+import openShredder from './../assets/openShredder.png';
 // import { createPortal } from 'react-dom';
 // import { display } from '@mui/system';
 
 // inventory assets
-import key from './../assets/RoomOfError/key.png';
-import file from './../assets/RoomOfError/file.png';
-import shreddedFile from './../assets/RoomOfError/shreddedFile.png';
-import tapeRoll from './../assets/RoomOfError/tapeRoll.png';
+import key from './../assets/key.png';
+import file from './../assets/file.png';
+import shreddedFile from './../assets/shreddedFile.png';
+import tapeRoll from './../assets/tapeRoll.png';
 
 
 
-export default function RoomOfErrorFrame ({funcHeader, funcFooter, funcNav, correct, setCorrect}) {
+export default function PuzzleImage ({setKey, currentKey, setFile, currentFile, setTapeRoll, currentTapeRoll, setShreddedFile, currentShreddedFile, funcHeader, funcFooter, funcNav}) {
 // question modal states?
 const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
 
-const [count, setCount] = useState(1);
-
-useEffect(()=> {
-setCount(2);
-console.log(count) //I thought that this would log "2" but it actually logs 1
-},[funcHeader])
+// popover
+const [anchorEl, setAnchorEl] = useState(null);
+const handlePopClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    
+  };
+  const handlePopClose = () => {
+    setAnchorEl(null);
+  };
+  const popopen = Boolean(anchorEl);
+  const id = popopen ? 'simple-popover' : undefined;
 
 // gets rid of header, nav, footer in iframe
 funcHeader(false)
@@ -56,19 +61,21 @@ funcNav(false)
 // set state of puzzle
 const [currentView, setView] = useState(1)
 
-// inventory item states
-const [currentShreddedFile, setShreddedFile] = useState(false)
-const [currentTapeRoll, setTapeRoll] = useState(false)
-const [currentFile, setFile] = useState(false)
-const [currentKey, setKey] = useState(false)
-
 // // set state of interactable objects/image
 const [currentFileCabinet, setFileCabinet] = useState(false)
 const [currentTapeDispenser, setTapeDispenser] = useState(false)
 const [currentBox, setBox] = useState(false)
-const [currentShredder, setShredder] = useState(false);
 // // const [currentDoor, setDoor] = useState(false)
 let isCorrect = localStorage.getItem("correct")
+
+const [correct, setCorrect] = useState(false)
+
+// console.log(isCorrect)
+// TODO: this breaks the page. check order of operations?
+// if (isCorrect === "") {
+//     setCorrect(false)
+// }
+// setCorrect(isCorrect)
 
 // click events for right/left buttons
 function handleViewChangeNext () {
@@ -88,17 +95,26 @@ function handleViewChangePrev () {
 }
 
 // click events for assets
-
-
-const handleTapeRollState = async () => {
-    localStorage.setItem("click", "box")
+const handleShreddedFileState = async () => {
+    console.log('clicked!')
     handleOpen()
+    if (correct) {
+        setShreddedFile(true)
+        console.log("handleShreddedFileState is working!")
+    }
 }
 
-const handleShreddedFileState = async () => {
-    console.log('clicked!');
-    handleOpen();
-    localStorage.setItem("click", "shredder");
+const handleTapeRollState = async () => {
+    console.log("box clicked!")
+    handleOpen()
+    if (isCorrect === true) {
+setCorrect(true)}
+    if (correct) {
+        setTapeRoll(true)
+        setBox(true)
+        console.log("handleTapeRollState is working!")
+    }
+    localStorage.setItem("correct", false)
 }
 
 const handleFileState = async () => {
@@ -108,35 +124,37 @@ const handleFileState = async () => {
         alert("This tape dispenser is missing something...")
     } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
-    } else {
-        handleOpen()
-        localStorage.setItem("click", "tapeDispenser")
+    } else if (correct) {
+        setShreddedFile(false)
+        setFile(true)
         console.log("handleFileState is working!")
     }
 }
 
 const handleTapeDispenserState = async ()=> {
     console.log('clicked!')
+    handleOpen()
     if (currentTapeRoll === false) {
-        alert("This tape dispenser is empty...")
+        handlePopClick()
     } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
     }
-    else {
-        handleOpen()
-        localStorage.setItem("click", "emptyTapeDispenser")
+    else if (correct) {
+        setTapeDispenser(true);
+        setTapeRoll(false)
         console.log("handleTapeDispenserState is working!")
     }
 }
 
 const handleKeyState = async ()=> {
     console.log('clicked!')
-
+    handleOpen()
     if(currentFile === false) {
         alert("This file cabinet is missing something...");
-    } else {
-        handleOpen()
-        localStorage.setItem("click", "fileCabinet")
+    } else if (correct) {
+        setFileCabinet(true)
+        setFile(false)
+        setKey(true)
         console.log("handleKeyState is working!")
     }
 }
@@ -151,8 +169,8 @@ function handleWin () {
 
 return (
     <>
-    {/* <Button onClick={handleOpen}>QUESTION BUTTON</Button> */}
-    {open && <Question open={open} setOpen={setOpen} setTapeRoll={setTapeRoll} setBox={setBox} setShreddedFile={setShreddedFile} setShredder={setShredder} setFile={setFile} setKey={setKey} setTapeDispenser={setTapeDispenser} setFileCabinet={setFileCabinet}/>}
+    <Button onClick={handleOpen}>QUESTION BUTTON</Button>
+    {open && <Question open={open} setOpen={setOpen} />}
     <div id='puzzle-images'>
         <button id="prev-btn" onClick={handleViewChangePrev}>
             left
@@ -173,7 +191,20 @@ return (
             <img id="table" src={table} alt="empty table"/>
                 {/*changes source based on state*/}
             <img className="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState}/>
-            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}} alt="full tape dispenser" onClick={handleFileState}/>
+            
+            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}}alt="full tape dispenser" onClick={handleFileState}/>
+            <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handlePopClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>"This tape dispenser is empty..."</Typography>
+      </Popover>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
@@ -188,8 +219,9 @@ return (
         <div id="puzzle-image-4" style={currentView === 4 ? {display:'inline'}: {display: 'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
             <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
-            <img id="shredder" src={shredder} alt="shredder" style={currentShredder === true ? {display: 'none'} : {}} onClick={handleShreddedFileState}/>
-            <img id="open-shredder" src={openShredder} alt="shredder with top off" style={currentShredder === false ? {display: 'none'} : {}}/>
+            <img id="shredder" src={shredder} alt="shredder" style={currentShreddedFile === true ? {display: 'none'} : {}} onClick={handleShreddedFileState}/>
+            <img id="open-shredder" src={openShredder} alt="shredder with top off" style={currentShreddedFile === false ? {display: 'none'} : {}}/>
+
         </div>
         <button id="next-btn" onClick={handleViewChangeNext}>
             right

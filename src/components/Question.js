@@ -3,10 +3,7 @@ import API from '../utils/API'
 import Questionitem from './Questionitem';
 import QuestionAnswer from './QuestionAnswer';
 import { Box, Typography, Modal, Button, Stack } from '@mui/material/';
-// import * as interact from 'interactjs';
-
 import '../index.css';
-
 
 export default function Question(props) {
   const { open, setOpen, setTapeRoll, setBox, setFile, setKey, setShreddedFile, setShredder, setTapeDispenser, setFileCabinet  } = props;
@@ -68,16 +65,15 @@ export default function Question(props) {
     API.getQuestions(props).then(data => {
       console.log(data)
       setQuestions(data)
-      console.log(question, "1")
+
     })
   }, [props])
-  console.log(question, "2")
-
+ 
   //  solution logic
   let solutionStr = `${question.solution}`;
-  console.log(solutionStr);
+
   const solutionArr = solutionStr.split('^');
-  console.log(solutionArr);
+
 
   const solutionArrCopy = [...solutionArr]
   const shuffleArray = (arr) => {
@@ -89,7 +85,6 @@ export default function Question(props) {
     }
   }
   shuffleArray(solutionArrCopy);
-  console.log(solutionArrCopy, solutionArr);
 
   const answerArr = []
 
