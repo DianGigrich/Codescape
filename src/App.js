@@ -94,7 +94,6 @@ interact('.dropzone').dropzone({
     answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
     if (event.target.innerText === event.relatedTarget.innerText) {
-      
       event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
 

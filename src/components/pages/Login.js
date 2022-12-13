@@ -10,7 +10,6 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme } from '@mui/material/styles';
 
 function Copyright(props) {
     return (
@@ -24,8 +23,6 @@ function Copyright(props) {
         </Typography>
     );
 }
-
-const theme = createTheme();
 
 function Login(props) {
     const navigate = useNavigate();
@@ -46,7 +43,6 @@ function Login(props) {
             username: loginName,
             password: loginPassword
         })
-        
     }
 
     return (
@@ -76,8 +72,7 @@ function Login(props) {
                         autoComplete="name"
                         value={loginName}
                         onChange={e => setLoginName(e.target.value)}
-                    />
-                    
+                    />  
                     <TextField margin="normal"
                         required
                         fullWidth
@@ -89,28 +84,12 @@ function Login(props) {
                         value={loginPassword}
                         onChange={e => setLoginPassword(e.target.value)}
                     />
-                    {/* <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        label="difficulty"
-                        id="name"
-                        name="level"
-                        value={difficultyLevel}
-                        onChange={e => setDifficultyLevel(e.target.value)}
-                    /> */}
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
                     <Button type="submit" variant="contained" color="secondary" sx={{ mt: 3, mb: 2, width: 1 / 1 }}>Sign in</Button>
                     <Grid container>
-                        {/* <Grid item xs>
-                TODO: FORGOT PASSWORD?
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid> */}
                         <Grid item>
                             <Link to="./Signup" variant="body2">
                                 {"Don't have an account? Sign Up"}
@@ -121,7 +100,6 @@ function Login(props) {
             </Box>
             <Copyright sx={{ mt: 8, mb: 4 }} />
         </Container>
-
     )
 }
 

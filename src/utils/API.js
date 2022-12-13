@@ -74,7 +74,16 @@ const API = {
                 "Content-Type": "application/json"
             }
         }).then(res => res.json())
-    }
+    },
+
+    getHighscores: () => {
+        return fetch(`${URL_PREFIX}/api/highscores/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+    },
 
 }
 export default API

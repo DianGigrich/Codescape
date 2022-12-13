@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Question from './Question';
-import { Button } from '@mui/material/';
+import { Button, Popover, Typography} from '@mui/material/';
 
 // import all of the images
 // image 1 assets
@@ -40,6 +40,18 @@ export default function PuzzleImage ({setKey, currentKey, setFile, currentFile, 
 // question modal states?
 const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
+
+// popover
+const [anchorEl, setAnchorEl] = useState(null);
+const handlePopClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    
+  };
+  const handlePopClose = () => {
+    setAnchorEl(null);
+  };
+  const popopen = Boolean(anchorEl);
+  const id = popopen ? 'simple-popover' : undefined;
 
 // gets rid of header, nav, footer in iframe
 funcHeader(false)
@@ -123,7 +135,7 @@ const handleTapeDispenserState = async ()=> {
     console.log('clicked!')
     handleOpen()
     if (currentTapeRoll === false) {
-        alert("This tape dispenser is empty...")
+        handlePopClick()
     } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
     }
@@ -179,7 +191,20 @@ return (
             <img id="table" src={table} alt="empty table"/>
                 {/*changes source based on state*/}
             <img className="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState}/>
+            
             <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}}alt="full tape dispenser" onClick={handleFileState}/>
+            <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handlePopClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>"This tape dispenser is empty..."</Typography>
+      </Popover>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
@@ -196,6 +221,7 @@ return (
             <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
             <img id="shredder" src={shredder} alt="shredder" style={currentShreddedFile === true ? {display: 'none'} : {}} onClick={handleShreddedFileState}/>
             <img id="open-shredder" src={openShredder} alt="shredder with top off" style={currentShreddedFile === false ? {display: 'none'} : {}}/>
+
         </div>
         <button id="next-btn" onClick={handleViewChangeNext}>
             right
