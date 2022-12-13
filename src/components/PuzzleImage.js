@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Question from './Question';
 import { Button } from '@mui/material/';
 
@@ -56,7 +56,10 @@ const [currentBox, setBox] = useState(false)
 // // const [currentDoor, setDoor] = useState(false)
 
 
-const [correct, setCorrect] = useState(true)
+const [correct, setCorrect] = useState(false)
+// useEffect(() => { 
+
+// })
 
 // click events for right/left buttons
 function handleViewChangeNext () {

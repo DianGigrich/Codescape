@@ -21,6 +21,7 @@ import {
 import * as interact from 'interactjs';
 
 let ifr = document.querySelector('#puzzle-frame')
+let answerObj = {};
 
 const theme = createTheme({
   palette: {
@@ -88,17 +89,29 @@ interact('.dropzone').dropzone({
   },
 
   ondrop: function (event) {
-    if (event.target.innerText === event.relatedTarget.innerText ) {
+    let solutionLength = Array.from(document.querySelectorAll('.dropzone')).length;
+    console.log(solutionLength, " = array length");
+    answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
+
+    if ( event.target.innerText === event.relatedTarget.innerText ) {
       console.log(event.target.innerText, event.relatedTarget.innerText)
       event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
 
     } else {
+      console.log("didn't match");
       event.relatedTarget.classList.remove('drop-active')
       event.relatedTarget.classList.remove('drop-target')
       event.relatedTarget.classList.add('drop-wrong')
     }
+    console.log( Object.values(answerObj).length, solutionLength, Object.values(answerObj).every(Boolean), "107")
+if( Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)){
+  alert("this actually worked")
+  answerObj = {}
+}
   },
+
+  // Object.values()
 
   ondropdeactivate: function (event) {
     // remove active dropzone feedback

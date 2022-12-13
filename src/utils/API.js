@@ -4,6 +4,7 @@ const URL_PREFIX = "http://localhost:3001"
 // const URL_PREFIX= "https://codescaper.herokuapp.com/"
 const level = localStorage.getItem("difficulty") || 2
 
+
 const API = {
     login: (userObj) => {
         return fetch(`${URL_PREFIX}/api/users/login`, {
@@ -53,7 +54,7 @@ const API = {
 
     getQuestions: () => {
         let randId = 0
-        console.log(level)
+        console.log(level, "=level")
         // (easy 1-10, med 11-20, hard 21-30)
         if (level === 1 || "easy") {
             randId = Math.floor(Math.random() * (11 - 1) + 1);

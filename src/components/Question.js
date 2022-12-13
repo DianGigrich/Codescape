@@ -8,14 +8,11 @@ import { Box, Typography, Modal, Button, Stack } from '@mui/material/';
 import '../index.css';
 
 
-
-
 export default function Question(props) {
   const { open, setOpen } = props;
   const handleClose = () => setOpen(false);
 
   const [question, setQuestions] = useState({})
-
 
   useEffect(() => {
     API.getQuestions(props).then(data => {
@@ -25,7 +22,6 @@ export default function Question(props) {
     })
   }, [props])
   console.log(question, "2")
-
 
   //  solution logic
   let solutionStr = `${question.solution}`;
