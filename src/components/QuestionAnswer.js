@@ -5,7 +5,7 @@ export default function Questionitem(props) {
 
   return (
     <Container className="solution-boxes">
-        <div className="drag-drop"> {props.solution}</div>
+        <div className="drag-drop" > {props.solution}</div>
     </Container>
   )
 }

@@ -9,7 +9,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
       {'Copyright © '}
-       <Link color="inherit" href="https://codescape.netlify.com/">
+       <Link color="inherit" href="https://github.com/DianGigrich/Codescape/">
        Codescape
       </Link>{' '}
       {new Date().getFullYear()}
@@ -31,24 +31,20 @@ export default function StickyFooter({puzzleImage}) {
       }}
       
     >
-      <Container  component="main" sx={{ mt: 8, mb: 2}} maxWidth="sm">
-        <Typography className="putmedown" variant="h6" component="h4" gutterBottom>
-          {'Thank you for playing today.'}
-        </Typography>
-        <a href="https://github.com/DianGigrich/Codescape" alt="github link" target="_blank" rel="noreferrer"><Typography variant="h6"><CopyrightIcon/>Codescape </Typography></a>
-      </Container>
+ 
       <Box
         component="footer"
         sx={{
           py: 3,
           px: 2,
-          mt: 'auto',
+          position:"fixed",
+          bottom:0
           
         }}
       >
         <Container maxWidth="sm">
-          <Typography variant="body1">
-            My sticky footer can be found here.
+          <Typography className="putmedown" variant="body1" gutterBottom>
+            Thank you for playing today!
           </Typography>
           <Copyright />
         </Container>
