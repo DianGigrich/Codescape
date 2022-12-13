@@ -108,7 +108,6 @@ interact('.dropzone').dropzone({
    
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
       localStorage.setItem("correct", true)
-      alert("this actually worked")
       localStorage.setItem("modalClosed", true)
       answerObj = {}
     }
