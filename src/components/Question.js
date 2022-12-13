@@ -6,8 +6,58 @@ import { Box, Typography, Modal, Button, Stack } from '@mui/material/';
 import '../index.css';
 
 export default function Question(props) {
-  const { open, setOpen } = props;
-  const handleClose = () => setOpen(false);
+  const { open, setOpen, setTapeRoll, setBox, setFile, setKey, setShreddedFile, setShredder, setTapeDispenser, setFileCabinet  } = props;
+  
+  const handleClose = () => {
+    setOpen(false);
+    if (localStorage.getItem("correct")) {
+      const clicked = localStorage.getItem("click")
+      console.log(clicked)
+      switch (clicked) {
+          case "box":
+              setTapeRoll(true);
+              setBox(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the box")
+              break;
+          case "shredder":
+              setShreddedFile(true);
+              setShredder(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the shredder")
+              break;
+          case "emptyTapeDispenser":
+              setTapeRoll(false);
+              setTapeDispenser(true)
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the empty tape dispenser")
+              break;
+          case "tapeDispenser":
+              setShreddedFile(false)
+              setFile(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the tape dispenser")
+              break;
+          case "fileCabinet":
+              setFile(false);
+              setKey(true);
+              setFileCabinet(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the file cabinet")
+              break;
+      }
+  } else {
+      console.log(localStorage.getItem("correct"))
+      console.log("failure")
+      // localStorage.setItem("correct", false);
+  }
+    
+  }
 
   const [question, setQuestions] = useState({})
 
@@ -37,10 +87,6 @@ export default function Question(props) {
   shuffleArray(solutionArrCopy);
 
   const answerArr = []
-
-  function handleCheck() {
-
-  }
 
   return (
     <div>
@@ -102,7 +148,7 @@ export default function Question(props) {
               />)
             })}
           </Stack>
-          <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleCheck}>Check Solution</Button>
+          {/* <Button onClick={}>Submit</Button> */}
           <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2 }} onClick={handleClose}>Close</Button>
         </Box>
       </Modal>
