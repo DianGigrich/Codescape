@@ -22,19 +22,22 @@ import {
 } from "@mui/material"
 import * as interact from 'interactjs';
 
+
+let answerObj = {};
+
 const theme = createTheme({
   palette: {
-      mode: 'light',
-      primary: {
-          main: '#4db6ac',
-          light: '#83ccc5',
-      },
-      secondary: {
-          main: '#fb8c00',
-      },
+    mode: 'light',
+    primary: {
+      main: '#4db6ac',
+      light: '#83ccc5',
+    },
+    secondary: {
+      main: '#fb8c00',
+    },
   },
   typography: {
-      fontFamily: 'Droid Sans',
+    fontFamily: 'Droid Sans',
   }
 });
 
@@ -57,9 +60,10 @@ function dragMoveListener(event) {
 // this function is used later in the resizing and gesture demos
 window.dragMoveListener = dragMoveListener
 
+
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
-  accept: ['#pizza-drop', '#pasta-drop'],
+  accept: [],
 
   // Require a 75% element overlap for a drop to be possible
   overlap: 0.75,
@@ -78,7 +82,7 @@ interact('.dropzone').dropzone({
     // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
     draggableElement.classList.add('can-drop')
-   },
+  },
 
   ondragleave: function (event) {
     // remove the drop feedback style
@@ -87,17 +91,31 @@ interact('.dropzone').dropzone({
   },
 
   ondrop: function (event) {
-    if (event.target.innerText === 'Pizza' && event.relatedTarget.innerText === "Pizza") {
-      event.relatedTarget.classList.remove('drag-drop')
+    let solutionLength = Array.from(document.querySelectorAll('.dropzone')).length;
+    
+    answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
+    if (event.target.innerText === event.relatedTarget.innerText) {
+      
+      event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
 
     } else {
+      console.log("didn't match");
       event.relatedTarget.classList.remove('drop-active')
       event.relatedTarget.classList.remove('drop-target')
       event.relatedTarget.classList.add('drop-wrong')
     }
+   
+    if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
+      localStorage.setItem("correct", true)
+      alert("this actually worked")
+
+      answerObj = {}
+    }
   },
+
+  // Object.values()
 
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
@@ -107,9 +125,7 @@ interact('.dropzone').dropzone({
   }
 })
 
-interact('.putmedown').dropzone({
 
-})
 
 interact('.drag-drop')
   .draggable({
@@ -121,11 +137,12 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener }
   })
 
-  interact('.welcome')
+// WELCOME dragable
+interact('.welcome')
   .draggable({
     inertia: true,
     modifiers: [
@@ -135,12 +152,12 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener }
   })
- 
 
-  interact('.putmedown')
+// FOOTER dragable
+interact('.putmedown')
   .draggable({
     inertia: true,
     modifiers: [
@@ -150,15 +167,14 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener },
-    
-    
-    onmove : function (event) {
+
+    onmove: function (event) {
       event.target.classList.add('putmedown1')
       event.target.textContent = "~PUT ME DOWN~"
     },
-    onend  : function (event) {
+    onend: function (event) {
       event.target.textContent = "Thank you!"
       event.target.classList.remove('putmedown1')
     },
@@ -191,7 +207,6 @@ function App() {
       console.log('no stored token')
     }
   }, [])
-
 
   const handleLoginSubmit = userObj => {
     console.log('handle login')
@@ -235,13 +250,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          {showHeader && 
-          <Header />
+          {showHeader &&
+            <Header />
           }
-        {showNav && 
-          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+          {showNav &&
+            <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           }
-        <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login
               isLoggedIn={isLoggedIn}
@@ -266,12 +281,12 @@ function App() {
             <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
             <Route path="*" element={<h1>404</h1>} />
           </Routes>
-          {showFooter && 
-          <StickyFooter/>
+          {showFooter &&
+            <StickyFooter />
           }
-      </Router>
+        </Router>
       </ThemeProvider>
-  
+
     </div>
   );
 }

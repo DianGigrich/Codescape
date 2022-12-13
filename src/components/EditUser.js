@@ -52,7 +52,7 @@ export default function EditUser({ open, setOpen, userId, props }) {
                         flexDirection: 'column',
                         alignItems: 'center',
                         position: 'absolute',
-                        top: '50%',
+                        top: '30%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                         width: '80%',
@@ -65,6 +65,12 @@ export default function EditUser({ open, setOpen, userId, props }) {
 
                     <Typography component="h1" variant="h5">
                         DELETE ACCOUNT?
+                    </Typography>
+                    <Typography component="h6" variant="h6">
+                        This action cannot be undone once the button is pressed.
+                    </Typography>
+                    <Typography component="h6" variant="h6">
+                        Click outside the box to exit with no account deletion.
                     </Typography>
                     {/* <Box component="form" onSubmit={editHandle} sx={{ mt: 1 }}> */}
                         {/* <TextField
@@ -93,7 +99,7 @@ export default function EditUser({ open, setOpen, userId, props }) {
 
 
                         {/* <Button type="submit" variant="contained" color="primary" sx={{ mt: 3, mb: 2, width: 1 / 1 }}>Update</Button> */}
-                        <Button type="click" variant="contained" color="secondary" sx={{ mt: 3, mb: 2, width: 1 / 1 }} onClick={deleteAcct}>Delete Account</Button>
+                        <Button type="click" variant="contained" color="secondary" sx={{ mt: 3, mb: 2, width: "20%" }} onClick={deleteAcct}>Delete Account</Button>
                     </Box>
                 {/* </Box> */}
             </Modal>

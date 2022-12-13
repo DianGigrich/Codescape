@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Question from './Question';
 import { Button } from '@mui/material/';
 
@@ -60,9 +60,16 @@ const [currentFileCabinet, setFileCabinet] = useState(false)
 const [currentTapeDispenser, setTapeDispenser] = useState(false)
 const [currentBox, setBox] = useState(false)
 // // const [currentDoor, setDoor] = useState(false)
+let isCorrect = localStorage.getItem("correct")
 
+const [correct, setCorrect] = useState(false)
 
-const [correct, setCorrect] = useState(true)
+// console.log(isCorrect)
+// TODO: this breaks the page. check order of operations?
+// if (isCorrect === "") {
+//     setCorrect(false)
+// }
+// setCorrect(isCorrect)
 
 // click events for right/left buttons
 function handleViewChangeNext () {
@@ -94,11 +101,14 @@ const handleShreddedFileState = async () => {
 const handleTapeRollState = async () => {
     console.log("box clicked!")
     handleOpen()
+    if (isCorrect === true) {
+setCorrect(true)}
     if (correct) {
         setTapeRoll(true)
         setBox(true)
         console.log("handleTapeRollState is working!")
     }
+    localStorage.setItem("correct", false)
 }
 
 const handleFileState = async () => {
@@ -174,8 +184,8 @@ return (
             <img className="window" id="window-room-2" src={window} alt="window seperated into four panes"/>
             <img id="table" src={table} alt="empty table"/>
                 {/*changes source based on state*/}
-            <img class="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState}/>
-            <img class="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}}alt="full tape dispenser" onClick={handleFileState}/>
+            <img className="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState}/>
+            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}}alt="full tape dispenser" onClick={handleFileState}/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
