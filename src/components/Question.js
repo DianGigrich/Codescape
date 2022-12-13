@@ -55,7 +55,6 @@ export default function Question(props) {
     <div>
       <Modal id="Modalrestriction"
         open={open}
-        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

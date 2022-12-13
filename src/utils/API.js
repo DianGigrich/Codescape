@@ -2,7 +2,7 @@
 const URL_PREFIX = "http://localhost:3001"
 // in prod mode
 // const URL_PREFIX= "https://codescaper.herokuapp.com/"
-const level = localStorage.getItem("difficultyLevel") || 2
+const level = localStorage.getItem("difficulty") || 2
 
 const API = {
     login: (userObj) => {

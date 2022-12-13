@@ -9,8 +9,8 @@ function Profile(props) {
   const navigate = useNavigate();
 
   // select difficult list
-
-  const [difficulty, setDifficulty] = useState('');
+  const level = localStorage.getItem("difficulty")
+  const [difficulty, setDifficulty] = useState(level);
 
   const handleLevelChange = (event) => {
     var thishere = event.target.value
@@ -71,7 +71,7 @@ function Profile(props) {
             Welcome {props.userName}!
           </Typography>
           <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            Play an escape room game to practice your javascript skills!  There are questions from beginner to advanced to helpe you improve.  Beat the time, escape the room, and practice, practice, practice!
+            Play an escape room game to practice your javascript skills!  There are questions from beginner to advanced to help you improve.  Beat the time, escape the room, and practice, practice, practice!
           </Typography>
           <Stack
             sx={{ pt: 4 }}
