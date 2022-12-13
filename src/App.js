@@ -110,7 +110,7 @@ interact('.dropzone').dropzone({
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
       localStorage.setItem("correct", true)
       alert("this actually worked")
-
+      localStorage.setItem("modalClosed", true)
       answerObj = {}
     }
   },
@@ -185,9 +185,10 @@ function App() {
   const [userName, setUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-  const [showHeader, setShowHeader] = useState(true)
-  const [showFooter, setShowFooter] = useState(true)
-  const [showNav, setShowNav] = useState(true)
+  const [showHeader, setShowHeader] = useState(true);
+  const [showFooter, setShowFooter] = useState(true);
+  const [showNav, setShowNav] = useState(true);
+  const [correct, setCorrect] = useState(false);
 
 
   useEffect(() => {
@@ -276,7 +277,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard/>}/> 
             <Route path="/room-of-error" element={<RoomOfError/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
             <Route path='/new-puzzle' element={<NewPuzzle/>}/>
             <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
             <Route path="*" element={<h1>404</h1>} />

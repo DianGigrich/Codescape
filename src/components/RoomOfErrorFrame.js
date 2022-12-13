@@ -36,7 +36,7 @@ import tapeRoll from './../assets/RoomOfError/tapeRoll.png';
 
 
 
-export default function RoomOfErrorFrame ({funcHeader, funcFooter, funcNav}) {
+export default function RoomOfErrorFrame ({funcHeader, funcFooter, funcNav, correct, setCorrect}) {
 // question modal states?
 const [open, setOpen] = useState(false);
 const handleOpen = () => setOpen(true);
@@ -59,10 +59,10 @@ const [currentKey, setKey] = useState(false)
 const [currentFileCabinet, setFileCabinet] = useState(false)
 const [currentTapeDispenser, setTapeDispenser] = useState(false)
 const [currentBox, setBox] = useState(false)
+const [currentShredder, setShredder] = useState(false);
 // // const [currentDoor, setDoor] = useState(false)
 let isCorrect = localStorage.getItem("correct")
 
-const [correct, setCorrect] = useState(false)
 
 // console.log(isCorrect)
 // TODO: this breaks the page. check order of operations?
@@ -89,26 +89,17 @@ function handleViewChangePrev () {
 }
 
 // click events for assets
-const handleShreddedFileState = async () => {
-    console.log('clicked!')
-    handleOpen()
-    if (correct) {
-        setShreddedFile(true)
-        console.log("handleShreddedFileState is working!")
-    }
-}
+
 
 const handleTapeRollState = async () => {
-    console.log("box clicked!")
+    localStorage.setItem("click", "box")
     handleOpen()
-    if (isCorrect === true) {
-setCorrect(true)}
-    if (correct) {
-        setTapeRoll(true)
-        setBox(true)
-        console.log("handleTapeRollState is working!")
-    }
-    localStorage.setItem("correct", false)
+}
+
+const handleShreddedFileState = async () => {
+    console.log('clicked!');
+    handleOpen();
+    localStorage.setItem("click", "shredder");
 }
 
 const handleFileState = async () => {
@@ -118,37 +109,35 @@ const handleFileState = async () => {
         alert("This tape dispenser is missing something...")
     } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
-    } else if (correct) {
-        setShreddedFile(false)
-        setFile(true)
+    } else {
+        handleOpen()
+        localStorage.setItem("click", "tapeDispenser")
         console.log("handleFileState is working!")
     }
 }
 
 const handleTapeDispenserState = async ()=> {
     console.log('clicked!')
-    handleOpen()
     if (currentTapeRoll === false) {
         alert("This tape dispenser is empty...")
     } else if (currentShreddedFile === false) {
         alert("You can't put tape on that!")
     }
-    else if (correct) {
-        setTapeDispenser(true);
-        setTapeRoll(false)
+    else {
+        handleOpen()
+        localStorage.setItem("click", "emptyTapeDispenser")
         console.log("handleTapeDispenserState is working!")
     }
 }
 
 const handleKeyState = async ()=> {
     console.log('clicked!')
-    handleOpen()
+
     if(currentFile === false) {
         alert("This file cabinet is missing something...");
-    } else if (correct) {
-        setFileCabinet(true)
-        setFile(false)
-        setKey(true)
+    } else {
+        handleOpen()
+        localStorage.setItem("click", "fileCabinet")
         console.log("handleKeyState is working!")
     }
 }
@@ -163,8 +152,8 @@ function handleWin () {
 
 return (
     <>
-    <Button onClick={handleOpen}>QUESTION BUTTON</Button>
-    {open && <Question open={open} setOpen={setOpen} />}
+    {/* <Button onClick={handleOpen}>QUESTION BUTTON</Button> */}
+    {open && <Question open={open} setOpen={setOpen} setTapeRoll={setTapeRoll} setBox={setBox} setShreddedFile={setShreddedFile} setShredder={setShredder} setFile={setFile} setKey={setKey} setTapeDispenser={setTapeDispenser} setFileCabinet={setFileCabinet}/>}
     <div id='puzzle-images'>
         <button id="prev-btn" onClick={handleViewChangePrev}>
             left
@@ -185,7 +174,7 @@ return (
             <img id="table" src={table} alt="empty table"/>
                 {/*changes source based on state*/}
             <img className="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState}/>
-            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}}alt="full tape dispenser" onClick={handleFileState}/>
+            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}} alt="full tape dispenser" onClick={handleFileState}/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
@@ -200,8 +189,8 @@ return (
         <div id="puzzle-image-4" style={currentView === 4 ? {display:'inline'}: {display: 'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
             <img className="window" id="window-room-4" src={window} alt="window seperated into four panes"/>
-            <img id="shredder" src={shredder} alt="shredder" style={currentShreddedFile === true ? {display: 'none'} : {}} onClick={handleShreddedFileState}/>
-            <img id="open-shredder" src={openShredder} alt="shredder with top off" style={currentShreddedFile === false ? {display: 'none'} : {}}/>
+            <img id="shredder" src={shredder} alt="shredder" style={currentShredder === true ? {display: 'none'} : {}} onClick={handleShreddedFileState}/>
+            <img id="open-shredder" src={openShredder} alt="shredder with top off" style={currentShredder === false ? {display: 'none'} : {}}/>
         </div>
         <button id="next-btn" onClick={handleViewChangeNext}>
             right
