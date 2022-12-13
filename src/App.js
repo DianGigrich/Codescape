@@ -90,11 +90,11 @@ interact('.dropzone').dropzone({
 
   ondrop: function (event) {
     let solutionLength = Array.from(document.querySelectorAll('.dropzone')).length;
-    console.log(solutionLength, " = array length");
+    
     answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
     if (event.target.innerText === event.relatedTarget.innerText) {
-      console.log(event.target.innerText, event.relatedTarget.innerText)
+      
       event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
 
@@ -104,9 +104,9 @@ interact('.dropzone').dropzone({
       event.relatedTarget.classList.remove('drop-target')
       event.relatedTarget.classList.add('drop-wrong')
     }
-    console.log(Object.values(answerObj).length, solutionLength, Object.values(answerObj).every(Boolean), "107")
+   
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
-      localStorage.setItem("correct", "true")
+      localStorage.setItem("correct", true)
       alert("this actually worked")
 
       answerObj = {}

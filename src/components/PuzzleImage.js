@@ -54,12 +54,15 @@ const [currentFileCabinet, setFileCabinet] = useState(false)
 const [currentTapeDispenser, setTapeDispenser] = useState(false)
 const [currentBox, setBox] = useState(false)
 // // const [currentDoor, setDoor] = useState(false)
-
+let isCorrect = localStorage.getItem("correct")
 
 const [correct, setCorrect] = useState(false)
-let isCorrect = localStorage.getItem("correct")
-console.log(isCorrect)
+
+// console.log(isCorrect)
 // TODO: this breaks the page. check order of operations?
+// if (isCorrect === "") {
+//     setCorrect(false)
+// }
 // setCorrect(isCorrect)
 
 // click events for right/left buttons
@@ -92,11 +95,14 @@ const handleShreddedFileState = async () => {
 const handleTapeRollState = async () => {
     console.log("box clicked!")
     handleOpen()
+    if (isCorrect === true) {
+setCorrect(true)}
     if (correct) {
         setTapeRoll(true)
         setBox(true)
         console.log("handleTapeRollState is working!")
     }
+    localStorage.setItem("correct", false)
 }
 
 const handleFileState = async () => {
