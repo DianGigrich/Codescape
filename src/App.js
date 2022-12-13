@@ -25,17 +25,17 @@ let answerObj = {};
 
 const theme = createTheme({
   palette: {
-      mode: 'light',
-      primary: {
-          main: '#4db6ac',
-          light: '#83ccc5',
-      },
-      secondary: {
-          main: '#fb8c00',
-      },
+    mode: 'light',
+    primary: {
+      main: '#4db6ac',
+      light: '#83ccc5',
+    },
+    secondary: {
+      main: '#fb8c00',
+    },
   },
   typography: {
-      fontFamily: 'Droid Sans',
+    fontFamily: 'Droid Sans',
   }
 });
 
@@ -80,7 +80,7 @@ interact('.dropzone').dropzone({
     // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
     draggableElement.classList.add('can-drop')
-   },
+  },
 
   ondragleave: function (event) {
     // remove the drop feedback style
@@ -93,7 +93,7 @@ interact('.dropzone').dropzone({
     console.log(solutionLength, " = array length");
     answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
-    if ( event.target.innerText === event.relatedTarget.innerText ) {
+    if (event.target.innerText === event.relatedTarget.innerText) {
       console.log(event.target.innerText, event.relatedTarget.innerText)
       event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
@@ -104,11 +104,11 @@ interact('.dropzone').dropzone({
       event.relatedTarget.classList.remove('drop-target')
       event.relatedTarget.classList.add('drop-wrong')
     }
-    console.log( Object.values(answerObj).length, solutionLength, Object.values(answerObj).every(Boolean), "107")
-if( Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)){
-  alert("this actually worked")
-  answerObj = {}
-}
+    console.log(Object.values(answerObj).length, solutionLength, Object.values(answerObj).every(Boolean), "107")
+    if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
+      alert("this actually worked")
+      answerObj = {}
+    }
   },
 
   // Object.values()
@@ -133,12 +133,12 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
- 
+
     listeners: { move: dragMoveListener }
   })
 
-  // WELCOME dragable
-  interact('.welcome')
+// WELCOME dragable
+interact('.welcome')
   .draggable({
     inertia: true,
     modifiers: [
@@ -151,9 +151,9 @@ interact('.drag-drop')
 
     listeners: { move: dragMoveListener }
   })
- 
+
 // FOOTER dragable
-  interact('.putmedown')
+interact('.putmedown')
   .draggable({
     inertia: true,
     modifiers: [
@@ -165,12 +165,12 @@ interact('.drag-drop')
     autoScroll: true,
 
     listeners: { move: dragMoveListener },
-    
-    onmove : function (event) {
+
+    onmove: function (event) {
       event.target.classList.add('putmedown1')
       event.target.textContent = "~PUT ME DOWN~"
     },
-    onend  : function (event) {
+    onend: function (event) {
       event.target.textContent = "Thank you!"
       event.target.classList.remove('putmedown1')
     },
@@ -210,14 +210,14 @@ function App() {
     }
   }, [])
 
-//   useEffect(() => {
-//     window.addEventListener("message",function(e){
-//         if(e.origin !== "http://localhost:3000/puzzle-frame") {
-//             return;
-//         } 
-//         setReceivedMessage(e.data)
-//     })
-// },[])
+  //   useEffect(() => {
+  //     window.addEventListener("message",function(e){
+  //         if(e.origin !== "http://localhost:3000/puzzle-frame") {
+  //             return;
+  //         } 
+  //         setReceivedMessage(e.data)
+  //     })
+  // },[])
 
   const handleLoginSubmit = userObj => {
     console.log('handle login')
@@ -261,13 +261,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          {showHeader && 
-          <Header />
+          {showHeader &&
+            <Header />
           }
-        {showNav && 
-          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+          {showNav &&
+            <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           }
-        <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login
               isLoggedIn={isLoggedIn}
@@ -284,18 +284,18 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="/leaderboard" element={<Leaderboard/>}/> 
-            <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />}/>
-            <Route path="/aboutus" element={<AboutUs/>}/>
-          <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
-          <Route path="*" element={<h1>404</h1>} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} />} />
+            <Route path="*" element={<h1>404</h1>} />
           </Routes>
-          {showFooter && 
-          <StickyFooter/>
+          {showFooter &&
+            <StickyFooter />
           }
-      </Router>
+        </Router>
       </ThemeProvider>
-  
+
     </div>
   );
 }
