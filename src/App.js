@@ -106,7 +106,9 @@ interact('.dropzone').dropzone({
     }
     console.log(Object.values(answerObj).length, solutionLength, Object.values(answerObj).every(Boolean), "107")
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
+      localStorage.setItem("correct", "true")
       alert("this actually worked")
+
       answerObj = {}
     }
   },

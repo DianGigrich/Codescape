@@ -57,9 +57,10 @@ const [currentBox, setBox] = useState(false)
 
 
 const [correct, setCorrect] = useState(false)
-// useEffect(() => { 
-
-// })
+let isCorrect = localStorage.getItem("correct")
+console.log(isCorrect)
+// TODO: this breaks the page. check order of operations?
+// setCorrect(isCorrect)
 
 // click events for right/left buttons
 function handleViewChangeNext () {
