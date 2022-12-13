@@ -1,39 +1,53 @@
 import React, { useEffect, useState } from 'react'
-import {  useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import EditUser from '../EditUser'
 import API from "../../utils/API"
-import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent } from '@mui/material'
+import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent, FormControl, MenuItem, InputLabel, Select } from '@mui/material'
 
 
 function Profile(props) {
   const navigate = useNavigate();
 
-  useEffect(()=>{
+  // select difficult list
 
-      const storedToken = localStorage.getItem("token")
+  const [difficulty, setDifficulty] = useState('');
 
-      if(storedToken){
-        console.log(storedToken)
-        API.getUserFromToken(storedToken).then(data=>{
-        
-          if(data.user){
-            console.log(data)
-            props.setToken(storedToken)
-            props.setIsLoggedIn(true)
-            props.setUserId(data.user.id)
-            props.setUserName(data.user.username)
-          } else {
-              navigate("/404")
-          }
-        })
-      } else {
-        console.log('no stored token')
-        navigate("/login")
-      }
-    },[])
+  const handleLevelChange = (event) => {
+    var thishere = event.target.value
+    setDifficulty(thishere);
+     localStorage.setItem("difficulty", thishere)
+  };
 
+  // delete modal open
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+
+
+
+  useEffect(() => {
+
+    const storedToken = localStorage.getItem("token")
+
+    if (storedToken) {
+      console.log(storedToken)
+      API.getUserFromToken(storedToken).then(data => {
+
+        if (data.user) {
+          console.log(data)
+          props.setToken(storedToken)
+          props.setIsLoggedIn(true)
+          props.setUserId(data.user.id)
+          props.setUserName(data.user.username)
+        } else {
+          navigate("/404")
+        }
+      })
+    } else {
+      console.log('no stored token')
+      navigate("/login")
+    }
+  }, [])
+
 
   return (
 
@@ -65,9 +79,28 @@ function Profile(props) {
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="secondary">Change Difficulty</Button>
-            <Button variant="outlined" color="secondary"  onClick={handleOpen}>Edit User Account</Button>
-              
+
+            {/* drop down menu */}
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={difficulty}
+                  label="Difficulty"
+                  onChange={handleLevelChange}
+                >
+                  <MenuItem value="Easy">Easy</MenuItem>
+                  <MenuItem value="Med">Medium</MenuItem>
+                  <MenuItem value="Hard">Hard</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+
+            {/* delete user account button */}
+            <Button variant="outlined" color="secondary" onClick={handleOpen}>Delete User Account</Button>
+
           </Stack>
         </Container>
       </Box>
