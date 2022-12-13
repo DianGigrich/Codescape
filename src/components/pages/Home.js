@@ -16,9 +16,11 @@ export default function Home() {
             {/* Hero unit */}
             <Box
                 sx={{
+                    
                     bgcolor: 'background.paper',
                     pt: 8,
                     pb: 6,
+                    
                 }}
             >
                 <Container maxWidth="sm">

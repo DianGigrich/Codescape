@@ -23,6 +23,11 @@ code {
   transition: background-color 0.3s;
 }
 
+.dropzone-words {
+  visibility: hidden;
+  margin: 0;
+}
+
 .drop-active {
   border-color: #aaa;
 }
@@ -53,6 +58,21 @@ code {
 }
 
 .drag-drop {
+  display: inline-block;
+  padding: .75em;
+ 
+  color: #fff;
+  background-color: #83ccc5;
+  border: solid 2px #fff;
+  border-radius: 15%;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop-item {
   display: inline-block;
   padding: .75em;
  

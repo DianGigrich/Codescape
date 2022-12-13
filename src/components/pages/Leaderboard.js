@@ -1,10 +1,17 @@
-import React from 'react';
-import { Container, Box, Typography, Stack, Avatar } from '@mui/material'
-import EmojiEventsTwoToneIcon from '@mui/icons-material/EmojiEventsTwoTone';
+import React, { useState, useEffect } from 'react';
+import { Container, Box, Typography, Stack, } from '@mui/material'
+import Highscores from '../Highscores'
+import API from '../../utils/API'
 
+function Leaderboard(props) {
+    const [highscore, setHighscores] = useState([])
 
-function Leaderboard() {
-
+    useEffect(() => {
+        API.getHighscores(props).then(data => {
+            console.log(data)
+            setHighscores(data)
+        })
+    }, [props])
     return (
 
         <main>
@@ -20,7 +27,7 @@ function Leaderboard() {
                         align="center"
                         color="text.primary"
                         gutterBottom
-                        className="welcome"
+                        className="Highscores"
                     >
                         Highscores
                     </Typography>
@@ -31,19 +38,12 @@ function Leaderboard() {
                         spacing={2}
                         justifyContent="center"
                     >
-                        <Avatar sx={{ bgcolor: 'secondary.main' }}>
-                            <EmojiEventsTwoToneIcon />
-                        </Avatar>
-                        <Typography variant="h4">
-                            Kathy Bates :
-
-                        </Typography>
-                        <Typography variant="h4">
-                            12:24 :
-                        </Typography>
-                        <Typography variant="h4">
-                            Room of Error
-                        </Typography>
+                        <Highscores
+                            key={highscore.id}
+                            id={highscore.id}
+                            username={highscore.username}
+                            time={highscore.value}
+                            puzzle={highscore.puzzle} />
                     </Stack>
                 </Container>
 

@@ -1,0 +1,9 @@
+#new-puzzle-frame-container {
+    display: flex;
+    justify-content: center;
+}
+
+#new-puzzle-timer-container {
+    text-align: center;
+}
+

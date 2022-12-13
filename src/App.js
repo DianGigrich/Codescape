@@ -9,10 +9,12 @@ import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
-import Puzzle from './components/pages/Puzzle';
-import PuzzleImage from "./components/PuzzleImage";
-import Signup from "./components/pages/Signup"
-import Leaderboard from "./components/pages/Leaderboard"
+import RoomOfError from './components/pages/RoomOfError';
+import RoomOfErrorFrame from "./components/RoomOfErrorFrame";
+import NewPuzzle from './components/pages/NewPuzzle';
+import NewPuzzleFrame from './components/NewPuzzleFrame';
+import Signup from "./components/pages/Signup";
+import Leaderboard from "./components/pages/Leaderboard";
 import {
   ThemeProvider,
   CssBaseline,
@@ -20,19 +22,22 @@ import {
 } from "@mui/material"
 import * as interact from 'interactjs';
 
+
+let answerObj = {};
+
 const theme = createTheme({
   palette: {
-      mode: 'light',
-      primary: {
-          main: '#4db6ac',
-          light: '#83ccc5',
-      },
-      secondary: {
-          main: '#fb8c00',
-      },
+    mode: 'light',
+    primary: {
+      main: '#4db6ac',
+      light: '#83ccc5',
+    },
+    secondary: {
+      main: '#fb8c00',
+    },
   },
   typography: {
-      fontFamily: 'Droid Sans',
+    fontFamily: 'Droid Sans',
   }
 });
 
@@ -55,9 +60,10 @@ function dragMoveListener(event) {
 // this function is used later in the resizing and gesture demos
 window.dragMoveListener = dragMoveListener
 
+
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
-  accept: ['#pizza-drop', '#pasta-drop'],
+  accept: [],
 
   // Require a 75% element overlap for a drop to be possible
   overlap: 0.75,
@@ -76,7 +82,7 @@ interact('.dropzone').dropzone({
     // feedback the possibility of a drop
     dropzoneElement.classList.add('drop-target')
     draggableElement.classList.add('can-drop')
-   },
+  },
 
   ondragleave: function (event) {
     // remove the drop feedback style
@@ -85,17 +91,29 @@ interact('.dropzone').dropzone({
   },
 
   ondrop: function (event) {
-    if (event.target.innerText === 'Pizza' && event.relatedTarget.innerText === "Pizza") {
-      event.relatedTarget.classList.remove('drag-drop')
+    let solutionLength = Array.from(document.querySelectorAll('.dropzone')).length;
+    
+    answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
+    if (event.target.innerText === event.relatedTarget.innerText) {
+      event.relatedTarget.classList.remove('drag-drop')
       event.relatedTarget.classList.add('drag-stop')
 
     } else {
+      console.log("didn't match");
       event.relatedTarget.classList.remove('drop-active')
       event.relatedTarget.classList.remove('drop-target')
       event.relatedTarget.classList.add('drop-wrong')
     }
+   
+    if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
+      localStorage.setItem("correct", true)
+      localStorage.setItem("modalClosed", true)
+      answerObj = {}
+    }
   },
+
+  // Object.values()
 
   ondropdeactivate: function (event) {
     // remove active dropzone feedback
@@ -105,9 +123,7 @@ interact('.dropzone').dropzone({
   }
 })
 
-interact('.putmedown').dropzone({
 
-})
 
 interact('.drag-drop')
   .draggable({
@@ -119,11 +135,12 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener }
   })
 
-  interact('.welcome')
+// WELCOME dragable
+interact('.welcome')
   .draggable({
     inertia: true,
     modifiers: [
@@ -133,12 +150,12 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener }
   })
- 
 
-  interact('.putmedown')
+// FOOTER dragable
+interact('.putmedown')
   .draggable({
     inertia: true,
     modifiers: [
@@ -148,15 +165,14 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener },
-    
-    
-    onmove : function (event) {
+
+    onmove: function (event) {
       event.target.classList.add('putmedown1')
       event.target.textContent = "~PUT ME DOWN~"
     },
-    onend  : function (event) {
+    onend: function (event) {
       event.target.textContent = "Thank you!"
       event.target.classList.remove('putmedown1')
     },
@@ -167,9 +183,11 @@ function App() {
   const [userName, setUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-  const [showHeader, setShowHeader] = useState(true)
-  const [showFooter, setShowFooter] = useState(true)
-  const [showNav, setShowNav] = useState(true)
+  const [showHeader, setShowHeader] = useState(true);
+  const [showFooter, setShowFooter] = useState(true);
+  const [showNav, setShowNav] = useState(true);
+  const [correct, setCorrect] = useState(false);
+
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -231,13 +249,13 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
-          {showHeader && 
-          <Header />
+          {showHeader &&
+            <Header />
           }
-        {showNav && 
-          <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+          {showNav &&
+            <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           }
-        <Routes>
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login
               isLoggedIn={isLoggedIn}
@@ -254,18 +272,20 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="/leaderboard" element={<Leaderboard/>}/>
-            <Route path="/puzzle" element={<Puzzle/>}/>
+            <Route path="/leaderboard" element={<Leaderboard/>}/> 
+            <Route path="/room-of-error" element={<RoomOfError/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-          <Route path="/puzzle-frame" element={<PuzzleImage funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>} />
-          <Route path="*" element={<h1>404</h1>} />
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
+            <Route path='/new-puzzle' element={<NewPuzzle/>}/>
+            <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
+            <Route path="*" element={<h1>404</h1>} />
           </Routes>
-          {showFooter && 
-          <StickyFooter/>
+          {showFooter &&
+            <StickyFooter />
           }
-      </Router>
+        </Router>
       </ThemeProvider>
-  
+
     </div>
   );
 }

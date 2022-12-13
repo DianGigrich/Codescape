@@ -1,37 +1,53 @@
 import React, { useEffect, useState } from 'react'
-import {  useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import EditUser from '../EditUser'
 import API from "../../utils/API"
-import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent } from '@mui/material'
-import IconButton from '@mui/material/IconButton';
-import SettingsIcon from '@mui/icons-material/Settings';
+import { Box, Container, Typography, Stack, Button, Card, Grid, CardMedia, CardContent, FormControl, MenuItem, InputLabel, Select } from '@mui/material'
+
 
 function Profile(props) {
   const navigate = useNavigate();
-  useEffect(()=>{
-      const storedToken = localStorage.getItem("token")
-      if(storedToken){
-        console.log(storedToken)
-        API.getUserFromToken(storedToken).then(data=>{
-          console.log('-----', data)
-          if(data.user){
-            console.log(data)
-            props.setToken(storedToken)
-            props.setIsLoggedIn(true)
-            props.setUserId(data.user.id)
-            props.setUserName(data.user.username)
-          } else {
-              navigate("/404")
-          }
-        })
-      } else {
-        console.log('no stored token')
-        navigate("/login")
-      }
-    },[])
 
+  // select difficult list
+  const level = localStorage.getItem("difficulty")
+  const [difficulty, setDifficulty] = useState(level);
+
+  const handleLevelChange = (event) => {
+    var thishere = event.target.value
+    setDifficulty(thishere);
+     localStorage.setItem("difficulty", thishere)
+  };
+
+  // delete modal open
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+
+
+
+  useEffect(() => {
+
+    const storedToken = localStorage.getItem("token")
+
+    if (storedToken) {
+      console.log(storedToken)
+      API.getUserFromToken(storedToken).then(data => {
+
+        if (data.user) {
+          console.log(data)
+          props.setToken(storedToken)
+          props.setIsLoggedIn(true)
+          props.setUserId(data.user.id)
+          props.setUserName(data.user.username)
+        } else {
+          navigate("/404")
+        }
+      })
+    } else {
+      console.log('no stored token')
+      navigate("/login")
+    }
+  }, [])
+
 
   return (
 
@@ -55,7 +71,7 @@ function Profile(props) {
             Welcome {props.userName}!
           </Typography>
           <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            Play an escape room game to practice your javascript skills!  There are questions from beginner to advanced to helpe you improve.  Beat the time, escape the room, and practice, practice, practice!
+            Play an escape room game to practice your javascript skills!  There are questions from beginner to advanced to help you improve.  Beat the time, escape the room, and practice, practice, practice!
           </Typography>
           <Stack
             sx={{ pt: 4 }}
@@ -63,14 +79,32 @@ function Profile(props) {
             spacing={2}
             justifyContent="center"
           >
-            <Button variant="contained" color="secondary">Set Difficulty</Button>
-            <Button variant="outlined" color="secondary" onClick={handleOpen}><IconButton sx={{fontSize: 'large'}}>
-                    <SettingsIcon onClick={() => navigate('/profile')}/>
-                </IconButton>Edit User Account</Button>
+
+            {/* drop down menu */}
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Difficulty</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={difficulty}
+                  label="Difficulty"
+                  onChange={handleLevelChange}
+                >
+                  <MenuItem value="Easy">Easy</MenuItem>
+                  <MenuItem value="Med">Medium</MenuItem>
+                  <MenuItem value="Hard">Hard</MenuItem>
+                </Select>
+              </FormControl>
+            </Box>
+
+            {/* delete user account button */}
+            <Button variant="outlined" color="secondary" onClick={handleOpen}>Delete User Account</Button>
+
           </Stack>
         </Container>
       </Box>
-      {open && <EditUser open={open} setOpen={setOpen} />}
+      {open && <EditUser open={open} setOpen={setOpen} userId={props.userId} />}
       <Container sx={{ py: 8 }} maxWidth="md">
         <Grid container spacing={4}>
 
@@ -94,7 +128,7 @@ function Profile(props) {
                 }}
                 image="https://source.unsplash.com/random"
                 alt="random"
-                onClick={() => navigate('/Puzzle')}
+                onClick={() => navigate('/room-of-error')}
               />
             </Card>
 
@@ -119,6 +153,7 @@ function Profile(props) {
                 }}
                 image="https://placekitten.com/200/"
                 alt="random"
+                onClick={() => navigate('/new-puzzle')}
               />
             </Card>
 
