@@ -57,9 +57,10 @@ function dragMoveListener(event) {
 // this function is used later in the resizing and gesture demos
 window.dragMoveListener = dragMoveListener
 
+
 interact('.dropzone').dropzone({
   // only accept elements matching this CSS selector
-  accept: ['#pizza-drop', '#pasta-drop'],
+  accept: [],
 
   // Require a 75% element overlap for a drop to be possible
   overlap: 0.75,
@@ -87,9 +88,9 @@ interact('.dropzone').dropzone({
   },
 
   ondrop: function (event) {
-    if (event.target.innerText === 'Pizza' && event.relatedTarget.innerText === "Pizza") {
+    if (event.target.innerText === event.relatedTarget.innerText ) {
+      console.log(event.target.innerText, event.relatedTarget.innerText)
       event.relatedTarget.classList.remove('drag-drop')
-
       event.relatedTarget.classList.add('drag-stop')
 
     } else {
@@ -107,9 +108,7 @@ interact('.dropzone').dropzone({
   }
 })
 
-interact('.putmedown').dropzone({
 
-})
 
 interact('.drag-drop')
   .draggable({
@@ -121,10 +120,11 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+ 
     listeners: { move: dragMoveListener }
   })
 
+  // WELCOME dragable
   interact('.welcome')
   .draggable({
     inertia: true,
@@ -135,11 +135,11 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener }
   })
  
-
+// FOOTER dragable
   interact('.putmedown')
   .draggable({
     inertia: true,
@@ -150,9 +150,8 @@ interact('.drag-drop')
       })
     ],
     autoScroll: true,
-    // dragMoveListener from the dragging demo above
+
     listeners: { move: dragMoveListener },
-    
     
     onmove : function (event) {
       event.target.classList.add('putmedown1')
