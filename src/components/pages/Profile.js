@@ -128,7 +128,7 @@ function Profile(props) {
                 }}
                 image="https://source.unsplash.com/random"
                 alt="random"
-                onClick={() => navigate('/Puzzle')}
+                onClick={() => navigate('/room-of-error')}
               />
             </Card>
 
@@ -153,6 +153,7 @@ function Profile(props) {
                 }}
                 image="https://placekitten.com/200/"
                 alt="random"
+                onClick={() => navigate('/new-puzzle')}
               />
             </Card>
 

@@ -9,10 +9,12 @@ import Navbar from "./components/Navbar";
 import Login from "./components/pages/Login";
 import StickyFooter from "./components/Footer";
 import Header from "./components/Header";
-import Puzzle from './components/pages/Puzzle';
-import PuzzleImage from "./components/PuzzleImage";
-import Signup from "./components/pages/Signup"
-import Leaderboard from "./components/pages/Leaderboard"
+import RoomOfError from './components/pages/RoomOfError';
+import RoomOfErrorFrame from "./components/RoomOfErrorFrame";
+import NewPuzzle from './components/pages/NewPuzzle';
+import NewPuzzleFrame from './components/NewPuzzleFrame';
+import Signup from "./components/pages/Signup";
+import Leaderboard from "./components/pages/Leaderboard";
 import {
   ThemeProvider,
   CssBaseline,
@@ -20,7 +22,7 @@ import {
 } from "@mui/material"
 import * as interact from 'interactjs';
 
-let ifr = document.querySelector('#puzzle-frame')
+
 let answerObj = {};
 
 const theme = createTheme({
@@ -108,7 +110,7 @@ interact('.dropzone').dropzone({
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
       localStorage.setItem("correct", true)
       alert("this actually worked")
-
+      localStorage.setItem("modalClosed", true)
       answerObj = {}
     }
   },
@@ -183,16 +185,11 @@ function App() {
   const [userName, setUserName] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState("");
-  const [showHeader, setShowHeader] = useState(true)
-  const [showFooter, setShowFooter] = useState(true)
-  const [showNav, setShowNav] = useState(true)
+  const [showHeader, setShowHeader] = useState(true);
+  const [showFooter, setShowFooter] = useState(true);
+  const [showNav, setShowNav] = useState(true);
+  const [correct, setCorrect] = useState(false);
 
-  // puzzle states
-  const [currentShreddedFile, setShreddedFile] = useState(false)
-  const [currentTapeRoll, setTapeRoll] = useState(false)
-  const [currentFile, setFile] = useState(false)
-  const [currentKey, setKey] = useState(false)
-  const [receivedMessage, setReceivedMessage] = useState("")
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token")
@@ -211,15 +208,6 @@ function App() {
       console.log('no stored token')
     }
   }, [])
-
-  //   useEffect(() => {
-  //     window.addEventListener("message",function(e){
-  //         if(e.origin !== "http://localhost:3000/puzzle-frame") {
-  //             return;
-  //         } 
-  //         setReceivedMessage(e.data)
-  //     })
-  // },[])
 
   const handleLoginSubmit = userObj => {
     console.log('handle login')
@@ -286,10 +274,12 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="/leaderboard" element={<Leaderboard />} />
-            <Route path="/puzzle" element={<Puzzle setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/puzzle-frame" element={<PuzzleImage setKey={setKey} setFile={setFile} setShreddedFile={setShreddedFile} setTapeRoll={setTapeRoll} currentKey={currentKey} currentFile={currentFile} currentShreddedFile={currentShreddedFile} currentTapeRoll={currentTapeRoll} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} />} />
+            <Route path="/leaderboard" element={<Leaderboard/>}/> 
+            <Route path="/room-of-error" element={<RoomOfError/>}/>
+            <Route path="/aboutus" element={<AboutUs/>}/>
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
+            <Route path='/new-puzzle' element={<NewPuzzle/>}/>
+            <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
             <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter &&
