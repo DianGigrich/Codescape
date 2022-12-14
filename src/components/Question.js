@@ -137,6 +137,8 @@ export default function Question(props) {
   }
   shuffleArray(solutionArrCopy);
 
+  const answerArr = []
+
   return (
     <div>
       <Modal id="Modalrestriction"
@@ -170,7 +172,7 @@ export default function Question(props) {
           <Stack
             sx={{ pt: 4, width: "100%", color: "#b9e2de" }}
             direction="row"
-            spacing={1}
+            spacing={2}
             justifyContent="center"
 
           >
@@ -189,7 +191,8 @@ export default function Question(props) {
             justifyContent="center"
           >
             {solutionArrCopy.map((item, index) => {
-                 return (<QuestionAnswer
+              console.log(index, "index")
+              return (<QuestionAnswer
                 key={index}
                 id={question.id}
                 solution={item}
