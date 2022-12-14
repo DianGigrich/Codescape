@@ -4,9 +4,10 @@ import Questionitem from './Questionitem';
 import QuestionAnswer from './QuestionAnswer';
 import { Box, Typography, Modal, Button, Stack } from '@mui/material/';
 import '../index.css';
+import { SettingsPowerRounded } from '@mui/icons-material';
 
 export default function Question(props) {
-  const { open, setOpen, setTapeRoll, setBox, setFile, setKey, setShreddedFile, setShredder, setTapeDispenser, setFileCabinet  } = props;
+  const { open, setOpen, setTapeRoll, setBox, setFile, setKey, setShreddedFile, setShredder, setTapeDispenser, setFileCabinet, setChest, setSword, setDoorKey, setChestKey, setRopeFiber, setBentNail, setNailString, setCauldron, setTapestry  } = props;
   
   const handleClose = () => {
     setOpen(false);
@@ -50,6 +51,56 @@ export default function Question(props) {
               localStorage.setItem("correct", false);
               console.log("I clicked the file cabinet")
               break;
+          // New Puzzle conditions
+          case "chest":
+              setSword(true);
+              setChest(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the chest")
+              break;
+          case "cauldron":
+              setBentNail(true);
+              setCauldron(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the cauldron")
+              break;
+          case "cauldron and rope":
+              setNailString(true);
+              setRopeFiber(false);
+              setCauldron(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the cauldron with Rope fiber")
+              break;
+          case "rope":
+              setRopeFiber(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the rope")
+              break;
+          case "rope and nail":
+              setNailString(true);
+              setBentNail(false);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the rope with the bent nail")
+              break;
+          case "barrel":
+              setNailString(false);
+              setDoorKey(true);
+              localStorage.setItem("click", "");
+              localStorage.setItem("correct", false);
+              console.log("I clicked the barrel")
+              break;
+          case "tapestry":
+            setChestKey(true);
+            setTapestry(true);
+            localStorage.setItem("click", "");
+            localStorage.setItem("correct", false);
+            console.log("I clicked the tapestry")
+            break;
       }
   } else {
       console.log(localStorage.getItem("correct"))

@@ -1,6 +1,10 @@
 /* #puzzle-container {
     display: block;
 } */
+.puzzle-title {
+    text-align: center;
+    text-decoration: underline;
+}
 
 .room-img {
     width: 565px;
