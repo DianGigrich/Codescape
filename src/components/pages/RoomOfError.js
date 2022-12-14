@@ -11,6 +11,7 @@ function RoomOfError () {
         {/* <Start/> */}
         
         <Box className='puzzle-container'>
+        <h3 className="puzzle-title">Room of Error</h3>
         <div id='puzzle-timer-container'>
             <p id='puzzle-timer'>
                 Time Left: <Timer max={300}/>
