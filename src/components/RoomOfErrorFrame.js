@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Question from './Question';
-import { Container, Popper, Box } from '@mui/material/';
+import { Popper, Box } from '@mui/material/';
 
 // import all of the images
 // image 1 assets
@@ -192,7 +192,7 @@ export default function RoomOfErrorFrame({ handlePostHighscores, funcHeader, fun
     }
 
     return (
-        <Container>
+        <>
             {/* <Button onClick={handleOpen}>QUESTION BUTTON</Button> */}
             {open && <Question open={open} setOpen={setOpen} setTapeRoll={setTapeRoll} setBox={setBox} setShreddedFile={setShreddedFile} setShredder={setShredder} setFile={setFile} setKey={setKey} setTapeDispenser={setTapeDispenser} setFileCabinet={setFileCabinet} />}
             <div id='puzzle-images'>
@@ -251,6 +251,6 @@ export default function RoomOfErrorFrame({ handlePostHighscores, funcHeader, fun
                     {popperText()}
                 </Box>
             </Popper>
-        </Container>
+        </>
     )
 }
