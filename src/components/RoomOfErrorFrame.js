@@ -43,13 +43,6 @@ export default function RoomOfErrorFrame({ handlePostHighscores, funcHeader, fun
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
 
-    const [count, setCount] = useState(1);
-
-    useEffect(() => {
-        setCount(2);
-        console.log(count) //I thought that this would log "2" but it actually logs 1
-    }, [funcHeader])
-
     // gets rid of header, nav, footer in iframe
     funcHeader(false)
     funcFooter(false)
