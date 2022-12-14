@@ -89,8 +89,10 @@ export default function Home() {
                         spacing={2}
                         justifyContent="center"
                     >
-                        <Button variant="contained" color="secondary">This does nothing</Button>
-                        <Button variant="outlined" color="secondary">This also does nothing</Button>
+                     
+
+                        {/* <Button variant="contained" color="secondary">This does nothing</Button>*/}
+                        <Button variant="outlined" color="secondary">Hey! There is a fun trick hidden in this page. Can you find it?</Button>
                     </Stack>
 
                 </Container>
