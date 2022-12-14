@@ -167,7 +167,7 @@ export default function RoomOfErrorFrame({ handlePostHighscores, funcHeader, fun
             setTarget(e.currentTarget.id)
         } else {
             userid = parseInt(localStorage.getItem("userid"))
-            scoreid = localStorage.getItem("timer")
+            scoreid = parseInt(localStorage.getItem("timer"))
 
             console.log("you win")
             postTheScore()
