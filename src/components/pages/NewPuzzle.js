@@ -8,7 +8,7 @@ export default function NewPuzzle () {
 return (
     <div id='new-puzzle'>      
         {/* <Start/> */}
-        <h3 className="puzzle-title">Castle of Chaos (working title)</h3>
+        <h3 className="puzzle-title">Castle of Chaos</h3>
         <Box className='puzzle-container'>
             <div id='new-puzzle-timer-container'>
                 <p id='new-puzzle-timer'>
