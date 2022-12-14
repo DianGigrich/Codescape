@@ -33,14 +33,14 @@ function Login(props) {
         }
 
     }, [props.isLoggedIn])
-    const [loginName, setLoginName] = useState("")
+    const [loginEmail, setLoginEmail] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
 
 
     const loginHandle = e => {
         e.preventDefault();
         props.handleLoginSubmit({
-            username: loginName,
+            email: loginEmail,
             password: loginPassword
         })
     }
@@ -66,12 +66,12 @@ function Login(props) {
                         margin="normal"
                         required
                         fullWidth
-                        label="Username"
-                        id="name"
-                        name="username"
-                        autoComplete="name"
-                        value={loginName}
-                        onChange={e => setLoginName(e.target.value)}
+                        label="Email"
+                        id="email"
+                        name="email"
+                        autoComplete="email"
+                        value={loginEmail}
+                        onChange={e => setLoginEmail(e.target.value)}
                     />  
                     <TextField margin="normal"
                         required

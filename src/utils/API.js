@@ -1,7 +1,7 @@
 // in dev mode
-const URL_PREFIX = "http://localhost:3001"
+// const URL_PREFIX = "http://localhost:3001"
 // in prod mode
-// const URL_PREFIX= "https://codescaper.herokuapp.com/"
+const URL_PREFIX= "https://codescaper.herokuapp.com/"
 const level = localStorage.getItem("difficulty") || 2
 
 
@@ -84,6 +84,16 @@ const API = {
             }
         }).then(res => res.json())
     },
+    
+   postHighscores: (userObj) => {
+    return fetch(`${URL_PREFIX}/api/highscores`, {
+        method: "POST",
+        body: JSON.stringify(userObj),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json())
+}
 
 }
 export default API

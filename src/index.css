@@ -17,15 +17,11 @@ code {
   background-color: #b9e2de;
   border: dashed 4px transparent;
   border-radius: 4px;
-  margin: 10px auto 30px;
-  padding: 10px;
-  /* width: 80%; */
+  margin: 10px auto 10px;
+  padding: 20px 30px;
+  width: 100%;
+  font-size:0;
   transition: background-color 0.3s;
-}
-
-.dropzone-words {
-  visibility: hidden;
-  margin: 0;
 }
 
 .drop-active {
@@ -60,23 +56,8 @@ code {
 .drag-drop {
   display: inline-block;
   padding: .75em;
+  width:100%;
  
-  color: #fff;
-  background-color: #83ccc5;
-  border: solid 2px #fff;
-  border-radius: 15%;
-
-  touch-action: none;
-  transform: translate(0px, 0px);
-
-  transition: background-color 0.3s;
-}
-
-.drag-drop-item {
-  display: inline-block;
-  padding: .75em;
- 
-
   color: #fff;
   background-color: #83ccc5;
   border: solid 2px #fff;
