@@ -159,36 +159,37 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
         } else {
             handleOpen()
             localStorage.setItem("click", "fileCabinet")
-            console.log("handleKeyState is working!")
+
         }
     }
+    const [userid, setUserId] = useState("")
+    const [score, setScore] = useState("")
+
     const postTheScore = e => {
-        e.preventDefault();
+        console.log(score, userid)
         props.handlePostHighscores({
             value: score,
             user_id: userid,
         });
 
     }
-    const [userid, setUserId] = useState("")
-    const [score, setScore] = useState("")
+
 
     function handleWin() {
         if (currentKey === false) {
             alert("This door is locked!")
+            console.log("you dont have they key")
         } else {
             setUserId(localStorage.getItem("userid"))
             setScore(localStorage.getItem("timer"))
-            postTheScore
-
+console.log("you win")
+            postTheScore()
             alert("You've won!!!")
         }
     }
 
     return (
         <>
-
-            {/* <Button onClick={handleOpen}>QUESTION BUTTON</Button> */}
             {open && <Question open={open} setOpen={setOpen} setTapeRoll={setTapeRoll} setBox={setBox} setShreddedFile={setShreddedFile} setShredder={setShredder} setFile={setFile} setKey={setKey} setTapeDispenser={setTapeDispenser} setFileCabinet={setFileCabinet} />}
             <div id='puzzle-images'>
                 <button id="prev-btn" onClick={handleViewChangePrev}>

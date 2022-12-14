@@ -28,14 +28,14 @@ export default function Navbar(props) {
         indicatorColor="secondary"
         aria-label="secondary tabs example"
       >
-        <Tab textColor="primary" value="Home" label="Home" onClick={() => navigate('/')} />
+        <Tab textColor="primary" value={0} label="Home" onClick={() => navigate('/')} />
 
-        <Tab textColor="primary" value="Leaderboard" label="Leaderboard" onClick={() => navigate('/Leaderboard')} />
+        <Tab textColor="primary" value={2} label="Leaderboard" onClick={() => navigate('/Leaderboard')} />
 
-        <Tab textColor="primary" value="AboutUs" label="About Us" onClick={() => navigate('/AboutUs')} />
+        <Tab textColor="primary" value={3} label="About Us" onClick={() => navigate('/AboutUs')} />
 
         {props.isLoggedIn ? 
-        <Tab value="Profile" textColor="primary" label="Profile" onClick={() => navigate('/Profile')} />
+        <Tab textColor="primary" label="Profile" onClick={() => navigate('/Profile')} />
        :null} 
         {props.isLoggedIn ? 
         <Tab textColor="primary" onClick={logoutFunc} label="Logout" />
