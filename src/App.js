@@ -236,12 +236,13 @@ function App() {
         navigate('/Profile')
       }
     })
-    console.log(3)
+    
   }
   const handlePostHighscores = (userObj) => {
-
+console.log(userObj, "app here")
     API.postHighscores(userObj)
   }
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);

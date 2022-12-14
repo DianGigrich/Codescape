@@ -38,7 +38,8 @@ import tapeRoll from './../assets/RoomOfError/tapeRoll.png';
 
 
 
-export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, props }) {
+export default function RoomOfErrorFrame( { handlePostHighscores, funcHeader, funcFooter, funcNav, props}) {
+    
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -162,27 +163,28 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
 
         }
     }
-    const [userid, setUserId] = useState("")
-    const [score, setScore] = useState("")
+    let scoreid = 0;
+    let userid = "";
 
     const postTheScore = e => {
-        console.log(score, userid)
-        props.handlePostHighscores({
-            value: score,
+       
+        console.log(scoreid, userid, "im here now")
+        handlePostHighscores({
+            value: scoreid,
             user_id: userid,
         });
-
     }
-
 
     function handleWin() {
         if (currentKey === false) {
             alert("This door is locked!")
             console.log("you dont have they key")
         } else {
-            setUserId(localStorage.getItem("userid"))
-            setScore(localStorage.getItem("timer"))
-console.log("you win")
+            
+             userid = parseInt(localStorage.getItem("userid"))
+             scoreid = localStorage.getItem("timer")
+
+            console.log("you win")
             postTheScore()
             alert("You've won!!!")
         }

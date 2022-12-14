@@ -34,12 +34,11 @@ function Leaderboard(props) {
                     </Typography>
                 </Container>
                 <Container >
-                    
                     {highscores.map((item) => (
                         <Highscores
                             key={item.id}
                             id={item.id}
-                            username={item.user.username}
+                            username={item.id}
                             time={item.value}
                         />
                     ))
