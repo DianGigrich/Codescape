@@ -93,7 +93,7 @@ interact('.dropzone').dropzone({
 
   ondrop: function (event) {
     let solutionLength = Array.from(document.querySelectorAll('.dropzone')).length;
-    
+
     answerObj[event.target.innerText] = (event.target.innerText === event.relatedTarget.innerText);
 
     if (event.target.innerText === event.relatedTarget.innerText) {
@@ -106,7 +106,7 @@ interact('.dropzone').dropzone({
       event.relatedTarget.classList.remove('drop-target')
       event.relatedTarget.classList.add('drag-wrong')
     }
-   
+
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
       localStorage.setItem("correct", true)
       localStorage.setItem("modalClosed", true)
@@ -239,6 +239,12 @@ function App() {
     })
     console.log(3)
   }
+
+  const handlePostHighscores = (userObj) => {
+    console.log(userObj, "app here")
+    API.postHighscores(userObj)
+  }
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
@@ -274,12 +280,12 @@ function App() {
               setUserId={setUserId}
               setUserName={setUserName}
             />} />
-            <Route path="/leaderboard" element={<Leaderboard/>}/> 
-            <Route path="/room-of-error" element={<RoomOfError/>}/>
-            <Route path="/aboutus" element={<AboutUs/>}/>
-            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
-            <Route path='/new-puzzle' element={<NewPuzzle/>}/>
-            <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
+            <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/room-of-error" element={<RoomOfError />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame handlePostHighscores={handlePostHighscores} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect} />} />
+            <Route path='/new-puzzle' element={<NewPuzzle />} />
+            <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} />} />
             <Route path="*" element={<h1>404</h1>} />
           </Routes>
           {showFooter &&

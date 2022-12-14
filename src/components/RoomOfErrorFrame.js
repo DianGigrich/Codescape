@@ -36,7 +36,7 @@ import tapeRoll from './../assets/RoomOfError/tapeRoll.png';
 
 
 
-export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, correct, setCorrect }) {
+export default function RoomOfErrorFrame({ handlePostHighscores, funcHeader, funcFooter, funcNav, correct, setCorrect }) {
     // question modal states?
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
