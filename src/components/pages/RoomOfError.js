@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import './style/RoomOfError.css';
-import { Box } from '@mui/material/';
+import { Box, Container } from '@mui/material/';
 
 
 
@@ -75,9 +75,8 @@ function RoomOfError () {
         clearTimer(getDeadTime());
     }, []);
     return (
-<div id='puzzle'>      
-        {/* <Start/> */}
-        
+<Container id='puzzle'>      
+
         <Box className='puzzle-container'>
         <h3 className="puzzle-title">Room of Error</h3>
         <div id='puzzle-timer-container'>
@@ -90,12 +89,10 @@ function RoomOfError () {
         <div id='room-of-error-frame-container'>
             <iframe id='room-of-error-frame' title='room-of-error-image' src='/room-of-error-frame' scrolling="no" style={{width: '800px', height: '652px', display: 'flex', justifySelf: 'space-around', overflow: 'hidden'}}/>
         </div>
-        {/* TODO:<Question/> */}
-
-        
+              
     </Box>
     
-</div>
+</Container>
     )
 }
 
