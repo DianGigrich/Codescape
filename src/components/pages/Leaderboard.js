@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Box, Typography, } from '@mui/material'
+import { Container, Box, Typography, Stack, } from '@mui/material'
 import Highscores from '../Highscores'
 import API from '../../utils/API'
 
 function Leaderboard(props) {
-    const [highscores, setHighscores] = useState([])
+    const [highscore, setHighscores] = useState([])
 
     useEffect(() => {
         API.getHighscores(props).then(data => {
@@ -12,7 +12,6 @@ function Leaderboard(props) {
             setHighscores(data)
         })
     }, [props])
-    console.log(highscores)
     return (
 
         <main>
@@ -34,16 +33,18 @@ function Leaderboard(props) {
                     </Typography>
                 </Container>
                 <Container >
-                    {highscores.map((item) => (
+                    <Stack sx={{ pt: 4 }}
+                        direction="row"
+                        spacing={2}
+                        justifyContent="center"
+                    >
                         <Highscores
-                            key={item.id}
-                            id={item.id}
-                            username={item.id}
-                            time={item.value}
-                        />
-                    ))
-                    }
-
+                            key={highscore.id}
+                            id={highscore.id}
+                            username={highscore.username}
+                            time={highscore.value}
+                            puzzle={highscore.puzzle} />
+                    </Stack>
                 </Container>
 
             </Box>
