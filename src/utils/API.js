@@ -56,13 +56,13 @@ const API = {
         let randId = 0
         console.log(level, "=level")
         // (easy 1-10, med 11-20, hard 21-30)
-        if (level === 1 || "easy") {
+        if (level === 1 || "Easy") {
             randId = Math.floor(Math.random() * (11 - 1) + 1);
             console.log(randId)
-        } else if (level === 2 || "medium") {
+        } else if (level === 2 || "Medium") {
             randId = Math.floor(Math.random() * (21 - 11) + 11);
             console.log(randId)
-        } else if (level === 3 || "hard") {
+        } else if (level === 3 || "Hard") {
             randId = Math.floor(Math.random() * (31 - 21) + 21);
             console.log(randId)
         } else {

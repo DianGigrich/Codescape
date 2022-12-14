@@ -92,7 +92,7 @@ function Profile(props) {
                   onChange={handleLevelChange}
                 >
                   <MenuItem value="Easy">Easy</MenuItem>
-                  <MenuItem value="Med">Medium</MenuItem>
+                  <MenuItem value="Medium">Medium</MenuItem>
                   <MenuItem value="Hard">Hard</MenuItem>
                 </Select>
               </FormControl>
