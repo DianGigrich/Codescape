@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Question from './Question';
-import { Button } from '@mui/material/';
+import { Button, Popper, Box } from '@mui/material/';
 
 // import all of the images
 // image 1 assets
@@ -44,15 +44,8 @@ funcNav(false)
 
 // popover
 const [anchorEl, setAnchorEl] = useState(null);
-const handlePopClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    
-  };
-  const handlePopClose = () => {
-    setAnchorEl(null);
-  };
-  const popopen = Boolean(anchorEl);
-  const id = popopen ? 'simple-popover' : undefined;
+const openPopper = Boolean(anchorEl)
+const [currentTarget, setTarget] = useState("")
 
 // set state of puzzle
 const [currentCastleView, setCastleView] = useState(1)
@@ -89,26 +82,29 @@ function handleViewChangePrev () {
 }
 
 // click events
-function handleDoorwayState () {
+function handleDoorwayState (e) {
     if (currentDoorKey === true) {
         alert("You win!")
     } else {
-        alert("The door is locked!")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     }
 }
 
-function handleChestState () {
+function handleChestState (e) {
     if (currentChestKey === true) {
         localStorage.setItem("click","chest")
         handleOpen()
     } else {
-        alert("The chest is locked!")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     }
 }
 
-function handleCauldronState () {
+function handleCauldronState (e) {
     if (currentCauldron === true) {
-        alert("you don't even want to know what the mysterious liquid is that spilled out of here...")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     } else if (currentRopeFiber === true){
         localStorage.setItem("click","cauldron and rope")
         handleOpen()
@@ -118,15 +114,18 @@ function handleCauldronState () {
     }
 }
 
-function handleShackles () {
-    alert("They make a satisfying clanking sound but nothing happens")
+function handleShackles (e) {
+    setAnchorEl(anchorEl ? null : e.currentTarget)
+    setTarget(e.currentTarget.id)
 }
 
-function handleRopeCoilState () {
+function handleRopeCoilState (e) {
     if (currentSword === false) {
-        alert("This rope couold be useful, but how?")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     } else if (currentRopeFiber === true) {
-        alert("You already have all the rope fiber you need!")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     } else if (currentBentNail === true){
         localStorage.setItem("click","rope and nail")
         handleOpen()
@@ -136,29 +135,53 @@ function handleRopeCoilState () {
     }
 }
 
-function handleBarrelState () {
+function handleBarrelState (e) {
     if (currentDoorKey === true) {
-        alert("You fished out the key from the bottom of the barrel!")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     } else if (currentNailString === false) {
-        alert("You peek through the hole at the top and see something shiny at the bottom")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     } else {
         localStorage.setItem("click","barrel")
         handleOpen()
     }
 }
 
-function handleTapestryState () {
+function handleTapestryState (e) {
     if (currentTapestry === true) {
-        alert("There is nothing left in the secret compartment except for some cobwebs")
+        setAnchorEl(anchorEl ? null : e.currentTarget)
+        setTarget(e.currentTarget.id)
     } else {
         localStorage.setItem("click","tapestry")
         handleOpen()
     }
 }
 
-
-
-
+function popperText (targetId) {
+    console.log(targetId)
+    if (currentTarget === "doorway") {
+        return "The door is locked!"
+    } else if (currentTarget === "wall-shackles") {
+        return "They make a satisfying clanking sound but nothing happens"
+    } else if (currentTarget === "closed-chest") {
+        return "The chest is locked!"
+    } else if (currentTarget === "tipped-cauldron") {
+        return "you don't even want to know what the mysterious liquid is that spilled out of here..."
+    } else if (currentTarget === "rope-coil" && currentSword === false) {
+        return "This rope could be useful, but how?"
+    } else if (currentTarget === "rope" && currentRopeFiber === true) {
+        return "You've already cut off a piece of rope"
+    } else if (currentTarget === "barrel" && currentDoorKey === true) {
+        return "You fished out the key from the bottom of the barrel!"
+    } else if (currentTarget === "barrel") {
+        return "You peek through the hole at the top and see something shiny at the bottom"
+    } else if (currentTarget === "tapestry") {
+        return "There is nothing left in the secret compartment except for some cobwebs"
+    } else {
+        console.log("failed!")
+    }
+}
 
 
 return (
@@ -206,6 +229,11 @@ return (
                 <img id="nail-string" src={nailString} alt="string tied around a bent nail" style={currentNailString === false ? {visibility: "hidden", height: "50px"}: {height: "50px"}}/>
             </div>
         </div>
+        <Popper id="popper" open={openPopper} anchorEl={anchorEl}>
+            <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+                {popperText()}
+            </Box>
+        </Popper>
     </>
     )
 }

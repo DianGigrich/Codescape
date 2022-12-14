@@ -187,10 +187,10 @@ return (
         {/* <iframe title="title" src="./html or URl"/> */}
         <div id='puzzle-image-1' style={currentView === 1 ? {display:'inline'}: {display:'none'}}>
             <img className='room-img' src={room} alt='an empty room with red walls'/>
-            <img id="door" src={door} alt="door" onClick={handleWin} aria-describedby="doorPopper"/>
+            <img id="door" src={door} alt="door" onClick={handleWin} aria-describedby="popper"/>
             <img id="knob" src={doorknob} alt="doorknob"/>
                 {/*changes source based on state*/}
-            <img className="file-cabinet" id='closed-file-cabinet' src={closedFileCabinet} style={currentFileCabinet === true ? {display: "none"} : {}} alt="file cabinet closed with a potted plant on top" onClick={handleKeyState} aria-describedby="fileCabinetPopper"/>
+            <img className="file-cabinet" id='closed-file-cabinet' src={closedFileCabinet} style={currentFileCabinet === true ? {display: "none"} : {}} alt="file cabinet closed with a potted plant on top" onClick={handleKeyState} aria-describedby="popper"/>
             <img className="file-cabinet" id='open-file-cabinet'src={openFileCabinet} style={currentFileCabinet === false ? {display: "none"} : {}} alt="open file cabinet with a potted plant on top"/>
         </div>
         {/* div is shown/hidden based on state of current image */}
@@ -199,8 +199,8 @@ return (
             <img className="window" id="window-room-2" src={window} alt="window seperated into four panes"/>
             <img id="table" src={table} alt="empty table"/>
                 {/*changes source based on state*/}
-            <img className="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState} aria-describedby="emptyTapeDispenserPopper"/>
-            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}} alt="full tape dispenser" onClick={handleFileState} aria-describedby="tapeDispenserPopper"/>
+            <img className="tape-dispenser" id="tape-dispenser-empty" src={emptyTapeDispenser} style={currentTapeDispenser === true ? {display: "none"} : {}} alt="empty tape dispenser" onClick={handleTapeDispenserState} aria-describedby="popper"/>
+            <img className="tape-dispenser" id="tape-dispenser-full" src={fullTapeDispenser} style={currentTapeDispenser === false ? {display: "none"}: {}} alt="full tape dispenser" onClick={handleFileState} aria-describedby="popper"/>
         </div>
         {/* div is shown/hidden based on state of current image */}
         <div id="puzzle-image-3" style={currentView === 3 ? {display:'inline'}: {display: 'none'}}>
@@ -231,7 +231,7 @@ return (
             <img id="tape-roll" src={tapeRoll} alt="tape roll" style={currentTapeRoll === false ? {visibility: "hidden", height: "50px"}: {height: "50px"}}/>
         </div>
     </div>
-    <Popper id="emptyTapeDispenserPopper" open={openPopper} anchorEl={anchorEl}>
+    <Popper id="popper" open={openPopper} anchorEl={anchorEl}>
         <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
             {popperText()}
         </Box>
