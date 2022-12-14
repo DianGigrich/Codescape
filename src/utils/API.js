@@ -76,9 +76,23 @@ const API = {
         }).then(res => res.json())
     },
 
+    // highscores
     getHighscores: () => {
         return fetch(`${URL_PREFIX}/api/highscores/`, {
             method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => res.json())
+    },
+
+   postHighscores: (score, userId) => {
+        return fetch(`${URL_PREFIX}/api/highscores`, {
+            method: "POST",
+            body: JSON.stringify({
+                value: score,
+                user_id: userId,
+            }),
             headers: {
                 "Content-Type": "application/json"
             }

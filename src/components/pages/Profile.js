@@ -38,24 +38,19 @@ function Profile(props) {
           props.setToken(storedToken)
           props.setIsLoggedIn(true)
           props.setUserId(data.user.id)
+          
           props.setUserName(data.user.username)
         } else {
           navigate("/404")
         }
-        
+
       })
     } else {
       console.log('no stored token')
       navigate("/login")
     }
-  }, [data])
-  useEffect (()=> {
-    API.getHighscores(props).then(scores => {
-          console.log(scores)
-          setHighscores(scores)
-        })
-  }, [scores]
-  )
+  }, [])
+ 
 
 
   return (

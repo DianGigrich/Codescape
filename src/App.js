@@ -213,6 +213,7 @@ function App() {
       console.log(data);
       if (data.token) {
         setUserId(data.user.id)
+        localStorage.setItem("userId", data.user.id)
         setToken(data.token)
         setIsLoggedIn(true)
         setUserName(data.user.username)

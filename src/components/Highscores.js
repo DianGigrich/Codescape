@@ -18,10 +18,6 @@ export default function Highscores(props) {
                 12:24 :
                 {props.time}
             </Typography>
-            <Typography variant="h4">
-                Room of Error
-                {props.puzzle}
-            </Typography>
         </>
     );
 }

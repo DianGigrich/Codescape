@@ -4,7 +4,7 @@ import Highscores from '../Highscores'
 import API from '../../utils/API'
 
 function Leaderboard(props) {
-    const [highscore, setHighscores] = useState([])
+    const [highscores, setHighscores] = useState([])
 
     useEffect(() => {
         API.getHighscores(props).then(data => {
@@ -12,6 +12,7 @@ function Leaderboard(props) {
             setHighscores(data)
         })
     }, [props])
+console.log(highscores)
     return (
 
         <main>
@@ -38,12 +39,15 @@ function Leaderboard(props) {
                         spacing={2}
                         justifyContent="center"
                     >
-                        <Highscores
-                            key={highscore.id}
-                            id={highscore.id}
-                            username={highscore.username}
-                            time={highscore.value}
-                            puzzle={highscore.puzzle} />
+                        {highscores.map((item) => (
+                            <Highscores
+                            key={item.id}
+                            id={item.id}
+                            username={item.user_id}
+                            time={item.value}
+                             />
+                        ))
+                        }
                     </Stack>
                 </Container>
 
