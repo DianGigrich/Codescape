@@ -17,13 +17,12 @@ function Header(props) {
                     component="h2"
                     variant="h2"
                     align="center"
-                    noWrap
+                    // noWrap
                     sx={{ flex: 1, letterSpacing: 6 }}
                 >
                     Codescape
                 </Typography>
 
-                {/* TODO: THIS BUTTON DOES NOTHING RIGHT NOW */}
                 
                 <Button variant="contained" color="secondary" size="small" onClick={() => navigate('/login/Signup')}>
                     Sign up
@@ -35,19 +34,7 @@ function Header(props) {
                 variant="dense"
                 sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
             >
-                {/* TODO: um, i dunno, nav links? */}
-                {/* {sections.map((section) => (
-                    <Link
-                        color="inherit"
-                        noWrap
-                        key={section.title}
-                        variant="body2"
-                        href={section.url}
-                        sx={{ p: 1, flexShrink: 0 }}
-                    >
-                        {section.title}
-                    </Link>
-                ))} */}
+            
             </Toolbar>
         </React.Fragment>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+import {Box} from '@mui/material/';
 
 
 export default function Navbar(props) {
@@ -19,6 +19,7 @@ export default function Navbar(props) {
   };
 
   return (
+  
     <Box sx={{ width: '100%' }}>
       <Tabs
         centered
@@ -44,6 +45,7 @@ export default function Navbar(props) {
          } 
       </Tabs>
     </Box>
+
   )
 }
 

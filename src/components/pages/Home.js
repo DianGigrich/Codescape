@@ -83,18 +83,17 @@ export default function Home() {
                     <Typography variant="h5" align="center" color="text.secondary" paragraph>
                         Play an escape room game to practice your javascript skills!  There are questions from beginner to advanced to help you improve.  Beat the time, escape the room, and practice, practice, practice!
                     </Typography>
+                    <Button variant="outlined" color="secondary">Hey! There is a fun trick hidden in this page. Can you find it?</Button>
                     <Stack
                         sx={{ pt: 4 }}
                         direction="row"
                         spacing={2}
                         justifyContent="center"
                     >
+                    <img src={require("../../assets/Pics/coolcode.png")} height="400"/>
+                        
                      
-
-                        {/* <Button variant="contained" color="secondary">This does nothing</Button>*/}
-                        <Button variant="outlined" color="secondary">Hey! There is a fun trick hidden in this page. Can you find it?</Button>
                     </Stack>
-
                 </Container>
             </Box>
 

@@ -109,7 +109,7 @@ function Profile(props) {
         <Grid container spacing={4}>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Card
+            <Card onClick={() => navigate('/room-of-error')}
               sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
@@ -128,13 +128,13 @@ function Profile(props) {
                 }}
                 image={require("../../assets/Pics/david-pupaza-heNwUmEtZzo-unsplash.jpg")}
                 alt="random"
-                onClick={() => navigate('/room-of-error')}
+                
               />
             </Card>
 
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card
+            <Card onClick={() => navigate('/new-puzzle')}
               sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
@@ -153,7 +153,7 @@ function Profile(props) {
                 }}
                 image={require("../../assets/Pics/castle.jpg")}
                 alt="random"
-                onClick={() => navigate('/new-puzzle')}
+                
               />
             </Card>
 
@@ -178,17 +178,7 @@ function Profile(props) {
         </Grid>
       </Container>
     </main>
-    //     {/* {
-    //       props.isLoggedIn?(
-    //       <div className="Profile">
-    //       <h1></h1>
 
-    //       </div>
-    //       ):(
-    //           <h1>Please wait, something may have gone wrong.</h1>
-    //       )
-    //   }
-    //  */}
   )
 }
 

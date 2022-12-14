@@ -18,7 +18,8 @@ import Leaderboard from "./components/pages/Leaderboard";
 import {
   ThemeProvider,
   CssBaseline,
-  createTheme
+  createTheme,
+  Container
 } from "@mui/material"
 import * as interact from 'interactjs';
 
@@ -253,7 +254,7 @@ function App() {
     setUserName("")
   }
   return (
-    <div className="App">
+    <Container className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
@@ -294,7 +295,7 @@ function App() {
         </Router>
       </ThemeProvider>
 
-    </div>
+    </Container>
   );
 }
 
