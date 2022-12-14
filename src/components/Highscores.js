@@ -1,28 +1,36 @@
 import * as React from 'react';
-import { Typography, Avatar } from '@mui/material/';
+import { Typography, Avatar, Stack, Container } from '@mui/material/';
 import EmojiEventsTwoToneIcon from '@mui/icons-material/EmojiEvents';
 
 
 export default function Highscores(props) {
 
     return (
-        <>
-            <Avatar sx={{ bgcolor: 'secondary.main' }}>
+        <Stack sx={{ pt: 4 }}
+            direction="row"
+            spacing={2}
+            justifyContent="center"
+        ><Avatar sx={{ bgcolor: 'secondary.main' }}>
                 <EmojiEventsTwoToneIcon />
             </Avatar>
-            <Typography variant="h4">
-                Kathy Bates :
-                {props.username}
+            <Container direction="row">
+                <Typography variant="h4">
+
+                    {props.username}
+                </Typography>
+            </Container>
+            <Container>
+            <Typography>
+                .....................................................
             </Typography>
-            <Typography variant="h4">
-                12:24 :
-                {props.time}
-            </Typography>
-            <Typography variant="h4">
-                Room of Error
-                {props.puzzle}
-            </Typography>
-        </>
+            </Container>
+            <Container>
+                <Typography variant="h4">
+
+                    {props.time}
+                </Typography>
+            </Container>
+        </Stack>
     );
 }
 

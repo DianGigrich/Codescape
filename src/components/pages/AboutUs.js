@@ -57,7 +57,7 @@ function AboutUs() {
                                         Pooja Agarwal
                                     </Typography>
                                     <Typography>
-                                        Also has something to say!
+                                    I am graduated with a bachelor' degree in Electronics and Communication Engineering and having experience of five years. I am keen to learn new things as and so i started my coding journey.After graduating from full stack bootcamp ,i hope to start work as a full stack developer.
                                     </Typography>
                                 </CardContent>
                             </Card>
