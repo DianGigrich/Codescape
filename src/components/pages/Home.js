@@ -89,8 +89,7 @@ export default function Home() {
                         spacing={2}
                         justifyContent="center"
                     >
-                        <Button variant="contained" color="secondary">This does nothing</Button>
-                        <Button variant="outlined" color="secondary">This also does nothing</Button>
+                        <img src={require("../../assets/Pics/coolcode.png")} height="600"/>
                     </Stack>
 
                 </Container>
