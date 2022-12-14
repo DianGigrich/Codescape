@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Question from './Question';
-// import { Button, Popper, Box } from '@mui/material/';
-import API from "../utils/API";
-import { useNavigate } from 'react-router-dom';
+import { Popper, Box } from '@mui/material/';
 
 // import all of the images
 // image 1 assets
