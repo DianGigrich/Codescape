@@ -12,6 +12,14 @@ code {
     monospace;
 }
 
+/* timer */
+#puzzle-timer-container{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 3;
+}
+
 /* dropzone */
 .dropzone {
   background-color: #b9e2de;

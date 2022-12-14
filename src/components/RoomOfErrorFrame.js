@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,  useEffect } from 'react';
 import Question from './Question';
-import { Button } from '@mui/material/';
+// import { Button } from '@mui/material/';
 import API from "../utils/API";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // import all of the images
 // image 1 assets
@@ -41,10 +41,6 @@ import tapeRoll from './../assets/RoomOfError/tapeRoll.png';
 export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, props }) {
     const navigate = useNavigate()
 
-    const [highscore, setHighscores] = useState([])
-
-
-
     useEffect(() => {
 
         const storedToken = localStorage.getItem("token")
@@ -69,10 +65,7 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
             navigate("/login")
         }
     }, [])
-    useEffect(() => {
-        
-    }, []
-    )
+
     // question modal states?
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -174,14 +167,20 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
         if (currentKey === false) {
             alert("This door is locked!")
         } else {
-           let userId =  localStorage.getItem("userId")
-            API.postHighscores(userId)
+            let userid = localStorage.getItem("userid")
+            let score = localStorage.getItem("timer")
+
+            API.postHighscores({
+                value: score, 
+                user_id: userid})
+
             alert("You've won!!!")
         }
     }
 
     return (
         <>
+            
             {/* <Button onClick={handleOpen}>QUESTION BUTTON</Button> */}
             {open && <Question open={open} setOpen={setOpen} setTapeRoll={setTapeRoll} setBox={setBox} setShreddedFile={setShreddedFile} setShredder={setShredder} setFile={setFile} setKey={setKey} setTapeDispenser={setTapeDispenser} setFileCabinet={setFileCabinet} />}
             <div id='puzzle-images'>
@@ -235,6 +234,7 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
                     <img id="tape-roll" src={tapeRoll} alt="tape roll" style={currentTapeRoll === false ? { visibility: "hidden", height: "50px" } : { height: "50px" }} />
                 </div>
             </div>
+
         </>
     )
 }
