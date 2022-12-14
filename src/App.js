@@ -66,7 +66,7 @@ interact('.dropzone').dropzone({
   accept: [],
 
   // Require a 75% element overlap for a drop to be possible
-  overlap: 0.75,
+  overlap: 0.25,
 
   // listen for drop related events:
 
@@ -88,6 +88,7 @@ interact('.dropzone').dropzone({
     // remove the drop feedback style
     event.target.classList.remove('drop-target')
     event.relatedTarget.classList.remove('can-drop')
+    event.relatedTarget.classList.remove('drag-wrong')
   },
 
   ondrop: function (event) {
@@ -103,7 +104,7 @@ interact('.dropzone').dropzone({
       console.log("didn't match");
       event.relatedTarget.classList.remove('drop-active')
       event.relatedTarget.classList.remove('drop-target')
-      event.relatedTarget.classList.add('drop-wrong')
+      event.relatedTarget.classList.add('drag-wrong')
     }
    
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
