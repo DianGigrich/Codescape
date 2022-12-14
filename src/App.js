@@ -211,7 +211,7 @@ function App() {
   const handleLoginSubmit = userObj => {
     console.log('handle login')
     API.login(userObj).then(data => {
-      console.log(data);
+      // console.log(data);
       if (data.token) {
         setUserId(data.user.id)
         localStorage.setItem("userid", data.user.id)

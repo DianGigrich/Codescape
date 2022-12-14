@@ -90,6 +90,8 @@ export default function Home() {
                         justifyContent="center"
                     >
                         <img src={require("../../assets/Pics/coolcode.png")} height="600"/>
+                     
+                        <Button variant="outlined" color="secondary">Hey! There is a fun trick hidden in this page. Can you find it?</Button>
                     </Stack>
 
                 </Container>
