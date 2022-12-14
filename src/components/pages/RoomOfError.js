@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from 'react';
 import './style/RoomOfError.css';
 import { Box } from '@mui/material/';
-import Timer from './../Timer'
+
 
 
 function RoomOfError () {
