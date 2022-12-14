@@ -84,6 +84,16 @@ const API = {
             }
         }).then(res => res.json())
     },
+    
+   postHighscores: (userObj) => {
+    return fetch(`${URL_PREFIX}/api/highscores`, {
+        method: "POST",
+        body: JSON.stringify(userObj),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json())
+}
 
 }
 export default API
