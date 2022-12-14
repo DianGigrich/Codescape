@@ -124,7 +124,6 @@ interact('.dropzone').dropzone({
 })
 
 
-
 interact('.drag-drop')
   .draggable({
     inertia: true,
@@ -238,6 +237,10 @@ function App() {
     })
     console.log(3)
   }
+  const handlePostHighscores = (userObj) => {
+    console.log(1, "highpost")
+    API.postHighscores(userObj)
+  }
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
@@ -276,7 +279,7 @@ function App() {
             <Route path="/leaderboard" element={<Leaderboard/>}/> 
             <Route path="/room-of-error" element={<RoomOfError/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame handlePostHighscores={postHighscores} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
             <Route path='/new-puzzle' element={<NewPuzzle/>}/>
             <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
             <Route path="*" element={<h1>404</h1>} />

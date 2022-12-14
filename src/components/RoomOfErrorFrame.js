@@ -1,4 +1,4 @@
-import React, { useState,  useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Question from './Question';
 // import { Button } from '@mui/material/';
 import API from "../utils/API";
@@ -162,17 +162,24 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
             console.log("handleKeyState is working!")
         }
     }
+    const postTheScore = e => {
+        e.preventDefault();
+        props.handlePostHighscores({
+            value: score,
+            user_id: userid,
+        });
+
+    }
+    const [userid, setUserId] = useState("")
+    const [score, setScore] = useState("")
 
     function handleWin() {
         if (currentKey === false) {
             alert("This door is locked!")
         } else {
-            let userid = localStorage.getItem("userid")
-            let score = localStorage.getItem("timer")
-
-            API.postHighscores({
-                value: score, 
-                user_id: userid})
+            setUserId(localStorage.getItem("userid"))
+            setScore(localStorage.getItem("timer"))
+            postTheScore
 
             alert("You've won!!!")
         }
@@ -180,7 +187,7 @@ export default function RoomOfErrorFrame({ funcHeader, funcFooter, funcNav, prop
 
     return (
         <>
-            
+
             {/* <Button onClick={handleOpen}>QUESTION BUTTON</Button> */}
             {open && <Question open={open} setOpen={setOpen} setTapeRoll={setTapeRoll} setBox={setBox} setShreddedFile={setShreddedFile} setShredder={setShredder} setFile={setFile} setKey={setKey} setTapeDispenser={setTapeDispenser} setFileCabinet={setFileCabinet} />}
             <div id='puzzle-images'>
