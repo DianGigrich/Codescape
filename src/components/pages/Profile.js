@@ -142,7 +142,7 @@ function Profile(props) {
                   Castle of Chaos
                 </Typography>
                 <Typography>
-                  Description of game
+                  Are you ready to enter the castle?
                 </Typography>
               </CardContent>
               <CardMedia
@@ -168,7 +168,7 @@ function Profile(props) {
                   {props.userName}'s Scores
                 </Typography>
                 <Typography>
-                  This needs input
+                  coming soon
                 </Typography>
               </CardContent>
             </Card>
