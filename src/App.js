@@ -66,7 +66,7 @@ interact('.dropzone').dropzone({
   accept: [],
 
   // Require a 75% element overlap for a drop to be possible
-  overlap: 0.25,
+  overlap: 0.75,
 
   // listen for drop related events:
 
@@ -88,7 +88,6 @@ interact('.dropzone').dropzone({
     // remove the drop feedback style
     event.target.classList.remove('drop-target')
     event.relatedTarget.classList.remove('can-drop')
-    event.relatedTarget.classList.remove('drag-wrong')
   },
 
   ondrop: function (event) {
@@ -104,7 +103,7 @@ interact('.dropzone').dropzone({
       console.log("didn't match");
       event.relatedTarget.classList.remove('drop-active')
       event.relatedTarget.classList.remove('drop-target')
-      event.relatedTarget.classList.add('drag-wrong')
+      event.relatedTarget.classList.add('drop-wrong')
     }
    
     if (Object.values(answerObj).length === solutionLength && Object.values(answerObj).every(Boolean)) {
@@ -123,6 +122,7 @@ interact('.dropzone').dropzone({
     event.target.classList.add('drop-wrong')
   }
 })
+
 
 
 interact('.drag-drop')
@@ -213,7 +213,6 @@ function App() {
       console.log(data);
       if (data.token) {
         setUserId(data.user.id)
-        localStorage.setItem("userid", data.user.id)
         setToken(data.token)
         setIsLoggedIn(true)
         setUserName(data.user.username)
@@ -223,9 +222,9 @@ function App() {
   }
 
   const handleSignupSubmit = (userObj, navigate) => {
- 
+    console.log(1)
     API.signup(userObj).then(data => {
-     
+      console.log(2)
       console.log(data);
       if (data.token) {
         setUserId(data.user.id)
@@ -236,13 +235,8 @@ function App() {
         navigate('/Profile')
       }
     })
-    
+    console.log(3)
   }
-  const handlePostHighscores = (userObj) => {
-console.log(userObj, "app here")
-    API.postHighscores(userObj)
-  }
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
@@ -281,7 +275,7 @@ console.log(userObj, "app here")
             <Route path="/leaderboard" element={<Leaderboard/>}/> 
             <Route path="/room-of-error" element={<RoomOfError/>}/>
             <Route path="/aboutus" element={<AboutUs/>}/>
-            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame handlePostHighscores={handlePostHighscores} funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
+            <Route path="/room-of-error-frame" element={<RoomOfErrorFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav} correct={correct} setCorrect={setCorrect}/>} />
             <Route path='/new-puzzle' element={<NewPuzzle/>}/>
             <Route path='/new-puzzle-frame' element={<NewPuzzleFrame funcHeader={setShowHeader} funcFooter={setShowFooter} funcNav={setShowNav}/>}/>
             <Route path="*" element={<h1>404</h1>} />

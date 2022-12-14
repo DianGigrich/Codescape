@@ -56,13 +56,13 @@ const API = {
         let randId = 0
         console.log(level, "=level")
         // (easy 1-10, med 11-20, hard 21-30)
-        if (level === "Easy") {
+        if (level === 1 || "easy") {
             randId = Math.floor(Math.random() * (11 - 1) + 1);
             console.log(randId)
-        } else if (level === "Medium") {
+        } else if (level === 2 || "medium") {
             randId = Math.floor(Math.random() * (21 - 11) + 11);
             console.log(randId)
-        } else if (level === "Hard") {
+        } else if (level === 3 || "hard") {
             randId = Math.floor(Math.random() * (31 - 21) + 21);
             console.log(randId)
         } else {
@@ -76,20 +76,9 @@ const API = {
         }).then(res => res.json())
     },
 
-    // highscores
     getHighscores: () => {
         return fetch(`${URL_PREFIX}/api/highscores/`, {
             method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(res => res.json())
-    },
-
-   postHighscores: (userObj) => {
-        return fetch(`${URL_PREFIX}/api/highscores`, {
-            method: "POST",
-            body: JSON.stringify(userObj),
             headers: {
                 "Content-Type": "application/json"
             }

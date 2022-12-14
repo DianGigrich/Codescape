@@ -37,14 +37,12 @@ export default function Signup(props) {
         e.preventDefault();
         props.handleSignupSubmit({
             username: signupName,
-            email: signupEmail,
             password: signupPassword
         }, navigate);
 
     }
     const [signupName, setSignupName] = useState("")
     const [signupPassword, setSignupPassword] = useState("")
-    const [signupEmail, setSignupEmail] = useState("")
 
     return (
 
@@ -73,14 +71,6 @@ export default function Signup(props) {
                         name="username"
                         value={signupName}
                         onChange={e => setSignupName(e.target.value)} />
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        label="Email"
-                        name="email"
-                        value={signupEmail}
-                        onChange={e => setSignupEmail(e.target.value)} />
                     <TextField
                         margin="normal"
                         required

@@ -15,13 +15,12 @@ function Profile(props) {
   const handleLevelChange = (event) => {
     var thishere = event.target.value
     setDifficulty(thishere);
-    localStorage.setItem("difficulty", thishere)
+     localStorage.setItem("difficulty", thishere)
   };
 
   // delete modal open
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  // const [highscore, setHighscores] = useState([])
 
 
 
@@ -38,19 +37,16 @@ function Profile(props) {
           props.setToken(storedToken)
           props.setIsLoggedIn(true)
           props.setUserId(data.user.id)
-          
           props.setUserName(data.user.username)
         } else {
           navigate("/404")
         }
-
       })
     } else {
       console.log('no stored token')
       navigate("/login")
     }
   }, [])
- 
 
 
   return (
@@ -96,7 +92,7 @@ function Profile(props) {
                   onChange={handleLevelChange}
                 >
                   <MenuItem value="Easy">Easy</MenuItem>
-                  <MenuItem value="Medium">Medium</MenuItem>
+                  <MenuItem value="Med">Medium</MenuItem>
                   <MenuItem value="Hard">Hard</MenuItem>
                 </Select>
               </FormControl>
@@ -113,7 +109,7 @@ function Profile(props) {
         <Grid container spacing={4}>
 
           <Grid item xs={12} sm={6} md={4}>
-            <Card onClick={() => navigate('/room-of-error')}
+            <Card
               sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
@@ -123,20 +119,17 @@ function Profile(props) {
                 <Typography>
                   Can you escape within the time limit?
                 </Typography>
-                <CardMedia
-
-                  component="img"
-                  sx={{
-                    ratio: "16:9",
-                    pt: '56.25%',
-                  }}
-                  image={require("../../assets/Pics/david-pupaza-heNwUmEtZzo-unsplash.jpg")}
-
-                  alt="random"
-                  
-                />
               </CardContent>
-
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: '56.25%',
+                }}
+                image="https://source.unsplash.com/random"
+                alt="random"
+                onClick={() => navigate('/room-of-error')}
+              />
             </Card>
 
           </Grid>
@@ -151,17 +144,17 @@ function Profile(props) {
                 <Typography>
                   Description of game
                 </Typography>
-                <CardMedia
-                  component="img"
-                  sx={{
-                    // 16:9
-                    pt: '56.25%',
-                  }}
-                  image="https://source.unsplash.com/random"
-                  alt="random"
-                  onClick={() => navigate('/new-puzzle')}
-                />
               </CardContent>
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: '56.25%',
+                }}
+                image="https://placekitten.com/200/"
+                alt="random"
+                onClick={() => navigate('/new-puzzle')}
+              />
             </Card>
 
           </Grid>
