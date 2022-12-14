@@ -75,15 +75,14 @@ function RoomOfError () {
         clearTimer(getDeadTime());
     }, []);
     return (
-<Container id='puzzle'>      
+<div id='puzzle'>      
 
         <Box className='puzzle-container'>
         <h3 className="puzzle-title">Room of Error</h3>
         <div id='puzzle-timer-container'>
             <p id='puzzle-timer'>
-            <h2 id="timerId">Time Left:{timer}
-                         
-                         </h2>
+            <h2 id="timerId">Time Left:{timer}   
+              </h2>
             </p>
         </div>
         <div id='room-of-error-frame-container'>
@@ -92,7 +91,7 @@ function RoomOfError () {
               
     </Box>
     
-</Container>
+</div>
     )
 }
 
