@@ -80,7 +80,8 @@ function RoomOfError() {
 
             <Box className='puzzle-container'>
                 
-                <div id='puzzle-timer-container' sx={{ p: "5px" }}>
+                <h3 className="puzzle-title">Room of Error</h3>
+        <div id='puzzle-timer-container' sx={{ p: "5px" }}>
                     <h2 id="timerId">Time Left:{timer}
                          
                     </h2>

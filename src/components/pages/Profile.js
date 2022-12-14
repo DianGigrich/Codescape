@@ -146,10 +146,10 @@ function Profile(props) {
             >
               <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Future Puzzle
+                  Castle of Chaos
                 </Typography>
                 <Typography>
-                  Because one puzzle isn't enough. Lets find some more fun ways to practice!
+                  Description of game
                 </Typography>
                 <CardMedia
                   component="img"
