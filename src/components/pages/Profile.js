@@ -126,7 +126,7 @@ function Profile(props) {
                   // 16:9
                   pt: '56.25%',
                 }}
-                image="https://source.unsplash.com/random"
+                image={require("../../assets/Pics/david-pupaza-heNwUmEtZzo-unsplash.jpg")}
                 alt="random"
                 onClick={() => navigate('/room-of-error')}
               />
@@ -151,7 +151,7 @@ function Profile(props) {
                   // 16:9
                   pt: '56.25%',
                 }}
-                image="https://placekitten.com/200/"
+                image={require("../../assets/Pics/castle.jpg")}
                 alt="random"
                 onClick={() => navigate('/new-puzzle')}
               />
