@@ -1,0 +1,96 @@
+#new-puzzle-frame-container {
+    display: flex;
+    justify-content: center;
+}
+
+#new-puzzle-timer-container {
+    text-align: center;
+}
+
+#new-puzzle-images {
+    display: flex;
+    justify-content: center;
+}
+
+.castle-img {
+    width: 565px;
+}
+
+#doorway {
+    position: absolute;
+    top: -10px;
+    left: 80px;
+    width: 580px;
+}
+
+.chest {
+    position: absolute;
+    top: 370px;
+    left: 400px;
+    width: 200px;
+}
+
+#open-chest {
+    position: absolute;
+    top: 320px;
+    left: 400px;
+    width: 200px;
+}
+
+.stool {
+    position: absolute;
+    top: 340px;
+    left: 140px;
+    width: 190px;
+}
+
+.cauldron {
+    position: absolute;
+    top: 235px;
+    left: 150px;
+    width: 170px;
+}
+
+#tipped-cauldron {
+    position: absolute;
+    top: 362px;
+    left: 330px;
+    width: 225px;
+}
+
+.wall-shackles {
+    position: absolute;
+    top: 80px;
+    left: 430px;
+    width: 170px;
+}
+
+.rope-coil {
+    position: absolute;
+    top: 375px;
+    left: 410px;
+    width: 170px;
+}
+
+.barrel {
+    position: absolute;
+    top: 235px;
+    left: 65px;
+    width: 340px;
+}
+
+.tapestry {
+    position: absolute;
+    top: 125px;
+    left: 255px;
+    width: 290px;
+}
+
+#secret-compartment {
+    position: absolute;
+    top: 125px;
+    left: 255px;
+    width: 290px;
+}
+
+
