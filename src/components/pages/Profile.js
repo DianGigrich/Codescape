@@ -15,12 +15,13 @@ function Profile(props) {
   const handleLevelChange = (event) => {
     var thishere = event.target.value
     setDifficulty(thishere);
-     localStorage.setItem("difficulty", thishere)
+    localStorage.setItem("difficulty", thishere)
   };
 
   // delete modal open
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
+  const [highscore, setHighscores] = useState([])
 
 
 
@@ -41,12 +42,20 @@ function Profile(props) {
         } else {
           navigate("/404")
         }
+        
       })
     } else {
       console.log('no stored token')
       navigate("/login")
     }
-  }, [])
+  }, [data])
+  useEffect (()=> {
+    API.getHighscores(props).then(scores => {
+          console.log(scores)
+          setHighscores(scores)
+        })
+  }, [scores]
+  )
 
 
   return (
@@ -119,17 +128,20 @@ function Profile(props) {
                 <Typography>
                   Can you escape within the time limit?
                 </Typography>
+                <CardMedia
+
+                  component="img"
+                  sx={{
+                    ratio: "16:9",
+                    pt: '56.25%',
+                  }}
+                  image={require("../../assets/Pics/david-pupaza-heNwUmEtZzo-unsplash.jpg")}
+
+                  alt="random"
+                  onClick={() => navigate('/room-of-error')}
+                />
               </CardContent>
-              <CardMedia
-                component="img"
-                sx={{
-                  // 16:9
-                  pt: '56.25%',
-                }}
-                image="https://source.unsplash.com/random"
-                alt="random"
-                onClick={() => navigate('/room-of-error')}
-              />
+
             </Card>
 
           </Grid>
@@ -144,17 +156,17 @@ function Profile(props) {
                 <Typography>
                   Because one puzzle isn't enough. Lets find some more fun ways to practice!
                 </Typography>
+                <CardMedia
+                  component="img"
+                  sx={{
+                    // 16:9
+                    pt: '56.25%',
+                  }}
+                  image="https://source.unsplash.com/random"
+                  alt="random"
+                  onClick={() => navigate('/new-puzzle')}
+                />
               </CardContent>
-              <CardMedia
-                component="img"
-                sx={{
-                  // 16:9
-                  pt: '56.25%',
-                }}
-                image="https://placekitten.com/200/"
-                alt="random"
-                onClick={() => navigate('/new-puzzle')}
-              />
             </Card>
 
           </Grid>
