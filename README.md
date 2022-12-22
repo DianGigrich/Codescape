@@ -21,12 +21,12 @@ npm start
 ## Usage
 Sign up, log in, start playing!
 
-https://codescape.herokuapp.com/
+https://codescape.netlify.app
 
 https://github.com/DianGigrich/Codescape
       
 ## Screenshot:
-![Screenshot of project](./assets/screenshot.png)
+![Screenshot of project](./src/assets/Pics/screenshot.png)
 
 ## Credits
 Joe Rehfuss for teaching us. The TAs in class: Lindsey, Austin, and Henry. W3Schools, Mozilla, and StackOverflow. Thanks to the entire internet for help.
